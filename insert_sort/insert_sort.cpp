@@ -1,19 +1,20 @@
 #include<iostream>
 #include<vector>
+#include<cstdlib>
+#include<algorithm>
+#include<ctime>
 
 template<typename T>
 void insertSort(std::vector<T> & v);
 
 int main(void)
 {
-    std::vector<int> v;
-    int num, n = 5;
+    const int VEC_SIZE = 10;
 
-    for (int i = 0; i < n; i++)
-    {
-        std::cin >> num;
-        v.push_back(num);
-    }
+    std::srand(std::time(0));
+    std::vector<int> v(VEC_SIZE);
+
+    std::generate(v.begin(), v.end(), std::rand);
     insertSort(v);
 
     for (auto x : v)
