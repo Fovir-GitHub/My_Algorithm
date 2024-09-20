@@ -30,7 +30,7 @@ void insertSort(std::vector<T> & v)
 
     for (int i = 1; i < n; i++)
     {
-        int current = v[i];
+        T current = v[i];
         int j = i - 1;
         while (j >= 0 && v[j] > current)
         {
