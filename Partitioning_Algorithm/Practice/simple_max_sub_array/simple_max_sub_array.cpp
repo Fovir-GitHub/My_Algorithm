@@ -2,6 +2,7 @@
 #include<vector>
 #include<iterator>
 #include<cstring>
+#include<algorithm>
 
 int main(void)
 {
