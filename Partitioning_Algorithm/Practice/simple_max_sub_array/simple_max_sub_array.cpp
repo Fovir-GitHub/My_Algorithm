@@ -8,38 +8,26 @@ int main(void)
 {
     std::freopen("./test.in", "r", stdin);
 
-    int n;
+    std::vector<int> temp_vector, v, sums;
+    int temp;
 
-    std::cout << "Enter n: ";
-    std::cin >> n;
+    while (std::cin >> temp)
+        temp_vector.push_back(temp);
 
-    int * original_array = new int[n];
-    for (int i = 0; i < n; i++)
-        std::cin >> original_array[i];
+    v.push_back(temp_vector[0]);
+    for (size_t i = 1; i < temp_vector.size(); i++)
+        v.push_back(temp_vector[i] - temp_vector[i - 1]);
 
-    int * differ_array = new int[n];
-
-    differ_array[0] = original_array[0];
-    for (int i = 1; i < n; i++)
-        differ_array[i] = original_array[i] - original_array[i - 1];
-
-    int ** record = new int * [n];
-    for (int i = 0; i < n; i++)
-        record[i] = new int[n];
-
-    for (int i = 0; i < n; i++)
-        std::memset(record[i], 0, sizeof(int) * n);
-    for (int i = 0; i < n; i++)
-        record[i][0] = differ_array[i];
-
-    for (int i = 1; i < n; i++)
-        for (int j = 1; j < n; j++)
-            record[i][j] = record[i][j - 1] + differ_array[j];
+    for (size_t i = 0; i < v.size(); i++)
+    {
+        sums.push_back(v[i]);
+        for (size_t j = i + 1; j < v.size(); j++)
+            sums.push_back(sums.back() + v[j]);
+    }
 
     int max_sum = 0;
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            max_sum = std::max(max_sum, record[i][j]);
+    for (auto x : sums)
+        max_sum = std::max(max_sum, x);
 
     std::cout << "Max sum: " << max_sum << '\n';
 
