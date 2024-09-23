@@ -39,9 +39,9 @@ int main(void)
     std::vector<int> temp_vec(VECTOR_SIZE), v;
     int temp;
 
-    // while (std::cin >> temp)
-    //     temp_vec.push_back(temp);
-    std::generate(temp_vec.begin(), temp_vec.end(), generateData);
+    while (std::cin >> temp)
+        temp_vec.push_back(temp);
+    // std::generate(temp_vec.begin(), temp_vec.end(), generateData);
 
     for (size_t i = 1; i < temp_vec.size(); i++)
         v.push_back(temp_vec[i] - temp_vec[i - 1]);
