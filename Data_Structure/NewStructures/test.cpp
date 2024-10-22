@@ -1,7 +1,7 @@
 #include<iostream>
-#include<cstdlib>
 #include<ctime>
-#include"newqueue.hpp"
+#include<cstdlib>
+#include"newstack.hpp"
 
 int main(void)
 {
@@ -9,20 +9,20 @@ int main(void)
 
     const int N = 10, LIMIT = 20;
     int num;
-    NewQueue<int> nque;
+    NewStack<int> nst;
 
     std::cout << "Input:\n";
     for (int i = 0; i < N; i++)
     {
         std::cout << (num = std::rand() % LIMIT) << ' ';
-        nque.push(num);
+        nst.push(num);
     }
     std::cout << '\n';
 
-    while (!nque.empty())
+    while (!nst.empty())
     {
-        std::cout << nque.peek() << ' ';
-        nque.pop();
+        std::cout << nst.peek() << ' ';
+        nst.pop();
     }
 
     return 0;
