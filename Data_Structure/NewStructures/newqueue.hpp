@@ -7,9 +7,9 @@ template<typename T>
 class NewQueue :public NewDeList<T>
 {
 public:
-    bool push(T push_value) { return NewDeList<T>::push(push_value, NewDeList<T>::BACK); }
-    bool pop() { return NewDeList<T>::pop(NewDeList<T>::FRONT); }
-    T peek() { return NewDeList<T>::peek(NewDeList<T>::FRONT); }
+    bool push(T push_value) { return NewDeList<T>::push_back(push_value); }
+    bool pop() { return NewDeList<T>::pop_front(); }
+    T peek() { return NewDeList<T>::peek_front(); }
 
     bool empty() { return NewDeList<T>::empty(); }
 };
