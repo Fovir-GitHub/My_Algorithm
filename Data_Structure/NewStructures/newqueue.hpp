@@ -9,9 +9,9 @@ class NewQueue :public NewDeList<T>
 public:
     bool push(T push_value) { return NewDeList<T>::push_back(push_value); }
     bool pop() { return NewDeList<T>::pop_front(); }
-    T peek() { return NewDeList<T>::peek_front(); }
+    T peek()const { return NewDeList<T>::peek_front(); }
 
-    bool empty() { return NewDeList<T>::empty(); }
+    bool empty()const { return NewDeList<T>::empty(); }
 };
 
 #endif // !_NEWQUEUE_HPP_
