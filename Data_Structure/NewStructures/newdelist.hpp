@@ -55,6 +55,7 @@ NewDeList<T>::~NewDeList()
         delete head;
         head = rear;
     }
+    head = rear = nullptr;
     node_counter = 0;
 }
 
