@@ -1,6 +1,8 @@
 #ifndef _BINARYTREE_HPP_
 #define _BINARYTREE_HPP_
 
+#include<iostream>
+
 template<typename T>
 class MyBinaryTree
 {
@@ -22,7 +24,8 @@ public:
     TreeNode * GetRootNode()const { return root; }
 
     void insert(T insert_value);
-    void traverse(void(*func)(T &), TreeNode * start_node);
+    void traverse(void(*func)(T), TreeNode * start_node);
+    void remove(T remove_value);
 };
 
 template<typename T>
@@ -55,7 +58,7 @@ void MyBinaryTree<T>::insert(T insert_value)
             if (visit->left == nullptr)
             {
                 visit->left = insert_node;
-                return;
+                break;
             }
             else
                 visit = visit->left;
@@ -65,7 +68,7 @@ void MyBinaryTree<T>::insert(T insert_value)
             if (visit->right == nullptr)
             {
                 visit->right = insert_node;
-                return;
+                break;
             }
             else
                 visit = visit->right;
@@ -82,7 +85,7 @@ void MyBinaryTree<T>::insert(T insert_value)
 }
 
 template<typename T>
-void MyBinaryTree<T>::traverse(void(*func)(T &), TreeNode * start_node)
+void MyBinaryTree<T>::traverse(void(*func)(T), TreeNode * start_node)
 {
     if (start_node == nullptr)
         return;
@@ -90,6 +93,60 @@ void MyBinaryTree<T>::traverse(void(*func)(T &), TreeNode * start_node)
     traverse(func, start_node->left);
     func(start_node->value);
     traverse(func, start_node->right);
+
+    return;
+}
+
+template<typename T>
+void MyBinaryTree<T>::remove(T remove_value)
+{
+    if (empty())
+        return;
+
+    TreeNode * current = root, * previous = nullptr;
+
+    while (current != nullptr)
+    {
+        if (current->value == remove_value)
+            break;
+        previous = current;
+        if (current->value < remove_value)
+            current = current->right;
+        else
+            current = current->left;
+    }
+
+    if (current == nullptr)
+        return;
+
+    if (current->left == nullptr || current->right == nullptr)
+    {
+        TreeNode * child =
+            (current->left != nullptr ? current->left : current->right);
+
+        if (current != root)
+        {
+            if (previous->left == current)
+                previous->left = child;
+            else
+                previous->right = child;
+        }
+        else
+            root = child;
+
+        --tree_node_counter;
+        delete current;
+    }
+    else
+    {
+        TreeNode * tmp = current->right;
+        while (tmp->left != nullptr)
+            tmp = tmp->left;
+
+        T tmpVal = tmp->value;
+        remove(tmp->value);
+        current->value = tmpVal;
+    }
 
     return;
 }
