@@ -26,6 +26,7 @@ public:
     void insert(T insert_value);
     void traverse(void(*func)(T), TreeNode * start_node);
     void remove(T remove_value);
+    bool find(T find_value);
 };
 
 template<typename T>
@@ -149,6 +150,24 @@ void MyBinaryTree<T>::remove(T remove_value)
     }
 
     return;
+}
+
+template<typename T>
+bool MyBinaryTree<T>::find(T find_value)
+{
+    TreeNode * visit = root;
+    while (visit)
+    {
+        if (visit->value == find_value)
+            return true;
+
+        if (find_value < visit->value)
+            visit = visit->left;
+        else
+            visit = visit->right;
+    }
+
+    return false;
 }
 
 #endif // !_BINARYTREE_HPP_

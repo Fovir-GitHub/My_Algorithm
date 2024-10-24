@@ -13,6 +13,7 @@ int main(void)
     MyBinaryTree<int> mbt;
     int num;
     int remove_number;
+    int find_number;
 
     std::cout << "Input:\n";
     for (int i = 0; i < N; i++)
@@ -25,16 +26,21 @@ int main(void)
     mbt.traverse(print, mbt.GetRootNode());
     std::cout << '\n';
 
-    std::cout << "Enter the number you want to remove: ";
-    while (std::cin >> remove_number)
-    {
-        mbt.remove(remove_number);
-        std::cout << "After remove():\n";
-        std::cout << "Size: " << mbt.size() << '\n';
-        mbt.traverse(print, mbt.GetRootNode());
-        std::cout << '\n';
-        std::cout << "Enter the next number: ";
-    }
+    // std::cout << "Enter the number you want to remove: ";
+    // while (std::cin >> remove_number)
+    // {
+    //     mbt.remove(remove_number);
+    //     std::cout << "After remove():\n";
+    //     std::cout << "Size: " << mbt.size() << '\n';
+    //     mbt.traverse(print, mbt.GetRootNode());
+    //     std::cout << '\n';
+    //     std::cout << "Enter the next number: ";
+    // }
+
+    std::cout << "Enter the find number: ";
+    while (std::cin >> find_number)
+        std::cout << (mbt.find(find_number) ? "Find" : "Not found") << '\n'
+        << "Enter the next find number: ";
 
     return 0;
 }
