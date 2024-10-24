@@ -10,7 +10,7 @@ private:
     struct TreeNode
     {
         T value;
-        int height;
+        int height = 0;
         TreeNode * left;
         TreeNode * right;
 
