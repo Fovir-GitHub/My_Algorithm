@@ -10,21 +10,24 @@ private:
     struct TreeNode
     {
         T value;
-        int height = 0;
-        TreeNode * left, * right;
+        int height;
+        TreeNode * left;
+        TreeNode * right;
+
+        TreeNode(int val) :value(val) {}
     };
 
     TreeNode * root;
 
 public:
-    AvlTree();
+    AvlTree() { root = nullptr; }
 
-    int Height(TreeNode * node)const { return node == nullptr ? -1 : node->height; }
+    int GetHeight(const TreeNode * node)const { return node == nullptr ? -1 : node->height; }
     void UpdateHeight(TreeNode * node);
-    int BalanceFactor(TreeNode * node);
+    int GetBalanceFactor(TreeNode * node);
 
-    TreeNode * RightRotate(TreeNode * node);
     TreeNode * LeftRotate(TreeNode * node);
+    TreeNode * RightRotate(TreeNode * node);
     TreeNode * Rotate(TreeNode * node);
 
     void insert(T insert_value) { root = InsertHelper(root, insert_value); }
@@ -33,55 +36,24 @@ public:
     void remove(T remove_value) { root = RemoveHelper(root, remove_value); }
     TreeNode * RemoveHelper(TreeNode * node, T remove_value);
 
-    void traverse(void(*func)(T)) { return TraverseHelper(func, root); }
-    void TraverseHelper(void(*func)(T), TreeNode * node);
+    void traverse(void(*func)(T)) { return TraverseHelper(root, func); }
+    void TraverseHelper(TreeNode * node, void(*func)(T));
 };
 
 template<typename T>
-AvlTree<T>::AvlTree()
+void AvlTree<T>::UpdateHeight(typename AvlTree<T>::TreeNode * node)
 {
-    root = nullptr;
+    node->height = std::max(GetHeight(node->left), GetHeight(node->right)) + 1;
 }
 
 template<typename T>
-void AvlTree<T>::UpdateHeight(TreeNode * node)
-{
-    node->height = std::max(Height(node->left), Height(node->right)) + 1;
-    return;
-}
-
-template<typename T>
-int AvlTree<T>::BalanceFactor(TreeNode * node)
-{
-    if (node == nullptr)
-        return 0;
-
-    return Height(node->left) - Height(node->right);
-}
-
-template<typename T>
-typename AvlTree<T>::TreeNode * AvlTree<T>::RightRotate(AvlTree<T>::TreeNode * node)
-{
-    TreeNode * child = node->left;
-    TreeNode * grand_child = child->right;
-
-    node->left = grand_child;
-    child->right = node;
-
-    UpdateHeight(node);
-    UpdateHeight(child);
-
-    return child;
-}
-
-template<typename T>
-typename AvlTree<T>::TreeNode * AvlTree<T>::LeftRotate(AvlTree<T>::TreeNode * node)
+typename AvlTree<T>::TreeNode * AvlTree<T>::LeftRotate(typename AvlTree<T>::TreeNode * node)
 {
     TreeNode * child = node->right;
     TreeNode * grand_child = child->left;
 
-    node->right = grand_child;
     child->left = node;
+    node->right = grand_child;
 
     UpdateHeight(node);
     UpdateHeight(child);
@@ -90,13 +62,37 @@ typename AvlTree<T>::TreeNode * AvlTree<T>::LeftRotate(AvlTree<T>::TreeNode * no
 }
 
 template<typename T>
-typename AvlTree<T>::TreeNode * AvlTree<T>::Rotate(AvlTree<T>::TreeNode * node)
+typename AvlTree<T>::TreeNode * AvlTree<T>::RightRotate(typename AvlTree<T>::TreeNode * node)
 {
-    int balance_factor = BalanceFactor(node);
+    TreeNode * child = node->left;
+    TreeNode * grand_child = child->right;
+
+    child->right = node;
+    node->left = grand_child;
+
+    UpdateHeight(node);
+    UpdateHeight(child);
+
+    return child;
+}
+
+template<typename T>
+int AvlTree<T>::GetBalanceFactor(typename AvlTree<T>::TreeNode * node)
+{
+    if (node == nullptr)
+        return 0;
+
+    return GetHeight(node->left) - GetHeight(node->right);
+}
+
+template<typename T>
+typename AvlTree<T>::TreeNode * AvlTree<T>::Rotate(typename AvlTree<T>::TreeNode * node)
+{
+    int balance_factor = GetBalanceFactor(node);
 
     if (balance_factor > 1)
     {
-        if (BalanceFactor(node->left) >= 0)
+        if (GetBalanceFactor(node->left) >= 0)
             return RightRotate(node);
         else
         {
@@ -107,11 +103,11 @@ typename AvlTree<T>::TreeNode * AvlTree<T>::Rotate(AvlTree<T>::TreeNode * node)
 
     if (balance_factor < -1)
     {
-        if (BalanceFactor(node->right) <= 0)
+        if (GetBalanceFactor(node->right) <= 0)
             return LeftRotate(node);
         else
         {
-            node->left = RightRotate(node->left);
+            node->right = RightRotate(node->right);
             return LeftRotate(node);
         }
     }
@@ -120,15 +116,12 @@ typename AvlTree<T>::TreeNode * AvlTree<T>::Rotate(AvlTree<T>::TreeNode * node)
 }
 
 template<typename T>
-typename AvlTree<T>::TreeNode * AvlTree<T>::InsertHelper(AvlTree<T>::TreeNode * node,
-    T insert_value)
+typename AvlTree<T>::TreeNode * AvlTree<T>::InsertHelper(
+    typename AvlTree<T>::TreeNode * node, T insert_value
+)
 {
     if (node == nullptr)
-    {
-        TreeNode * return_node = new TreeNode;
-        return_node->value = insert_value;
-        return return_node;
-    }
+        return new TreeNode(insert_value);
 
     if (insert_value < node->value)
         node->left = InsertHelper(node->left, insert_value);
@@ -144,8 +137,9 @@ typename AvlTree<T>::TreeNode * AvlTree<T>::InsertHelper(AvlTree<T>::TreeNode * 
 }
 
 template<typename T>
-typename AvlTree<T>::TreeNode * AvlTree<T>::RemoveHelper(AvlTree<T>::TreeNode * node,
-    T remove_value)
+typename AvlTree<T>::TreeNode * AvlTree<T>::RemoveHelper(
+    typename AvlTree<T>::TreeNode * node, T remove_value
+)
 {
     if (node == nullptr)
         return nullptr;
@@ -175,15 +169,14 @@ typename AvlTree<T>::TreeNode * AvlTree<T>::RemoveHelper(AvlTree<T>::TreeNode * 
         else
         {
             TreeNode * temp = node->right;
-            while (temp->left != nullptr)
+            while (temp->left)
                 temp = temp->left;
 
-            int temp_value = temp->value;
-            node->right = RemoveHelper(node->right, temp->value);
+            T temp_value = temp->value;
+            node->right = RemoveHelper(node->right, temp_value);
             node->value = temp_value;
         }
     }
-
     UpdateHeight(node);
     node = Rotate(node);
 
@@ -191,14 +184,14 @@ typename AvlTree<T>::TreeNode * AvlTree<T>::RemoveHelper(AvlTree<T>::TreeNode * 
 }
 
 template<typename T>
-void AvlTree<T>::TraverseHelper(void(*func)(T), TreeNode * node)
+void AvlTree<T>::TraverseHelper(typename AvlTree<T>::TreeNode * node, void(*func)(T))
 {
     if (node == nullptr)
         return;
 
-    TraverseHelper(func, node->left);
+    TraverseHelper(node->left, func);
     func(node->value);
-    TraverseHelper(func, node->right);
+    TraverseHelper(node->right, func);
 
     return;
 }

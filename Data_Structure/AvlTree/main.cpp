@@ -3,16 +3,17 @@
 #include<ctime>
 #include"avltree.hpp"
 
-void show(int num);
+void show(int number);
 
 int main(void)
 {
     std::srand(std::time(0));
 
     const int N = 10, LIMIT = 20;
+
     int num = 0;
-    AvlTree<int> avl;
     int remove_number = 0;
+    AvlTree<int> avl;
 
     std::cout << "Input:\n";
     for (int i = 0; i < N; i++)
@@ -25,7 +26,6 @@ int main(void)
     avl.traverse(show);
     std::cout << '\n';
 
-    std::cout << "Enter remove number: ";
     while (std::cin >> remove_number)
     {
         avl.remove(remove_number);
@@ -36,7 +36,7 @@ int main(void)
     return 0;
 }
 
-void show(int num)
+void show(int number)
 {
-    std::cout << num << ' ';
+    std::cout << number << ' ';
 }
