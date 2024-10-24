@@ -13,6 +13,7 @@ int main(void)
 
     int num = 0;
     int remove_number = 0;
+    int find_number = 0;
     AvlTree<int> avl;
 
     std::cout << "Input:\n";
@@ -26,12 +27,15 @@ int main(void)
     avl.traverse(show);
     std::cout << '\n';
 
-    while (std::cin >> remove_number)
-    {
-        avl.remove(remove_number);
-        avl.traverse(show);
-        std::cout << '\n';
-    }
+    // while (std::cin >> remove_number)
+    // {
+    //     avl.remove(remove_number);
+    //     avl.traverse(show);
+    //     std::cout << '\n';
+    // }
+
+    while (std::cin >> find_number)
+        std::cout << (avl.find(find_number) ? "Find" : "Not found") << '\n';
 
     return 0;
 }

@@ -38,6 +38,8 @@ public:
 
     void traverse(void(*func)(T)) { return TraverseHelper(root, func); }
     void TraverseHelper(TreeNode * node, void(*func)(T));
+
+    bool find(T find_value)const;
 };
 
 template<typename T>
@@ -194,6 +196,25 @@ void AvlTree<T>::TraverseHelper(typename AvlTree<T>::TreeNode * node, void(*func
     TraverseHelper(node->right, func);
 
     return;
+}
+
+template<typename T>
+bool AvlTree<T>::find(T find_value) const
+{
+    TreeNode * node = root;
+
+    while (node)
+    {
+        if (find_value == node->value)
+            return true;
+
+        if (find_value < node->value)
+            node = node->left;
+        else
+            node = node->right;
+    }
+
+    return false;
 }
 
 #endif // !_AVLTREE_HPP_
