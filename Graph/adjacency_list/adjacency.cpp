@@ -133,7 +133,7 @@ void AdjacencyList::Show()
 
 typename std::vector<int> AdjacencyList::BFSGraph(int start_vertex)
 {
-    std::vector<int> record_order;
+    std::vector<int> result;
     std::unordered_set<int> visited_record = { start_vertex };
     std::queue<int> que;
 
@@ -144,7 +144,7 @@ typename std::vector<int> AdjacencyList::BFSGraph(int start_vertex)
         int vertex = que.front();
         que.pop();
 
-        record_order.push_back(vertex);
+        result.push_back(vertex);
 
         for (auto root = graph[vertex].GetHead(); root; root = root->next)
         {
@@ -155,7 +155,33 @@ typename std::vector<int> AdjacencyList::BFSGraph(int start_vertex)
         }
     }
 
-    return record_order;
+    return result;
+}
+
+typename std::vector<int> AdjacencyList::DFSGraph(int start_vertex)
+{
+    std::vector<int> result;
+    std::unordered_set<int> visited_record;
+
+    DFSHelper(visited_record, result, start_vertex);
+
+    return result;
+}
+
+void AdjacencyList::DFSHelper(std::unordered_set<int> & visited,
+    std::vector<int> & res, int vertex)
+{
+    res.push_back(vertex);
+    visited.emplace(vertex);
+
+    for (auto root = graph[vertex].GetHead(); root; root = root->next)
+    {
+        if (visited.count(root->value))
+            continue;
+        DFSHelper(visited, res, root->value);
+    }
+
+    return;
 }
 
 void showLinkListNode(int value)

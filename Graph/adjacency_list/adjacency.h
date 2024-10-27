@@ -3,6 +3,7 @@
 
 #include<vector>
 #include<map>
+#include<unordered_set>
 
 class LinkListNode
 {
@@ -57,6 +58,9 @@ public:
 
     void Show();
     typename std::vector<int> BFSGraph(int start_vertex);
+    typename std::vector<int> DFSGraph(int start_vertex);
+    void DFSHelper(std::unordered_set<int> & visited,
+        std::vector<int> & res, int vertex);
 };
 
 #endif // !_ADJACENCY_H_

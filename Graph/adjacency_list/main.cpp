@@ -23,6 +23,9 @@ int main(void)
     std::vector<int> travrse_result = adj.BFSGraph(1);
     for (auto & x : travrse_result)
         std::cout << x << ' ';
-
+    std::cout << '\n';
+    travrse_result = adj.DFSGraph(5);
+    for (auto & x : travrse_result)
+        std::cout << x << ' ';
     return 0;
 }
