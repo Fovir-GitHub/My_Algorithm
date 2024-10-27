@@ -5,9 +5,11 @@
 
 int main(void)
 {
-    const int VERTEX_MAX = 10;
+    std::freopen("./graph.in", "r", stdin);
+
+    const int VERTEX_MAX = 5;
     int first_v = 0, second_v = 0;
-    AdjacencyList adj(AdjacencyList::DIRECTED);
+    AdjacencyList adj;
 
     for (int i = 1; i <= VERTEX_MAX; i++)
         adj.AddVertex(i);
@@ -16,6 +18,11 @@ int main(void)
         adj.AddEdge(first_v, second_v);
 
     adj.Show();
+    std::cout << '\n';
+
+    std::vector<int> travrse_result = adj.BFSGraph(1);
+    for (auto & x : travrse_result)
+        std::cout << x << ' ';
 
     return 0;
 }

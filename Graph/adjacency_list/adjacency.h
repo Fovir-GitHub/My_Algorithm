@@ -27,6 +27,7 @@ public:
     bool remove(int remove_value);
 
     int GetNodeValue()const { return node_value; }
+    Node * GetHead()const { return head; }
 
     void Traverse(void(*func)(int));
 };
@@ -55,6 +56,7 @@ public:
     void RemoveEdge(int first_vertex, int second_vertex);
 
     void Show();
+    typename std::vector<int> BFSGraph(int start_vertex);
 };
 
 #endif // !_ADJACENCY_H_

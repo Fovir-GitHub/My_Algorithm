@@ -1,5 +1,7 @@
 #include "adjacency.h"
 #include<iostream>
+#include<queue>
+#include<unordered_set>
 
 static void showLinkListNode(int value);
 
@@ -127,6 +129,33 @@ void AdjacencyList::Show()
     }
 
     return;
+}
+
+typename std::vector<int> AdjacencyList::BFSGraph(int start_vertex)
+{
+    std::vector<int> record_order;
+    std::unordered_set<int> visited_record = { start_vertex };
+    std::queue<int> que;
+
+    que.push(start_vertex);
+
+    while (!que.empty())
+    {
+        int vertex = que.front();
+        que.pop();
+
+        record_order.push_back(vertex);
+
+        for (auto root = graph[vertex].GetHead(); root; root = root->next)
+        {
+            if (visited_record.count(root->value))
+                continue;
+            que.push(root->value);
+            visited_record.emplace(root->value);
+        }
+    }
+
+    return record_order;
 }
 
 void showLinkListNode(int value)
