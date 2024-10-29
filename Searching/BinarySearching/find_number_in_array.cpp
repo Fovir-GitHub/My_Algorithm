@@ -1,8 +1,8 @@
 #include<iostream>
+#include<cstdlib>
+#include<ctime>
 #include<vector>
 #include<algorithm>
-#include<ctime>
-#include<cstdlib>
 
 int findNumber(std::vector<int> & v, int target);
 
@@ -10,17 +10,19 @@ int main(void)
 {
     std::srand(std::time(0));
 
-    const int LIMIT = 30;
+    const int LIMIT = 20;
+
     int number_counter = 0;
-    std::vector<int> numbers;
     int find_number = 0;
+    std::vector<int> numbers;
 
     std::cout << "How many numbers do you want: ";
     std::cin >> number_counter;
 
-    while (number_counter--)
+    for (int i = 0; i < number_counter; i++)
         numbers.push_back(std::rand() % LIMIT);
 
+    std::sort(numbers.begin(), numbers.end());
     for (auto x : numbers)
         std::cout << x << ' ';
     std::cout << '\n';
@@ -35,23 +37,18 @@ int main(void)
 
 int findNumber(std::vector<int> & v, int target)
 {
-    std::sort(v.begin(), v.end());
-
     int left = 0, right = v.size() - 1, middle = 0;
-
-    if (target<v[left] || target>v[right])
-        return -1;
 
     while (left <= right)
     {
         middle = left + (right - left) / 2;
-        if (target == v[middle])
+        if (v[middle] == target)
             return middle;
 
-        if (target < v[middle])
-            right = middle - 1;
-        else
+        if (v[middle] < target)
             left = middle + 1;
+        else
+            right = middle - 1;
     }
 
     return -1;
