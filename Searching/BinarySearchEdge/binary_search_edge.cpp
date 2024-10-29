@@ -6,7 +6,11 @@
 
 int binarySearchLeftEdge(std::vector<int> & v, int target);
 int binarySearchRightEdge(std::vector<int> & v, int target);
+
 int binaryInsert(std::vector<int> & v, int target);
+
+int binarySearchLeftEdgeElement(std::vector<int> & v, int target);
+int binarySearchRightEdgeElement(std::vector<int> & v, int target);
 
 int main(void)
 {
@@ -27,9 +31,13 @@ int main(void)
     std::cout << "\nPlease enter the number you want to find edge: ";
     while (std::cin >> find_edge_number)
         std::cout << "Left edge: "
-        << binarySearchLeftEdge(numbers, find_edge_number) << '\n'
+        << binarySearchLeftEdge(numbers, find_edge_number) << ' '
         << "Right edge: "
         << binarySearchRightEdge(numbers, find_edge_number) << '\n'
+        << "Through find element, left edge: "
+        << binarySearchLeftEdgeElement(numbers, find_edge_number) << ' '
+        << "right edge: "
+        << binarySearchRightEdgeElement(numbers, find_edge_number) << '\n'
         << "Please enter the next number you want to find edge: ";
 
     return 0;
@@ -48,6 +56,46 @@ int binarySearchRightEdge(std::vector<int> & v, int target)
 {
     int result = binaryInsert(v, target + 1) - 1;
     return (v[result] == target ? result : -1);
+}
+
+int binarySearchLeftEdgeElement(std::vector<int> & v, int target)
+{
+    double new_target = (double) target - 0.5;
+    int left = 0, right = v.size() - 1, middle = 0;
+
+    while (left <= right)
+    {
+        middle = left + (right - left) / 2;
+        if (v[middle] < target)
+            left = middle + 1;
+        else
+            right = middle - 1;
+    }
+
+    if (left == v.size() || v[left] != target)
+        return -1;
+
+    return left;
+}
+
+int binarySearchRightEdgeElement(std::vector<int> & v, int target)
+{
+    double new_target = (double) target + 0.5;
+    int left = 0, right = v.size() - 1, middle = 0;
+
+    while (left <= right)
+    {
+        middle = left + (right - left) / 2;
+        if (v[middle] <= target)
+            left = middle + 1;
+        else
+            right = middle - 1;
+    }
+
+    if (right == v.size() || v[right] != target)
+        return -1;
+
+    return right;
 }
 
 int binaryInsert(std::vector<int> & v, int target)
