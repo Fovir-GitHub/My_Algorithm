@@ -5,6 +5,8 @@
 #include<vector>
 
 int binarySearchLeftEdge(std::vector<int> & v, int target);
+int binarySearchRightEdge(std::vector<int> & v, int target);
+int binaryInsert(std::vector<int> & v, int target);
 
 int main(void)
 {
@@ -26,12 +28,29 @@ int main(void)
     while (std::cin >> find_edge_number)
         std::cout << "Left edge: "
         << binarySearchLeftEdge(numbers, find_edge_number) << '\n'
+        << "Right edge: "
+        << binarySearchRightEdge(numbers, find_edge_number) << '\n'
         << "Please enter the next number you want to find edge: ";
 
     return 0;
 }
 
 int binarySearchLeftEdge(std::vector<int> & v, int target)
+{
+    int result = binaryInsert(v, target);
+    if (result == v.size() || v[result] != target)
+        return -1;
+
+    return result;
+}
+
+int binarySearchRightEdge(std::vector<int> & v, int target)
+{
+    int result = binaryInsert(v, target + 1) - 1;
+    return (v[result] == target ? result : -1);
+}
+
+int binaryInsert(std::vector<int> & v, int target)
 {
     int left = 0, right = v.size() - 1, middle = 0;
 
@@ -44,9 +63,6 @@ int binarySearchLeftEdge(std::vector<int> & v, int target)
         else
             right = middle - 1;
     }
-
-    if (left == v.size() || v[left] != target)
-        return -1;
 
     return left;
 }
