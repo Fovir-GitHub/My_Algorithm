@@ -24,15 +24,10 @@ void choose_sort(std::vector<int> & v)
 
     for (int i = 0; i < n; i++)
     {
-        int min_n = v[i];
         int min_pos = i;
         for (int j = i + 1; j < n; j++)
-            if (min_n > v[j])
-            {
+            if (v[min_pos] > v[j])
                 min_pos = j;
-                min_n = v[j];
-            }
-
         std::swap(v[i], v[min_pos]);
     }
 
