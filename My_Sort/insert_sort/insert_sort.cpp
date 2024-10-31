@@ -14,7 +14,7 @@ int main(void)
     std::srand(std::time(0));
     std::vector<int> v(VEC_SIZE);
 
-    std::generate(v.begin(), v.end(), std::rand);
+    std::generate(v.begin(), v.end(), []() {return std::rand() % 20; });
     insertSort(v);
 
     for (auto x : v)
