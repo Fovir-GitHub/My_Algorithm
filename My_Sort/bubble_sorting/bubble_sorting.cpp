@@ -5,6 +5,7 @@
 #include<cstdlib>
 
 int generateData() { return std::rand() % 20; }
+void bubbleSort(std::vector<int> & numbers);
 
 int main(void)
 {
@@ -22,14 +23,30 @@ int main(void)
     // while (std::cin >> temp)
     // v.push_back(temp);
 
-    int n = v.size();
-    for (size_t i = 1; i < n; i++)
-        for (size_t j = 1; j < n; j++)
-            if (v[j] < v[j - 1])
-                std::swap(v[j], v[j - 1]);
-
+    bubbleSort(v);
     for (auto x : v)
         std::cout << x << ' ';
 
     return 0;
+}
+
+void bubbleSort(std::vector<int> & numbers)
+{
+    int n = numbers.size();
+
+    for (int i = n - 1; i > 0; i--)
+    {
+        bool flag = false;
+        for (int j = 0; j < i; j++)
+            if (numbers[j] > numbers[j + 1])
+            {
+                std::swap(numbers[j], numbers[j + 1]);
+                flag = true;
+            }
+
+        if (!flag)
+            break;
+    }
+
+    return;
 }
