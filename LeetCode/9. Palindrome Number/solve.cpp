@@ -27,21 +27,37 @@ public:
     //     return true;
     // }
 
+    // bool isPalindrome(int x)
+    // {
+    //     if (x < 0)
+    //         return false;
+
+    //     int reverse_number = 0;
+    //     int copy_number = x;
+
+    //     while (copy_number)
+    //     {
+    //         reverse_number = reverse_number * 10 + copy_number % 10;
+    //         copy_number /= 10;
+    //     }
+
+    //     return reverse_number == x;
+    // }
+
     bool isPalindrome(int x)
     {
-        if (x < 0)
+        if (x < 0 || (x != 0 && x % 10 == 0))
             return false;
 
         int reverse_number = 0;
-        int copy_number = x;
 
-        while (copy_number)
+        while (x > reverse_number)
         {
-            reverse_number = reverse_number * 10 + copy_number % 10;
-            copy_number /= 10;
+            reverse_number = reverse_number * 10 + x % 10;
+            x /= 10;
         }
 
-        return reverse_number == x;
+        return (x == reverse_number) || (x == reverse_number / 10);
     }
 };
 
