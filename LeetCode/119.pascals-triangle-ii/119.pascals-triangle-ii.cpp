@@ -13,17 +13,13 @@ class Solution
 public:
     vector<int> getRow(int rowIndex)
     {
-        vector<int> result = {1};
-        long long previous = 1;
+        vector<int> vec(rowIndex + 1, 0);
+        vec[0] = 1;
 
-        for (int i = 1; i <= rowIndex; i++)
-        {
-            long long next = previous * (rowIndex - i + 1) / i;
-            result.push_back(next);
-            previous = next;
-        }
+        for (int i = 1; i < rowIndex + 1; i++)
+            for (int j = i; j > 0; j--) vec[j] += vec[j - 1];
 
-        return result;
+        return vec;
     }
 };
 // @lc code=end
