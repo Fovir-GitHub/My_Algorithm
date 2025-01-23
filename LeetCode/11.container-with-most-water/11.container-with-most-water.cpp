@@ -4,9 +4,9 @@
  * [11] Container With Most Water
  */
 
- // @lc code=start
+// @lc code=start
 
-#include<vector>
+#include <vector>
 using namespace std;
 
 class Solution
@@ -22,13 +22,10 @@ public:
             int h = min(height[left], height[right]);
             area = max(area, h * (right - left));
 
-            while (height[left] <= h && left < right)
-                left++;
-            while (height[right] <= h && left < right)
-                right--;
+            while (height[left] <= h && left < right) left++;
+            while (height[right] <= h && left < right) right--;
         }
         return area;
     }
 };
 // @lc code=end
-

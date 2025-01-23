@@ -1,7 +1,7 @@
-#include<iostream>
-#include<cstdlib>
-#include<ctime>
-#include"mydeque.hpp"
+#include "mydeque.hpp"
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
 
 int main(void)
 {
@@ -17,8 +17,7 @@ int main(void)
         std::cout << (num = std::rand() % LIMIT) << ' ';
         mdeq.push_front(num);
     }
-    std::cout << '\n'
-        << "push_back():\n";
+    std::cout << '\n' << "push_back():\n";
     for (int i = 0; i < N; i++)
     {
         std::cout << (num = std::rand() % LIMIT) << ' ';
@@ -27,7 +26,7 @@ int main(void)
     std::cout << '\n';
 
     std::cout << "peek_front(): " << mdeq.peek_front() << '\n'
-        << "peek_back(): " << mdeq.peek_back() << '\n';
+              << "peek_back(): " << mdeq.peek_back() << '\n';
 
     std::cout << "From front:\n";
     for (int i = 0; i < N; i++, mdeq.pop_front())

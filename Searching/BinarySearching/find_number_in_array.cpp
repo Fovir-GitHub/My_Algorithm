@@ -1,8 +1,8 @@
-#include<iostream>
-#include<cstdlib>
-#include<ctime>
-#include<vector>
-#include<algorithm>
+#include <algorithm>
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
+#include <vector>
 
 int findNumber(std::vector<int> & v, int target);
 
@@ -23,14 +23,13 @@ int main(void)
         numbers.push_back(std::rand() % LIMIT);
 
     std::sort(numbers.begin(), numbers.end());
-    for (auto x : numbers)
-        std::cout << x << ' ';
+    for (auto x : numbers) std::cout << x << ' ';
     std::cout << '\n';
 
     std::cout << "Enter the number you want to find: ";
     while (std::cin >> find_number)
         std::cout << findNumber(numbers, find_number) << '\n'
-        << "Enter the next number you want to find: ";
+                  << "Enter the next number you want to find: ";
 
     return 0;
 }

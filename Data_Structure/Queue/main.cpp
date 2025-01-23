@@ -1,7 +1,7 @@
-#include<iostream>
-#include<ctime>
-#include<cstdlib>
-#include"myqueue.hpp"
+#include "myqueue.hpp"
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
 
 int main(void)
 {
@@ -22,12 +22,12 @@ int main(void)
     std::cout << '\n';
 
     std::cout << "Size: " << mq.size() << '\n'
-        << "peek(): " << mq.peek() << '\n';
+              << "peek(): " << mq.peek() << '\n';
 
     std::cout << "After pop():\n";
     mq.pop();
     std::cout << "Size: " << mq.size() << '\n'
-        << "peek(): " << mq.peek() << '\n';
+              << "peek(): " << mq.peek() << '\n';
 
     while (!mq.empty())
     {

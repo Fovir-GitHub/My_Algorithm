@@ -1,27 +1,26 @@
 #ifndef _MYDEQUE_HPP_
 #define _MYDEQUE_HPP_
 
-template<typename T>
-class MyDeque
+template <typename T> class MyDeque
 {
 private:
     enum { FRONT = 0, BACK = 1 };
 
     struct Node
     {
-        Node * front, * next;
+        Node *front, *next;
         T value;
     };
 
-    Node * head, * rear;
+    Node *head, *rear;
     unsigned int node_count;
 
 public:
     MyDeque();
     ~MyDeque();
 
-    unsigned int size()const { return node_count; }
-    bool empty()const { return size() == 0; }
+    unsigned int size() const { return node_count; }
+    bool empty() const { return size() == 0; }
 
     bool push(T push_value, bool mode);
     bool push_front(T push_value) { return push(push_value, FRONT); }
@@ -35,8 +34,7 @@ public:
     T peek_back() { return empty() ? (T) 0 : rear->value; }
 };
 
-template<typename T>
-MyDeque<T>::MyDeque() :node_count(0)
+template <typename T> MyDeque<T>::MyDeque() : node_count(0)
 {
     head = new Node;
     rear = new Node;
@@ -44,8 +42,7 @@ MyDeque<T>::MyDeque() :node_count(0)
     rear->front = rear->next = nullptr;
 }
 
-template<typename T>
-MyDeque<T>::~MyDeque()
+template <typename T> MyDeque<T>::~MyDeque()
 {
     while (head)
     {
@@ -56,8 +53,7 @@ MyDeque<T>::~MyDeque()
     node_count = 0;
 }
 
-template<typename T>
-bool MyDeque<T>::push(T push_value, bool mode)
+template <typename T> bool MyDeque<T>::push(T push_value, bool mode)
 {
     Node * push_node = new Node;
     if (!push_node)
@@ -86,8 +82,7 @@ bool MyDeque<T>::push(T push_value, bool mode)
     return true;
 }
 
-template<typename T>
-bool MyDeque<T>::pop(bool mode)
+template <typename T> bool MyDeque<T>::pop(bool mode)
 {
     if (empty())
         return false;

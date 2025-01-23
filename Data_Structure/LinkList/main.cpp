@@ -1,7 +1,7 @@
-#include<iostream>
-#include<ctime>
-#include<cstdlib>
-#include"linklist.hpp"
+#include "linklist.hpp"
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
 
 void show(int num);
 void show(LinkList<int> & ll);
@@ -13,8 +13,7 @@ int main(void)
     const int N = 10, LIMIT = 20;
     LinkList<int> link_list;
 
-    for (int i = 0; i < N; i++)
-        link_list.push((std::rand() % LIMIT));
+    for (int i = 0; i < N; i++) link_list.push((std::rand() % LIMIT));
 
     std::cout << "Original:\n";
     show(link_list);
@@ -35,8 +34,8 @@ int main(void)
     int find_number;
     std::cout << "Please enter the find_number: ";
     std::cin >> find_number;
-    std::cout << (link_list.find(find_number) ? "Find" : "Don't find")
-        << " " << find_number << '\n';
+    std::cout << (link_list.find(find_number) ? "Find" : "Don't find") << " "
+              << find_number << '\n';
 
     return 0;
 }

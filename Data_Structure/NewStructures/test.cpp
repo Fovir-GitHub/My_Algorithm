@@ -1,7 +1,7 @@
-#include<iostream>
-#include<ctime>
-#include<cstdlib>
-#include"newstack.hpp"
+#include "newstack.hpp"
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
 
 int main(void)
 {

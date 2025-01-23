@@ -1,15 +1,14 @@
 #ifndef _BINARYTREE_HPP_
 #define _BINARYTREE_HPP_
 
-#include<iostream>
+#include <iostream>
 
-template<typename T>
-class MyBinaryTree
+template <typename T> class MyBinaryTree
 {
 private:
     struct TreeNode
     {
-        TreeNode * left, * right;
+        TreeNode *left, *right;
         T value;
     };
 
@@ -19,25 +18,23 @@ private:
 public:
     MyBinaryTree();
 
-    unsigned int size()const { return tree_node_counter; }
-    bool empty()const { return size() == 0; }
-    TreeNode * GetRootNode()const { return root; }
+    unsigned int size() const { return tree_node_counter; }
+    bool empty() const { return size() == 0; }
+    TreeNode * GetRootNode() const { return root; }
 
     void insert(T insert_value);
-    void traverse(void(*func)(T), TreeNode * start_node);
+    void traverse(void (*func)(T), TreeNode * start_node);
     void remove(T remove_value);
     bool find(T find_value);
 };
 
-template<typename T>
-MyBinaryTree<T>::MyBinaryTree() :tree_node_counter(0)
+template <typename T> MyBinaryTree<T>::MyBinaryTree() : tree_node_counter(0)
 {
     root = new TreeNode;
     root->left = root->right = nullptr;
 }
 
-template<typename T>
-void MyBinaryTree<T>::insert(T insert_value)
+template <typename T> void MyBinaryTree<T>::insert(T insert_value)
 {
     if (empty())
     {
@@ -85,8 +82,8 @@ void MyBinaryTree<T>::insert(T insert_value)
     return;
 }
 
-template<typename T>
-void MyBinaryTree<T>::traverse(void(*func)(T), TreeNode * start_node)
+template <typename T>
+void MyBinaryTree<T>::traverse(void (*func)(T), TreeNode * start_node)
 {
     if (start_node == nullptr)
         return;
@@ -98,13 +95,12 @@ void MyBinaryTree<T>::traverse(void(*func)(T), TreeNode * start_node)
     return;
 }
 
-template<typename T>
-void MyBinaryTree<T>::remove(T remove_value)
+template <typename T> void MyBinaryTree<T>::remove(T remove_value)
 {
     if (empty())
         return;
 
-    TreeNode * current = root, * previous = nullptr;
+    TreeNode *current = root, *previous = nullptr;
 
     while (current != nullptr)
     {
@@ -141,8 +137,7 @@ void MyBinaryTree<T>::remove(T remove_value)
     else
     {
         TreeNode * tmp = current->right;
-        while (tmp->left != nullptr)
-            tmp = tmp->left;
+        while (tmp->left != nullptr) tmp = tmp->left;
 
         T tmpVal = tmp->value;
         remove(tmp->value);
@@ -152,8 +147,7 @@ void MyBinaryTree<T>::remove(T remove_value)
     return;
 }
 
-template<typename T>
-bool MyBinaryTree<T>::find(T find_value)
+template <typename T> bool MyBinaryTree<T>::find(T find_value)
 {
     TreeNode * visit = root;
     while (visit)

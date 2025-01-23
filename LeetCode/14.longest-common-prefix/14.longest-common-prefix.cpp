@@ -4,10 +4,10 @@
  * [14] Longest Common Prefix
  */
 
- // @lc code=start
-#include<string>
-#include<vector>
-#include<algorithm>
+// @lc code=start
+#include <algorithm>
+#include <string>
+#include <vector>
 using namespace std;
 
 class Solution
@@ -44,4 +44,3 @@ public:
     }
 };
 // @lc code=end
-

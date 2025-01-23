@@ -1,5 +1,5 @@
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
 
 void choose_sort(std::vector<int> & v);
 
@@ -8,12 +8,10 @@ int main(void)
     std::vector<int> a;
     int temp;
 
-    while (std::cin >> temp)
-        a.push_back(temp);
+    while (std::cin >> temp) a.push_back(temp);
 
     choose_sort(a);
-    for (auto x : a)
-        std::cout << x << ' ';
+    for (auto x : a) std::cout << x << ' ';
 
     return 0;
 }

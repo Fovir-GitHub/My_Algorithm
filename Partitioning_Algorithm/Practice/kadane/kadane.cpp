@@ -1,6 +1,6 @@
-#include<iostream>
-#include<vector>
-#include<algorithm>
+#include <algorithm>
+#include <iostream>
+#include <vector>
 
 int main(void)
 {
@@ -8,8 +8,7 @@ int main(void)
     int temp;
     int max_ending_here, max_so_far;
 
-    while (std::cin >> temp)
-        temp_vector.push_back(temp);
+    while (std::cin >> temp) temp_vector.push_back(temp);
 
     v.push_back(temp_vector[0]);
     for (size_t i = 1; i < temp_vector.size(); i++)

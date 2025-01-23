@@ -1,7 +1,7 @@
 #include "adjacency.h"
-#include<iostream>
-#include<queue>
-#include<unordered_set>
+#include <iostream>
+#include <queue>
+#include <unordered_set>
 
 static void showLinkListNode(int value);
 
@@ -63,10 +63,9 @@ bool LinkListNode::remove(int remove_value)
     return true;
 }
 
-void LinkListNode::Traverse(void(*func)(int))
+void LinkListNode::Traverse(void (*func)(int))
 {
-    for (Node * visit = head; visit; visit = visit->next)
-        func(visit->value);
+    for (Node * visit = head; visit; visit = visit->next) func(visit->value);
 
     return;
 }
@@ -77,7 +76,7 @@ void AdjacencyList::AddVertex(int vertex_number)
         return;
 
     graph.insert(std::pair<int, LinkListNode>(vertex_number,
-        LinkListNode(vertex_number)));
+                                              LinkListNode(vertex_number)));
 
     return;
 }
@@ -88,16 +87,15 @@ void AdjacencyList::RemoveVertex(int vertex_number)
         return;
 
     graph.erase(vertex_number);
-    for (auto & x : graph)
-        x.second.remove(vertex_number);
+    for (auto & x : graph) x.second.remove(vertex_number);
 
     return;
 }
 
 void AdjacencyList::AddEdge(int first_vertex, int second_vertex)
 {
-    if (NotExist(first_vertex) || NotExist(second_vertex)
-        || first_vertex == second_vertex)
+    if (NotExist(first_vertex) || NotExist(second_vertex) ||
+        first_vertex == second_vertex)
         return;
 
     graph[first_vertex].push(second_vertex);
@@ -134,7 +132,7 @@ void AdjacencyList::Show()
 typename std::vector<int> AdjacencyList::BFSGraph(int start_vertex)
 {
     std::vector<int> result;
-    std::unordered_set<int> visited_record = { start_vertex };
+    std::unordered_set<int> visited_record = {start_vertex};
     std::queue<int> que;
 
     que.push(start_vertex);
@@ -169,7 +167,7 @@ typename std::vector<int> AdjacencyList::DFSGraph(int start_vertex)
 }
 
 void AdjacencyList::DFSHelper(std::unordered_set<int> & visited,
-    std::vector<int> & res, int vertex)
+                              std::vector<int> & res, int vertex)
 {
     res.push_back(vertex);
     visited.emplace(vertex);

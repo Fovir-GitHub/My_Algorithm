@@ -1,14 +1,14 @@
-#include<iostream>
-#include<vector>
-#include<iterator>
+#include <iostream>
+#include <iterator>
+#include <vector>
 
 typedef std::vector<int>::iterator Iter;
 
 static int count = 1;
 
 void mergeSort(std::vector<int> & v, Iter left_pos, Iter right_pos);
-void merge(std::vector<int> & v, Iter left_pos,
-    Iter middle_pos, Iter right_pos);
+void merge(std::vector<int> & v, Iter left_pos, Iter middle_pos,
+           Iter right_pos);
 
 int main(void)
 {
@@ -16,12 +16,10 @@ int main(void)
     std::vector<int> a;
     int temp;
 
-    while (std::cin >> temp)
-        a.push_back(temp);
+    while (std::cin >> temp) a.push_back(temp);
 
     mergeSort(a, a.begin(), a.end());
-    for (auto x : a)
-        std::cout << x << " ";
+    for (auto x : a) std::cout << x << " ";
 
     return 0;
 }
@@ -31,8 +29,8 @@ void mergeSort(std::vector<int> & v, Iter left_pos, Iter right_pos)
     int distance;
     Iter middle_pos = left_pos;
 
-
-    if ((distance = std::distance(left_pos, right_pos)) <= 1)  /* remain only one element */
+    if ((distance = std::distance(left_pos, right_pos)) <=
+        1) /* remain only one element */
         return;
 
     std::advance(middle_pos, distance / 2);

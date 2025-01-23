@@ -1,10 +1,13 @@
-#include<iostream>
-#include<vector>
-#include<algorithm>
-#include<ctime>
-#include<cstdlib>
+#include <algorithm>
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
+#include <vector>
 
-int generateData() { return std::rand() % 20; }
+int generateData()
+{
+    return std::rand() % 20;
+}
 void bubbleSort(std::vector<int> & numbers);
 
 int main(void)
@@ -17,15 +20,13 @@ int main(void)
 
     std::generate(v.begin(), v.end(), generateData);
     std::cout << "Original data:\n";
-    for (auto x : v)
-        std::cout << x << ' ';
+    for (auto x : v) std::cout << x << ' ';
     std::cout << "\nAfter sorting:\n";
     // while (std::cin >> temp)
     // v.push_back(temp);
 
     bubbleSort(v);
-    for (auto x : v)
-        std::cout << x << ' ';
+    for (auto x : v) std::cout << x << ' ';
 
     return 0;
 }

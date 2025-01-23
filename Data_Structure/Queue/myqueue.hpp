@@ -1,8 +1,7 @@
 #ifndef _MYQUEUE_HPP_
 #define _MYQUEUE_HPP_
 
-template<typename T>
-class MyQueue
+template <typename T> class MyQueue
 {
 private:
     struct Node
@@ -26,16 +25,14 @@ public:
     unsigned int size() { return node_count; }
 };
 
-template<typename T>
-MyQueue<T>::MyQueue() :node_count(0)
+template <typename T> MyQueue<T>::MyQueue() : node_count(0)
 {
     root = new Node;
     root->next = nullptr;
     tail = root;
 }
 
-template <typename T>
-MyQueue<T>::~MyQueue()
+template <typename T> MyQueue<T>::~MyQueue()
 {
     while (root)
     {
@@ -45,8 +42,7 @@ MyQueue<T>::~MyQueue()
     }
 }
 
-template<typename T>
-bool MyQueue<T>::push(T push_value)
+template <typename T> bool MyQueue<T>::push(T push_value)
 {
     Node * push_node = new Node;
     if (!push_node)
@@ -66,8 +62,7 @@ bool MyQueue<T>::push(T push_value)
     return true;
 }
 
-template<typename T>
-bool MyQueue<T>::pop()
+template <typename T> bool MyQueue<T>::pop()
 {
     if (empty())
         return false;

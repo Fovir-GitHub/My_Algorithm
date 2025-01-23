@@ -1,7 +1,7 @@
-#include<iostream>
-#include<cstdlib>
-#include<ctime>
-#include"myheap.hpp"
+#include "myheap.hpp"
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
 
 int main(void)
 {

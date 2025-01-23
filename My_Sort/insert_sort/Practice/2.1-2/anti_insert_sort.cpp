@@ -1,13 +1,15 @@
-#include<iostream> 
-#include<vector>
-#include<cstdlib>
-#include<algorithm>
-#include<ctime>
+#include <algorithm>
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
+#include <vector>
 
-template<typename T>
-void anti_insert_sort(std::vector<T> & v);
+template <typename T> void anti_insert_sort(std::vector<T> & v);
 
-int generateData() { return std::rand() % 20; }
+int generateData()
+{
+    return std::rand() % 20;
+}
 
 int main(void)
 {
@@ -19,14 +21,12 @@ int main(void)
     std::generate(v.begin(), v.end(), generateData);
     anti_insert_sort(v);
 
-    for (auto x : v)
-        std::cout << x << " ";
+    for (auto x : v) std::cout << x << " ";
 
     return 0;
 }
 
-template<typename T>
-void anti_insert_sort(std::vector<T> & v)
+template <typename T> void anti_insert_sort(std::vector<T> & v)
 {
     int n = v.size();
 

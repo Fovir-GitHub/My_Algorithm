@@ -1,7 +1,7 @@
-#include<iostream>
-#include<cstdlib>
-#include<ctime>
-#include"binarytree.hpp"
+#include "binarytree.hpp"
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
 
 void print(int n);
 
@@ -40,7 +40,7 @@ int main(void)
     std::cout << "Enter the find number: ";
     while (std::cin >> find_number)
         std::cout << (mbt.find(find_number) ? "Find" : "Not found") << '\n'
-        << "Enter the next find number: ";
+                  << "Enter the next find number: ";
 
     return 0;
 }

@@ -1,12 +1,14 @@
-#include<iostream>
-#include<algorithm>
-#include<cstdlib>
-#include<ctime>
-#include<vector>
+#include <algorithm>
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
+#include <vector>
 
 int medianThree(std::vector<int> & numbers, int left, int middle, int right);
-int partitionMedianThreeOptimize(std::vector<int> & numbers, int left, int right);
-void quickSortMedianThreeOptimize(std::vector<int> & numbers, int left, int right);
+int partitionMedianThreeOptimize(std::vector<int> & numbers, int left,
+                                 int right);
+void quickSortMedianThreeOptimize(std::vector<int> & numbers, int left,
+                                  int right);
 
 int main(void)
 {
@@ -16,15 +18,13 @@ int main(void)
 
     std::vector<int> numbers(VECTOR_SIZE);
     std::generate(numbers.begin(), numbers.end(),
-        []() {return std::rand() % LIMIT; });
+                  []() { return std::rand() % LIMIT; });
     std::cout << "Original data:\n";
-    for (auto x : numbers)
-        std::cout << x << ' ';
+    for (auto x : numbers) std::cout << x << ' ';
     std::cout << "\nAfter sorting:\n";
 
     quickSortMedianThreeOptimize(numbers, 0, numbers.size() - 1);
-    for (auto x : numbers)
-        std::cout << x << ' ';
+    for (auto x : numbers) std::cout << x << ' ';
 
     return 0;
 }
@@ -34,14 +34,15 @@ int medianThree(std::vector<int> & numbers, int left, int middle, int right)
     int l = numbers[left], m = numbers[middle], r = numbers[right];
 
     if ((m >= l && m <= r) || (m >= r && m <= l))
-        return middle;   /* m between l and r */
+        return middle; /* m between l and r */
     if ((l <= r && l >= m) || (l <= m && l >= r))
-        return left;   /* l between m and r */
+        return left; /* l between m and r */
 
     return right;
 }
 
-int partitionMedianThreeOptimize(std::vector<int> & numbers, int left, int right)
+int partitionMedianThreeOptimize(std::vector<int> & numbers, int left,
+                                 int right)
 {
     int middle = medianThree(numbers, left, (left + right) / 2, right);
 
@@ -50,10 +51,8 @@ int partitionMedianThreeOptimize(std::vector<int> & numbers, int left, int right
 
     while (i < j)
     {
-        while (i < j && numbers[j] >= numbers[left])
-            j--;
-        while (i < j && numbers[i] <= numbers[left])
-            i++;
+        while (i < j && numbers[j] >= numbers[left]) j--;
+        while (i < j && numbers[i] <= numbers[left]) i++;
         std::swap(numbers[i], numbers[j]);
     }
     std::swap(numbers[i], numbers[left]);
@@ -61,7 +60,8 @@ int partitionMedianThreeOptimize(std::vector<int> & numbers, int left, int right
     return i;
 }
 
-void quickSortMedianThreeOptimize(std::vector<int> & numbers, int left, int right)
+void quickSortMedianThreeOptimize(std::vector<int> & numbers, int left,
+                                  int right)
 {
     if (left >= right)
         return;

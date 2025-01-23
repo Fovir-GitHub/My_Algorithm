@@ -1,8 +1,8 @@
-#include<iostream>
-#include<vector>
-#include<iterator>
-#include<cstring>
-#include<algorithm>
+#include <algorithm>
+#include <cstring>
+#include <iostream>
+#include <iterator>
+#include <vector>
 
 int main(void)
 {
@@ -11,8 +11,7 @@ int main(void)
     std::vector<int> temp_vector, v, sums;
     int temp;
 
-    while (std::cin >> temp)
-        temp_vector.push_back(temp);
+    while (std::cin >> temp) temp_vector.push_back(temp);
 
     v.push_back(temp_vector[0]);
     for (size_t i = 1; i < temp_vector.size(); i++)
@@ -26,8 +25,7 @@ int main(void)
     }
 
     int max_sum = 0;
-    for (auto x : sums)
-        max_sum = std::max(max_sum, x);
+    for (auto x : sums) max_sum = std::max(max_sum, x);
 
     std::cout << "Max sum: " << max_sum << '\n';
 

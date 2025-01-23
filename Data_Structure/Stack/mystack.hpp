@@ -1,8 +1,7 @@
 #ifndef _MYSTACK_HPP_
 #define _MYSTACK_HPP_
 
-template<typename T>
-class MyStack
+template <typename T> class MyStack
 {
 private:
     struct Node
@@ -26,8 +25,7 @@ public:
     bool empty() { return !node_count; }
 };
 
-template<typename T>
-MyStack<T>::MyStack()
+template <typename T> MyStack<T>::MyStack()
 {
     root = new Node;
     root->next = root->front = nullptr;
@@ -35,8 +33,7 @@ MyStack<T>::MyStack()
     node_count = 0;
 }
 
-template <typename T>
-MyStack<T>::~MyStack()
+template <typename T> MyStack<T>::~MyStack()
 {
     while (root)
     {
@@ -47,8 +44,7 @@ MyStack<T>::~MyStack()
     node_count = 0;
 }
 
-template<typename T>
-bool MyStack<T>::push(T push_value)
+template <typename T> bool MyStack<T>::push(T push_value)
 {
     Node * push_node = new Node;
     if (!push_node)
@@ -64,8 +60,7 @@ bool MyStack<T>::push(T push_value)
     return true;
 }
 
-template<typename T>
-bool MyStack<T>::pop()
+template <typename T> bool MyStack<T>::pop()
 {
     if (node_count == 0)
         return false;

@@ -1,9 +1,9 @@
-#include<iostream>
-#include<cstdlib>
-#include<ctime>
-#include<vector>
-#include<unordered_map>
-#include<algorithm>
+#include <algorithm>
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
+#include <unordered_map>
+#include <vector>
 
 std::vector<int> findTwoSum(std::vector<int> & v, int target);
 
@@ -15,12 +15,10 @@ int main(void)
     std::vector<int> numbers;
     int target = 0;
 
-    for (int i = 0; i < N; i++)
-        numbers.push_back(std::rand() % LIMIT);
+    for (int i = 0; i < N; i++) numbers.push_back(std::rand() % LIMIT);
 
     std::sort(numbers.begin(), numbers.end());
-    for (auto x : numbers)
-        std::cout << x << ' ';
+    for (auto x : numbers) std::cout << x << ' ';
     std::cout << '\n';
 
     std::cout << "Enter the sum: ";
@@ -28,8 +26,7 @@ int main(void)
     {
         std::vector<int> result = findTwoSum(numbers, target);
         std::cout << "Result: ";
-        for (auto x : result)
-            std::cout << x << ' ';
+        for (auto x : result) std::cout << x << ' ';
         std::cout << "\nEntere the next sum: ";
     }
 }
@@ -42,7 +39,7 @@ std::vector<int> findTwoSum(std::vector<int> & v, int target)
     for (int i = 0; i < size; i++)
     {
         if (records.find(target - v[i]) != records.end())
-            return { records[target - v[i]],i };
+            return {records[target - v[i]], i};
 
         records.emplace(v[i], i);
     }

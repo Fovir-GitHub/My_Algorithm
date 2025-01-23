@@ -1,10 +1,10 @@
-#include<iostream>
-#include<vector>
-#include<iterator>
-#include<utility>
-#include<cstdlib>
-#include<ctime>
-#include<algorithm>
+#include <algorithm>
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
+#include <iterator>
+#include <utility>
+#include <vector>
 
 typedef std::vector<int>::iterator Iter;
 
@@ -16,8 +16,7 @@ private:
     int sum;
 
 public:
-    ReturnThree(Iter l, Iter r, int s)
-        :left(l), right(r), sum(s) {}
+    ReturnThree(Iter l, Iter r, int s) : left(l), right(r), sum(s) {}
 
     int GetSum() { return sum; }
     Iter GetLeft() { return left; }
@@ -25,10 +24,13 @@ public:
 };
 
 ReturnThree findMaxSubArray(std::vector<int> & v, Iter low, Iter high);
-ReturnThree findCrossSubArray(std::vector<int> & v, Iter low,
-    Iter middle, Iter high);
+ReturnThree findCrossSubArray(std::vector<int> & v, Iter low, Iter middle,
+                              Iter high);
 
-int generateData() { return rand() % 20; }
+int generateData()
+{
+    return rand() % 20;
+}
 
 int main(void)
 {
@@ -39,8 +41,7 @@ int main(void)
     std::vector<int> temp_vec(VECTOR_SIZE), v;
     int temp;
 
-    while (std::cin >> temp)
-        temp_vec.push_back(temp);
+    while (std::cin >> temp) temp_vec.push_back(temp);
     // std::generate(temp_vec.begin(), temp_vec.end(), generateData);
 
     for (size_t i = 1; i < temp_vec.size(); i++)
@@ -48,19 +49,17 @@ int main(void)
 
     ReturnThree max_sub_array = findMaxSubArray(v, v.begin(), v.end());
     std::cout << "Left: " << *max_sub_array.GetLeft() << '\n'
-        << "Right: " << *(max_sub_array.GetRight() - 1) << '\n'
-        << "Sum: " << max_sub_array.GetSum() << '\n';
+              << "Right: " << *(max_sub_array.GetRight() - 1) << '\n'
+              << "Sum: " << max_sub_array.GetSum() << '\n';
 
     std::cout << "Original array:\n";
-    for (auto x : temp_vec)
-        std::cout << x << ' ';
+    for (auto x : temp_vec) std::cout << x << ' ';
     std::cout << "\nNew array:\n";
-    for (auto x : v)
-        std::cout << x << ' ';
+    for (auto x : v) std::cout << x << ' ';
     std::cout << "\n";
 
     for (auto iter = max_sub_array.GetLeft(); iter != max_sub_array.GetRight();
-        iter++)
+         iter++)
         std::cout << *iter << " ";
 
     return 0;
@@ -76,29 +75,28 @@ ReturnThree findMaxSubArray(std::vector<int> & v, Iter low, Iter high)
     std::advance(middle, distance >> 1);
 
     ReturnThree left_sum = findMaxSubArray(v, low, middle),
-        right_sum = findMaxSubArray(v, middle, high),
-        cross_sum = findCrossSubArray(v, low, middle, high);
+                right_sum = findMaxSubArray(v, middle, high),
+                cross_sum = findCrossSubArray(v, low, middle, high);
 
-    if (left_sum.GetSum() > right_sum.GetSum()
-        && left_sum.GetSum() > cross_sum.GetSum())
+    if (left_sum.GetSum() > right_sum.GetSum() &&
+        left_sum.GetSum() > cross_sum.GetSum())
         return left_sum;
-    else if (right_sum.GetSum() > left_sum.GetSum()
-        && right_sum.GetSum() > cross_sum.GetSum())
+    else if (right_sum.GetSum() > left_sum.GetSum() &&
+             right_sum.GetSum() > cross_sum.GetSum())
         return right_sum;
     else
         return cross_sum;
 }
 
-ReturnThree findCrossSubArray(std::vector<int> & v, Iter low, Iter middle, Iter high)
+ReturnThree findCrossSubArray(std::vector<int> & v, Iter low, Iter middle,
+                              Iter high)
 {
     static const int INF = 0x7FFFFFFF;
 
     Iter temp;
-    int left_sum = -INF,
-        right_sum = -INF;
+    int left_sum = -INF, right_sum = -INF;
     int sum = 0;
-    Iter left_max_pos = middle,
-        right_max_pos = middle;
+    Iter left_max_pos = middle, right_max_pos = middle;
 
     for (temp = middle; temp != low;)
     {

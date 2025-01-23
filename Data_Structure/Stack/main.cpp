@@ -1,7 +1,7 @@
-#include<iostream>
-#include<cstdlib>
-#include<ctime>
-#include"mystack.hpp"
+#include "mystack.hpp"
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
 
 int main(void)
 {
@@ -22,13 +22,12 @@ int main(void)
     std::cout << "After pop(): " << '\n';
     st.pop();
     std::cout << "Size: " << st.size() << '\n'
-        << "peek(): " << st.peek() << '\n';
+              << "peek(): " << st.peek() << '\n';
 
-    while (!st.empty())
-        st.pop();
+    while (!st.empty()) st.pop();
 
     std::cout << "Size: " << st.size() << '\n'
-        << "peek(): " << st.peek() << '\n';
+              << "peek(): " << st.peek() << '\n';
 
     std::cout << (st.pop() ? "success" : "fail") << '\n';
 

@@ -1,25 +1,24 @@
 #ifndef _NEWDELIST_HPP_
 #define _NEWDELIST_HPP_
 
-template<typename T>
-class NewDeList
+template <typename T> class NewDeList
 {
 private:
     struct Node
     {
-        Node * previous, * next;
+        Node *previous, *next;
         T value;
     };
 
-    Node * head, * rear;
+    Node *head, *rear;
     unsigned int node_counter;
 
 public:
     NewDeList();
     ~NewDeList();
 
-    unsigned int size()const { return node_counter; }
-    bool empty()const { return size() == 0; }
+    unsigned int size() const { return node_counter; }
+    bool empty() const { return size() == 0; }
 
     virtual bool push(T push_value, bool mode);
     bool push_front(T push_value) { return push(push_value, FRONT); }
@@ -29,16 +28,15 @@ public:
     bool pop_front() { return pop(FRONT); }
     bool pop_back() { return pop(BACK); }
 
-    virtual T peek(bool mode)const;
-    T peek_front()const { return peek(FRONT); }
-    T peek_back()const { return peek(BACK); }
+    virtual T peek(bool mode) const;
+    T peek_front() const { return peek(FRONT); }
+    T peek_back() const { return peek(BACK); }
 
 protected:
     enum { FRONT = 0, BACK = 1 };
 };
 
-template<typename T>
-NewDeList<T>::NewDeList() :node_counter(0)
+template <typename T> NewDeList<T>::NewDeList() : node_counter(0)
 {
     head = new Node;
     rear = new Node;
@@ -46,8 +44,7 @@ NewDeList<T>::NewDeList() :node_counter(0)
     rear->previous = rear->next = nullptr;
 }
 
-template<typename T>
-NewDeList<T>::~NewDeList()
+template <typename T> NewDeList<T>::~NewDeList()
 {
     while (head)
     {
@@ -59,8 +56,7 @@ NewDeList<T>::~NewDeList()
     node_counter = 0;
 }
 
-template<typename T>
-bool NewDeList<T>::push(T push_value, bool mode)
+template <typename T> bool NewDeList<T>::push(T push_value, bool mode)
 {
     Node * push_node = new Node;
     if (!push_node)
@@ -88,8 +84,7 @@ bool NewDeList<T>::push(T push_value, bool mode)
     return true;
 }
 
-template<typename T>
-bool NewDeList<T>::pop(bool mode)
+template <typename T> bool NewDeList<T>::pop(bool mode)
 {
     Node * backup_node;
 
@@ -119,8 +114,7 @@ bool NewDeList<T>::pop(bool mode)
     return true;
 }
 
-template<typename T>
-T NewDeList<T>::peek(bool mode)const
+template <typename T> T NewDeList<T>::peek(bool mode) const
 {
     if (empty())
         return (T) 0;

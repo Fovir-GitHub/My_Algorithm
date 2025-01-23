@@ -1,6 +1,6 @@
-#include<iostream>
-#include<vector>
-#include<string>
+#include <iostream>
+#include <string>
+#include <vector>
 
 void output(const std::vector<int> & v);
 
@@ -13,10 +13,8 @@ int main(void)
 
     std::cin >> first >> second;
 
-    for (auto x : first)
-        a.push_back(x - '0');
-    for (auto x : second)
-        b.push_back(x - '0');
+    for (auto x : first) a.push_back(x - '0');
+    for (auto x : second) b.push_back(x - '0');
 
     int n = a.size();
     std::vector<int> c(n + 1);
@@ -37,8 +35,7 @@ int main(void)
 
 void output(const std::vector<int> & v)
 {
-    for (auto x : v)
-        std::cout << x;
+    for (auto x : v) std::cout << x;
     std::cout << '\n';
 
     return;

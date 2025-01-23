@@ -1,8 +1,8 @@
-#include<iostream>
-#include<vector>
-#include<cstdlib>
-#include<ctime>
-#include<algorithm>
+#include <algorithm>
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
+#include <vector>
 
 int binaryInsertSimple(std::vector<int> & v, int target);
 
@@ -12,7 +12,7 @@ int main(void)
 
     const int N = 10, LIMIT = 20;
 
-    bool record[LIMIT] = { false };
+    bool record[LIMIT] = {false};
     std::vector<int> numbers;
     int temp = 0;
     int insert_number = 0;
@@ -26,14 +26,14 @@ int main(void)
 
     std::sort(numbers.begin(), numbers.end());
     std::for_each(numbers.begin(), numbers.end(),
-        [&](int & x) {std::cout << x << ' '; });
+                  [&](int & x) { std::cout << x << ' '; });
     std::cout << '\n';
 
     std::cout << "Please enter the number you want to insert: ";
     while (std::cin >> insert_number)
         std::cout << "Insert position: "
-        << binaryInsertSimple(numbers, insert_number) << '\n'
-        << "Please enter the next number you want to insert: ";
+                  << binaryInsertSimple(numbers, insert_number) << '\n'
+                  << "Please enter the next number you want to insert: ";
 
     return 0;
 }

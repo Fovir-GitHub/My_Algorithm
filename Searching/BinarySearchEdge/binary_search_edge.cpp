@@ -1,8 +1,8 @@
-#include<iostream>
-#include<cstdlib>
-#include<ctime>
-#include<algorithm>
-#include<vector>
+#include <algorithm>
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
+#include <vector>
 
 int binarySearchLeftEdge(std::vector<int> & v, int target);
 int binarySearchRightEdge(std::vector<int> & v, int target);
@@ -21,24 +21,24 @@ int main(void)
     std::vector<int> numbers;
     int find_edge_number = 0;
 
-    for (int i = 0; i < N; i++)
-        numbers.push_back(std::rand() % LIMIT);
+    for (int i = 0; i < N; i++) numbers.push_back(std::rand() % LIMIT);
 
     std::sort(numbers.begin(), numbers.end());
     std::for_each(numbers.begin(), numbers.end(),
-        [&](int & num) {std::cout << num << ' '; });
+                  [&](int & num) { std::cout << num << ' '; });
 
     std::cout << "\nPlease enter the number you want to find edge: ";
     while (std::cin >> find_edge_number)
         std::cout << "Left edge: "
-        << binarySearchLeftEdge(numbers, find_edge_number) << ' '
-        << "Right edge: "
-        << binarySearchRightEdge(numbers, find_edge_number) << '\n'
-        << "Through find element, left edge: "
-        << binarySearchLeftEdgeElement(numbers, find_edge_number) << ' '
-        << "right edge: "
-        << binarySearchRightEdgeElement(numbers, find_edge_number) << '\n'
-        << "Please enter the next number you want to find edge: ";
+                  << binarySearchLeftEdge(numbers, find_edge_number) << ' '
+                  << "Right edge: "
+                  << binarySearchRightEdge(numbers, find_edge_number) << '\n'
+                  << "Through find element, left edge: "
+                  << binarySearchLeftEdgeElement(numbers, find_edge_number)
+                  << ' ' << "right edge: "
+                  << binarySearchRightEdgeElement(numbers, find_edge_number)
+                  << '\n'
+                  << "Please enter the next number you want to find edge: ";
 
     return 0;
 }

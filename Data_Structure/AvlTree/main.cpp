@@ -1,7 +1,7 @@
-#include<iostream>
-#include<cstdlib>
-#include<ctime>
-#include"avltree.hpp"
+#include "avltree.hpp"
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
 
 void show(int number);
 
