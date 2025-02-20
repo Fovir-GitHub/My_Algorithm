@@ -3,6 +3,7 @@
 #include <cctype>
 #include <cmath>
 
+static void PreProcessString(std::string & first, std::string & second);
 static int Char2Digit(const char & ch);
 static char Digit2Char(const int & digit);
 
@@ -12,6 +13,11 @@ BigInt::BigInt(std::string & s) : number(s)
 
 BigInt::BigInt(int num)
 {
+    if (num == 0)
+    {
+        number = "0";
+        return;
+    }
     number = "";
     bool IsNegative = num < 0;
     num = std::abs(num);
@@ -97,14 +103,7 @@ BigInt operator+(const BigInt & fn, const BigInt & sn)
 
     std::string first = fn.abs(), second = sn.abs(), result("");
 
-    std::reverse(first.begin(), first.end());
-    std::reverse(second.begin(), second.end());
-
-    (first.length() < second.length() ? first : second)
-        .append((first.length() < second.length()
-                     ? second.length() - first.length()
-                     : first.length() - second.length()),
-                '0');
+    PreProcessString(first, second);
 
     int next = 0;
     for (int i = 0; i < first.length(); i++)
@@ -127,7 +126,63 @@ BigInt operator+(const BigInt & fn, const BigInt & sn)
 
 BigInt operator-(const BigInt & fn, const BigInt & sn)
 {
-    return BigInt(0);
+    if (fn == sn)
+        return 0;
+
+    if (!fn.IsNegative() && sn.IsNegative())
+        return fn + (-sn);
+
+    if (fn.IsNegative() && !sn.IsNegative())
+        return -((-fn) + (-sn));
+
+    /*
+    - -
+    + +
+    */
+
+    bool result_is_negative = (fn < sn);
+
+    std::string first = std::max(fn.abs(), sn.abs()),
+                second = std::min(fn.abs(), sn.abs()), result("");
+
+    PreProcessString(first, second);
+
+    int borrow = 0;
+    for (int i = 0; i < first.length(); i++)
+    {
+        int first_number = Char2Digit(first[i]) - borrow,
+            second_number = Char2Digit(second[i]);
+        if (first_number < second_number)
+        {
+            borrow = 1;
+            first_number += 10;
+        }
+        else
+            borrow = 0;
+
+        result += Digit2Char(first_number - second_number);
+    }
+
+    result.erase(result.find_last_not_of('0') + 1);
+    std::reverse(result.begin(), result.end());
+    if (result_is_negative)
+        result.insert(result.begin(), '-');
+
+    return result;
+}
+
+void PreProcessString(std::string & first, std::string & second)
+{
+    std::reverse(first.begin(), first.end());
+    std::reverse(second.begin(), second.end());
+
+    (first.length() < second.length() ? first : second)
+        .append((first.length() < second.length()
+                     ? second.length() - first.length()
+                     : first.length() - second.length()),
+                '0');
+
+    return;
 }
 
 int Char2Digit(const char & ch)
