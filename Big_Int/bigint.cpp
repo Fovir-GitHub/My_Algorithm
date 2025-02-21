@@ -79,6 +79,11 @@ BigInt BigInt::abs() const
         return *this;
 }
 
+BigInt & BigInt::operator+=(const BigInt & other)
+{
+    return (*this = *this + other);
+}
+
 std::ostream & operator<<(std::ostream & os, const BigInt & bi)
 {
     os << bi.number;
@@ -125,6 +130,18 @@ BigInt operator*(const BigInt & num, const int & digit)
 BigInt operator*(const int & digit, const BigInt & num)
 {
     return num * digit;
+}
+
+BigInt operator*(const BigInt & fn, const BigInt & sn)
+{
+    if (fn == BigInt(0) || sn == BigInt(0))
+        return BigInt(0);
+
+    bool result_is_negative = (fn.IsNegative() ^ sn.IsNegative());
+    BigInt result("0");
+
+    for (int i = sn.Length() - 1; i >= 0; i--)
+        result += (fn * Char2Digit(sn[i]));
 }
 
 bool operator>(const BigInt & first, const BigInt & second)
@@ -187,7 +204,7 @@ BigInt operator+(const BigInt & fn, const BigInt & sn)
 BigInt operator-(const BigInt & fn, const BigInt & sn)
 {
     if (fn == sn)
-        return 0;
+        return BigInt(0);
 
     if (!fn.IsNegative() && sn.IsNegative())
         return fn + (-sn);

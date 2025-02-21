@@ -15,7 +15,7 @@ private:
 public:
     BigInt() : number("0") {}
     BigInt(std::string s);
-    BigInt(int num);
+    explicit BigInt(int num);
     operator std::string() const { return number; }
 
     bool IsNegative() const { return number.length() > 0 && number[0] == '-'; }
@@ -35,9 +35,11 @@ public:
     friend bool operator<(const BigInt & first, const BigInt & second);
 
     friend BigInt operator+(const BigInt & fn, const BigInt & sn);
+    BigInt & operator+=(const BigInt & other);
     friend BigInt operator-(const BigInt & fn, const BigInt & sn);
     friend BigInt operator*(const BigInt & num, const int & digit);
     friend BigInt operator*(const int & digt, const BigInt & num);
+    friend BigInt operator*(const BigInt & fn, const BigInt & sn);
 };
 
 #endif // !_BIGINT_H_
