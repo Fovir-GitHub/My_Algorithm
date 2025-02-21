@@ -27,4 +27,13 @@ BigInt lcm(const BigInt & a, const BigInt & b)
     return a * b / gcd(a, b);
 }
 
+bool isPrime(const BigInt & n)
+{
+    for (BigInt i = BigInt(2); i * i <= n; i++)
+        if (n % i == BigInt(0))
+            return false;
+
+    return true;
+}
+
 END_BIGINT_MATH
