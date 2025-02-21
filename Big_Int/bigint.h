@@ -51,6 +51,9 @@ public:
 
     friend BigInt operator%(BigInt fn, BigInt sn);
     friend std::pair<BigInt, BigInt> Divide(BigInt fn, BigInt sn);
+
+    BigInt & operator++();
+    BigInt operator++(int);
 };
 
 #endif // !_BIGINT_H_

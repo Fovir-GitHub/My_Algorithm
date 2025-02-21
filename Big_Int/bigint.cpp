@@ -99,6 +99,19 @@ BigInt & BigInt::operator/=(const BigInt & other)
     return (*this = *this / other);
 }
 
+BigInt & BigInt::operator++()
+{
+    return (*this += BigInt(1));
+}
+
+BigInt BigInt::operator++(int)
+{
+    BigInt temp = *this;
+    *this += BigInt(1);
+
+    return temp;
+}
+
 std::ostream & operator<<(std::ostream & os, const BigInt & bi)
 {
     os << bi.number;
