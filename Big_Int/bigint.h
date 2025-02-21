@@ -47,6 +47,8 @@ public:
     BigInt & operator*=(const BigInt & other);
 
     friend BigInt operator/(BigInt fn, BigInt sn);
+    BigInt & operator/=(const BigInt & other);
+
     friend BigInt operator%(BigInt fn, BigInt sn);
     friend std::pair<BigInt, BigInt> Divide(BigInt fn, BigInt sn);
 };
