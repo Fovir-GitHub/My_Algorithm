@@ -17,4 +17,14 @@ BigInt factorial(const BigInt & n)
     return result;
 }
 
+BigInt gcd(const BigInt & a, const BigInt & b)
+{
+    return (a % b == BigInt(0) ? b : gcd(b, a % b));
+}
+
+BigInt lcm(const BigInt & a, const BigInt & b)
+{
+    return a * b / gcd(a, b);
+}
+
 END_BIGINT_MATH
