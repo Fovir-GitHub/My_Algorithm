@@ -7,8 +7,35 @@ static void PreProcessString(std::string & first, std::string & second);
 static int Char2Digit(const char & ch);
 static char Digit2Char(const int & digit);
 
-BigInt::BigInt(std::string & s) : number(s)
+BigInt::BigInt(std::string s)
 {
+    if (*s.begin() != '-' && !std::isdigit(*s.begin()))
+    {
+        number = "0";
+        return;
+    }
+
+    int is_negative = static_cast<int>(*s.begin() == '-');
+
+    for (auto iter = (is_negative ? s.begin() + 1 : s.begin()); iter != s.end();
+         iter++)
+        if (!std::isdigit(*iter))
+        {
+            number = "0";
+            return;
+        }
+
+    s.erase(is_negative,
+            std::min(s.find_first_not_of('0', is_negative) - is_negative,
+                     s.size() - 1));
+
+    if (s.size() < 1 || (s.size() == 1 && s[0] == '-'))
+    {
+        number = "0";
+        return;
+    }
+
+    number = s;
 }
 
 BigInt::BigInt(int num)

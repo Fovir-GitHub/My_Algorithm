@@ -14,7 +14,7 @@ private:
 
 public:
     BigInt() : number("0") {}
-    BigInt(std::string & s);
+    BigInt(std::string s);
     BigInt(int num);
     operator std::string() const { return number; }
 
