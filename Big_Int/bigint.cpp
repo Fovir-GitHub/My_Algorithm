@@ -84,6 +84,16 @@ BigInt & BigInt::operator+=(const BigInt & other)
     return (*this = *this + other);
 }
 
+BigInt & BigInt::operator-=(const BigInt & other)
+{
+    return (*this = *this - other);
+}
+
+BigInt & BigInt::operator*=(const BigInt & other)
+{
+    return (*this = *this * other);
+}
+
 std::ostream & operator<<(std::ostream & os, const BigInt & bi)
 {
     os << bi.number;

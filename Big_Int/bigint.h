@@ -36,10 +36,14 @@ public:
 
     friend BigInt operator+(const BigInt & fn, const BigInt & sn);
     BigInt & operator+=(const BigInt & other);
+
     friend BigInt operator-(const BigInt & fn, const BigInt & sn);
+    BigInt & operator-=(const BigInt & other);
+
     friend BigInt operator*(const BigInt & num, const int & digit);
     friend BigInt operator*(const int & digt, const BigInt & num);
     friend BigInt operator*(BigInt fn, BigInt sn);
+    BigInt & operator*=(const BigInt & other);
 };
 
 #endif // !_BIGINT_H_
