@@ -39,7 +39,7 @@ public:
     friend BigInt operator-(const BigInt & fn, const BigInt & sn);
     friend BigInt operator*(const BigInt & num, const int & digit);
     friend BigInt operator*(const int & digt, const BigInt & num);
-    friend BigInt operator*(const BigInt & fn, const BigInt & sn);
+    friend BigInt operator*(BigInt fn, BigInt sn);
 };
 
 #endif // !_BIGINT_H_

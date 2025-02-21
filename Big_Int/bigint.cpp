@@ -132,16 +132,24 @@ BigInt operator*(const int & digit, const BigInt & num)
     return num * digit;
 }
 
-BigInt operator*(const BigInt & fn, const BigInt & sn)
+BigInt operator*(BigInt fn, BigInt sn)
 {
     if (fn == BigInt(0) || sn == BigInt(0))
         return BigInt(0);
 
     bool result_is_negative = (fn.IsNegative() ^ sn.IsNegative());
     BigInt result("0");
+    fn = fn.abs();
+    sn = sn.abs();
 
     for (int i = sn.Length() - 1; i >= 0; i--)
-        result += (fn * Char2Digit(sn[i]));
+    {
+        BigInt temp = fn * Char2Digit(sn[i]);
+        temp.number.append(sn.Length() - 1 - i, '0');
+        result += temp;
+    }
+
+    return (result_is_negative ? -result : result);
 }
 
 bool operator>(const BigInt & first, const BigInt & second)
