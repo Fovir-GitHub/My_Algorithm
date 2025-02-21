@@ -278,6 +278,16 @@ bool operator<(const BigInt & first, const BigInt & second)
     return !(first > second || first == second);
 }
 
+bool operator>=(const BigInt & fn, const BigInt & sn)
+{
+    return (fn > sn || fn == sn);
+}
+
+bool operator<=(const BigInt & fn, const BigInt & sn)
+{
+    return (fn < sn || fn == sn);
+}
+
 BigInt operator+(const BigInt & fn, const BigInt & sn)
 {
     if (fn.IsNegative() ^ sn.IsNegative())
@@ -316,11 +326,6 @@ BigInt operator-(const BigInt & fn, const BigInt & sn)
 
     if (fn.IsNegative() && !sn.IsNegative())
         return -((-fn) + (-sn));
-
-    /*
-    - -
-    + +
-    */
 
     bool result_is_negative = (fn < sn);
 
