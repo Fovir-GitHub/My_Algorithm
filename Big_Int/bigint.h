@@ -6,6 +6,7 @@
 #include <cmath>
 #include <iostream>
 #include <string>
+#include <utility>
 
 class BigInt
 {
@@ -44,6 +45,10 @@ public:
     friend BigInt operator*(const int & digt, const BigInt & num);
     friend BigInt operator*(BigInt fn, BigInt sn);
     BigInt & operator*=(const BigInt & other);
+
+    friend BigInt operator/(BigInt fn, BigInt sn);
+    friend BigInt operator%(BigInt fn, BigInt sn);
+    friend std::pair<BigInt, BigInt> Divide(BigInt fn, BigInt sn);
 };
 
 #endif // !_BIGINT_H_

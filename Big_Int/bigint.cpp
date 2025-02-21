@@ -162,6 +162,75 @@ BigInt operator*(BigInt fn, BigInt sn)
     return (result_is_negative ? -result : result);
 }
 
+BigInt operator/(BigInt fn, BigInt sn)
+{
+    // if (sn == BigInt(0) || fn == BigInt(0))
+    //     return BigInt(0);
+
+    // bool result_is_negative = (fn.IsNegative() ^ sn.IsNegative());
+    // fn = fn.abs(), sn = sn.abs();
+
+    // if (fn < sn)
+    //     return BigInt(0);
+    // if (fn == sn)
+    //     return BigInt(1);
+    return Divide(fn, sn).first;
+}
+
+std::pair<BigInt, BigInt> Divide(BigInt fn, BigInt sn)
+{
+    if (sn == BigInt(0) || fn == BigInt(0))
+        return std::pair<BigInt, BigInt>(BigInt(0), BigInt(0));
+    if (fn.abs() < sn.abs())
+        return std::pair<BigInt, BigInt>(BigInt(0), fn);
+    if (fn == sn)
+        return std::pair<BigInt, BigInt>(BigInt(1), BigInt(0));
+
+    bool result_is_negative = (fn.IsNegative() ^ sn.IsNegative());
+    fn = fn.abs(), sn = sn.abs();
+
+    std::string quotient(""), remainder("");
+    BigInt to_divide;
+
+    for (int i = 0; i < fn.Length(); i++)
+    {
+        to_divide = to_divide * BigInt(10) + BigInt(Char2Digit(fn[i]));
+        if (to_divide < sn)
+        {
+            quotient += Digit2Char(0);
+            continue;
+        }
+
+        for (int j = 0; j <= 9; j++)
+        {
+            if ((remainder = (to_divide - (sn * BigInt(j)))) < sn)
+            {
+                quotient += Digit2Char(j);
+                to_divide = remainder;
+                break;
+            }
+        }
+    }
+
+    BigInt final_remainder(remainder);
+
+    if (result_is_negative)
+    {
+        quotient.insert(quotient.begin(), '-');
+        remainder.insert(remainder.begin(), '-');
+
+        final_remainder = BigInt(remainder);
+        while (final_remainder < BigInt(0)) final_remainder += sn;
+    }
+
+    return std::pair<BigInt, BigInt>(quotient, final_remainder);
+}
+
+BigInt operator%(BigInt fn, BigInt sn)
+{
+    return Divide(fn, sn).second;
+}
+
 bool operator>(const BigInt & first, const BigInt & second)
 {
     if (first.IsNegative() ^ second.IsNegative())
