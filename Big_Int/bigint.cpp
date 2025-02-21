@@ -94,6 +94,39 @@ std::istream & operator>>(std::istream & is, BigInt & bi)
     return is;
 }
 
+BigInt operator*(const BigInt & num, const int & digit)
+{
+    if (digit == 0)
+        return static_cast<BigInt>(0);
+
+    std::string result(""), s = num;
+    int next = 0;
+
+    for (auto iter = s.rbegin(); iter != s.rend(); iter++)
+    {
+        if (!std::isdigit(*iter))
+            break;
+
+        int temp = (Char2Digit(*iter) * digit + next);
+        next = temp / 10;
+        temp %= 10;
+        result.insert(result.begin(), Digit2Char(temp));
+    }
+
+    if (next)
+        result.insert(result.begin(), Digit2Char(next));
+
+    if (num.IsNegative())
+        result.insert(result.begin(), '-');
+
+    return result;
+}
+
+BigInt operator*(const int & digit, const BigInt & num)
+{
+    return num * digit;
+}
+
 bool operator>(const BigInt & first, const BigInt & second)
 {
     if (first.IsNegative() ^ second.IsNegative())
