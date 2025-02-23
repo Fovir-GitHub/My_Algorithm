@@ -36,4 +36,24 @@ bool isPrime(const BigInt & n)
     return true;
 }
 
+void primeFactorize(BigInt n)
+{
+    std::cout << n << " = ";
+    BigInt limit(n);
+    for (BigInt i = BigInt(2); i * i <= limit; i++)
+    {
+        while (n != i)
+            if (n % i == BigInt(0))
+            {
+                std::cout << i << " * ";
+                n /= i;
+            }
+            else
+                break;
+    }
+
+    std::cout << n << '\n';
+    return;
+}
+
 END_BIGINT_MATH
