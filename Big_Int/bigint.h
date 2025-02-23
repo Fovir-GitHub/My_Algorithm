@@ -57,6 +57,7 @@ public:
 
     friend bool operator>=(const BigInt & fn, const BigInt & sn);
     friend bool operator<=(const BigInt & fn, const BigInt & sn);
+    friend bool operator!=(const BigInt & fn, const BigInt & sn);
 };
 
 #endif // !_BIGINT_H_

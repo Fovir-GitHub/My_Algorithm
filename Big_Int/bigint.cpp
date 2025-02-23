@@ -288,6 +288,11 @@ bool operator<=(const BigInt & fn, const BigInt & sn)
     return (fn < sn || fn == sn);
 }
 
+bool operator!=(const BigInt & fn, const BigInt & sn)
+{
+    return !(fn == sn);
+}
+
 BigInt operator+(const BigInt & fn, const BigInt & sn)
 {
     if (fn.IsNegative() ^ sn.IsNegative())
