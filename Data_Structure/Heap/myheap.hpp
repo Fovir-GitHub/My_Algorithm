@@ -16,7 +16,7 @@ public:
 
     void push(T push_value);
     bool empty() { return heap.empty(); }
-    T peek() { return heap[0]; }
+    T    peek() { return heap[0]; }
     void pop();
 
     int left(int i) { return 2 * i + 1; }

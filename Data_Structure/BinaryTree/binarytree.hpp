@@ -9,18 +9,18 @@ private:
     struct TreeNode
     {
         TreeNode *left, *right;
-        T value;
+        T         value;
     };
 
-    TreeNode * root;
+    TreeNode *   root;
     unsigned int tree_node_counter;
 
 public:
     MyBinaryTree();
 
     unsigned int size() const { return tree_node_counter; }
-    bool empty() const { return size() == 0; }
-    TreeNode * GetRootNode() const { return root; }
+    bool         empty() const { return size() == 0; }
+    TreeNode *   GetRootNode() const { return root; }
 
     void insert(T insert_value);
     void traverse(void (*func)(T), TreeNode * start_node);
@@ -30,7 +30,7 @@ public:
 
 template <typename T> MyBinaryTree<T>::MyBinaryTree() : tree_node_counter(0)
 {
-    root = new TreeNode;
+    root       = new TreeNode;
     root->left = root->right = nullptr;
 }
 
@@ -47,8 +47,8 @@ template <typename T> void MyBinaryTree<T>::insert(T insert_value)
         return;
 
     insert_node->left = insert_node->right = nullptr;
-    insert_node->value = insert_value;
-    TreeNode * visit = root;
+    insert_node->value                     = insert_value;
+    TreeNode * visit                       = root;
     while (true)
     {
         if (insert_value < visit->value)

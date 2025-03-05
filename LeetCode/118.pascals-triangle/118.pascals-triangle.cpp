@@ -33,7 +33,7 @@ public:
 
 int main(void)
 {
-    int n = 5;
+    int      n = 5;
     Solution sol;
 
     vector<vector<int>> vec = sol.generate(n);

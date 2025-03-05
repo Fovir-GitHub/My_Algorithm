@@ -19,7 +19,7 @@ int main(void)
     const int N = 10, LIMIT = 20;
 
     std::vector<int> numbers;
-    int find_edge_number = 0;
+    int              find_edge_number = 0;
 
     for (int i = 0; i < N; i++) numbers.push_back(std::rand() % LIMIT);
 
@@ -61,7 +61,7 @@ int binarySearchRightEdge(std::vector<int> & v, int target)
 int binarySearchLeftEdgeElement(std::vector<int> & v, int target)
 {
     double new_target = (double) target - 0.5;
-    int left = 0, right = v.size() - 1, middle = 0;
+    int    left = 0, right = v.size() - 1, middle = 0;
 
     while (left <= right)
     {
@@ -81,7 +81,7 @@ int binarySearchLeftEdgeElement(std::vector<int> & v, int target)
 int binarySearchRightEdgeElement(std::vector<int> & v, int target)
 {
     double new_target = (double) target + 0.5;
-    int left = 0, right = v.size() - 1, middle = 0;
+    int    left = 0, right = v.size() - 1, middle = 0;
 
     while (left <= right)
     {

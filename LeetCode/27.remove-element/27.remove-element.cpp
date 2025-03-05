@@ -23,7 +23,7 @@ public:
 
 int main(void)
 {
-    Solution sol;
+    Solution    sol;
     vector<int> numbers = {0, 1, 2, 2, 3, 0, 4, 2};
 
     cout << sol.removeElement(numbers, 2) << '\n';

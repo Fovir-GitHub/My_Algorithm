@@ -6,7 +6,7 @@ void choose_sort(std::vector<int> & v);
 int main(void)
 {
     std::vector<int> a;
-    int temp;
+    int              temp;
 
     while (std::cin >> temp) a.push_back(temp);
 

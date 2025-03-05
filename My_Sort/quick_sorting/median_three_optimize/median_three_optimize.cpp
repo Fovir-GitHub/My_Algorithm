@@ -4,9 +4,9 @@
 #include <iostream>
 #include <vector>
 
-int medianThree(std::vector<int> & numbers, int left, int middle, int right);
-int partitionMedianThreeOptimize(std::vector<int> & numbers, int left,
-                                 int right);
+int  medianThree(std::vector<int> & numbers, int left, int middle, int right);
+int  partitionMedianThreeOptimize(std::vector<int> & numbers, int left,
+                                  int right);
 void quickSortMedianThreeOptimize(std::vector<int> & numbers, int left,
                                   int right);
 

@@ -12,8 +12,8 @@ int main(void)
 
     const int LIMIT = 20;
 
-    int number_counter = 0;
-    int find_number = 0;
+    int              number_counter = 0;
+    int              find_number    = 0;
     std::vector<int> numbers;
 
     std::cout << "How many numbers do you want: ";

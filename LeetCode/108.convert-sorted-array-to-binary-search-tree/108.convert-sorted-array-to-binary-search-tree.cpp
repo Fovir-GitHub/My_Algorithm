@@ -59,10 +59,10 @@ public:
         if (left > right)
             return nullptr;
 
-        int middle = (left + right) / 2;
-        TreeNode * root = new TreeNode(nums[middle]);
-        root->left = helper(nums, left, middle - 1);
-        root->right = helper(nums, middle + 1, right);
+        int        middle = (left + right) / 2;
+        TreeNode * root   = new TreeNode(nums[middle]);
+        root->left        = helper(nums, left, middle - 1);
+        root->right       = helper(nums, middle + 1, right);
 
         return root;
     }

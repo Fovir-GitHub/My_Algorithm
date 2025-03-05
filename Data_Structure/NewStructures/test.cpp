@@ -7,8 +7,8 @@ int main(void)
 {
     std::srand(std::time(0));
 
-    const int N = 10, LIMIT = 20;
-    int num;
+    const int     N = 10, LIMIT = 20;
+    int           num;
     NewStack<int> nst;
 
     std::cout << "Input:\n";

@@ -8,8 +8,8 @@ template <typename T> class AvlTree
 private:
     struct TreeNode
     {
-        T value;
-        int height = 0;
+        T          value;
+        int        height = 0;
         TreeNode * left;
         TreeNode * right;
 
@@ -26,7 +26,7 @@ public:
         return node == nullptr ? -1 : node->height;
     }
     void UpdateHeight(TreeNode * node);
-    int GetBalanceFactor(TreeNode * node);
+    int  GetBalanceFactor(TreeNode * node);
 
     TreeNode * LeftRotate(TreeNode * node);
     TreeNode * RightRotate(TreeNode * node);
@@ -54,7 +54,7 @@ template <typename T>
 typename AvlTree<T>::TreeNode *
 AvlTree<T>::LeftRotate(typename AvlTree<T>::TreeNode * node)
 {
-    TreeNode * child = node->right;
+    TreeNode * child       = node->right;
     TreeNode * grand_child = child->left;
 
     child->left = node;
@@ -70,11 +70,11 @@ template <typename T>
 typename AvlTree<T>::TreeNode *
 AvlTree<T>::RightRotate(typename AvlTree<T>::TreeNode * node)
 {
-    TreeNode * child = node->left;
+    TreeNode * child       = node->left;
     TreeNode * grand_child = child->right;
 
     child->right = node;
-    node->left = grand_child;
+    node->left   = grand_child;
 
     UpdateHeight(node);
     UpdateHeight(child);
@@ -177,8 +177,8 @@ AvlTree<T>::RemoveHelper(typename AvlTree<T>::TreeNode * node, T remove_value)
             while (temp->left) temp = temp->left;
 
             T temp_value = temp->value;
-            node->right = RemoveHelper(node->right, temp_value);
-            node->value = temp_value;
+            node->right  = RemoveHelper(node->right, temp_value);
+            node->value  = temp_value;
         }
     }
     UpdateHeight(node);

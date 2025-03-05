@@ -13,12 +13,12 @@ class ReturnThree
 private:
     Iter left;
     Iter right;
-    int sum;
+    int  sum;
 
 public:
     ReturnThree(Iter l, Iter r, int s) : left(l), right(r), sum(s) {}
 
-    int GetSum() { return sum; }
+    int  GetSum() { return sum; }
     Iter GetLeft() { return left; }
     Iter GetRight() { return right; }
 };
@@ -39,7 +39,7 @@ int main(void)
     // std::freopen("./test.in", "r", stdin);
 
     std::vector<int> temp_vec(VECTOR_SIZE), v;
-    int temp;
+    int              temp;
 
     while (std::cin >> temp) temp_vec.push_back(temp);
     // std::generate(temp_vec.begin(), temp_vec.end(), generateData);
@@ -70,11 +70,11 @@ ReturnThree findMaxSubArray(std::vector<int> & v, Iter low, Iter high)
     if (std::distance(low, high) <= 1)
         return ReturnThree(low, high, *low);
 
-    Iter middle = low;
-    int distance = std::distance(low, high);
+    Iter middle   = low;
+    int  distance = std::distance(low, high);
     std::advance(middle, distance >> 1);
 
-    ReturnThree left_sum = findMaxSubArray(v, low, middle),
+    ReturnThree left_sum  = findMaxSubArray(v, low, middle),
                 right_sum = findMaxSubArray(v, middle, high),
                 cross_sum = findCrossSubArray(v, low, middle, high);
 
@@ -94,8 +94,8 @@ ReturnThree findCrossSubArray(std::vector<int> & v, Iter low, Iter middle,
     static const int INF = 0x7FFFFFFF;
 
     Iter temp;
-    int left_sum = -INF, right_sum = -INF;
-    int sum = 0;
+    int  left_sum = -INF, right_sum = -INF;
+    int  sum          = 0;
     Iter left_max_pos = middle, right_max_pos = middle;
 
     for (temp = middle; temp != low;)
@@ -103,7 +103,7 @@ ReturnThree findCrossSubArray(std::vector<int> & v, Iter low, Iter middle,
         --temp;
         if ((sum += *temp) > left_sum)
         {
-            left_sum = sum;
+            left_sum     = sum;
             left_max_pos = temp;
         }
     }
@@ -112,7 +112,7 @@ ReturnThree findCrossSubArray(std::vector<int> & v, Iter low, Iter middle,
     for (temp = middle; temp != high; temp++)
         if ((sum += *temp) > right_sum)
         {
-            right_sum = sum;
+            right_sum     = sum;
             right_max_pos = temp + 1;
         }
 

@@ -7,8 +7,8 @@ int main(void)
 {
     std::srand(std::time(0));
 
-    const int N = 5, LIMIT = 20;
-    int num;
+    const int    N = 5, LIMIT = 20;
+    int          num;
     MyDeque<int> mdeq;
 
     std::cout << "push_front():\n";

@@ -20,7 +20,7 @@ public:
         while (left < right)
         {
             int h = min(height[left], height[right]);
-            area = max(area, h * (right - left));
+            area  = max(area, h * (right - left));
 
             while (height[left] <= h && left < right) left++;
             while (height[right] <= h && left < right) right--;

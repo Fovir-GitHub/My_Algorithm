@@ -11,9 +11,9 @@ int main(void)
 
     const int N = 10, LIMIT = 20;
 
-    int num = 0;
-    int remove_number = 0;
-    int find_number = 0;
+    int          num           = 0;
+    int          remove_number = 0;
+    int          find_number   = 0;
     AvlTree<int> avl;
 
     std::cout << "Input:\n";

@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-int partition(std::vector<int> & numbers, int left, int right);
+int  partition(std::vector<int> & numbers, int left, int right);
 void quickSort(std::vector<int> & numbers, int left, int right);
 
 int main(void)

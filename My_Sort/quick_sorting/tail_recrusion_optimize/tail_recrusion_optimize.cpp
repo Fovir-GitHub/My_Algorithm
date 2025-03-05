@@ -16,7 +16,7 @@ int main(void)
 {
     std::srand(std::time(0));
 
-    const int VECTOR_SIZE = 10, LIMIT = 20;
+    const int        VECTOR_SIZE = 10, LIMIT = 20;
     std::vector<int> numbers(VECTOR_SIZE);
 
     std::generate(numbers.begin(), numbers.end(),

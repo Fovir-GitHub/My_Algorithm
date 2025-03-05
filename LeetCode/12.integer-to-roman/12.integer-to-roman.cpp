@@ -21,7 +21,7 @@ public:
             "DCC",  "DCCC", "CM", "",    "M",   "MM",  "MMM"};
 
         string result("");
-        int counter = 0;
+        int    counter = 0;
 
         while (num)
         {
@@ -37,7 +37,7 @@ public:
 
 int main(void)
 {
-    int input = 0;
+    int      input = 0;
     Solution sol;
 
     while (cin >> input) cout << sol.intToRoman(input) << endl;

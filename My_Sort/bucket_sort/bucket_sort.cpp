@@ -11,8 +11,8 @@ int main(void)
 
     std::vector<double> numbers(VECTOR_SIZE);
 
-    std::random_device rd;
-    std::mt19937 gen(rd());
+    std::random_device               rd;
+    std::mt19937                     gen(rd());
     std::uniform_real_distribution<> dis(0.0, 1.0);
     std::generate(numbers.begin(), numbers.end(),
                   [&]() { return (double) dis(gen); });
@@ -28,7 +28,7 @@ int main(void)
 
 void bucketSort(std::vector<double> & numbers)
 {
-    int k = numbers.size() / 2;
+    int                              k = numbers.size() / 2;
     std::vector<std::vector<double>> buckets(k);
 
     for (double num : numbers) buckets[num * k].push_back(num);

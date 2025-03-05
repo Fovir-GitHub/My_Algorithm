@@ -8,7 +8,7 @@ int main(void)
 {
     const int BASE = 2;
 
-    std::string first, second;
+    std::string      first, second;
     std::vector<int> a, b;
 
     std::cin >> first >> second;
@@ -16,9 +16,9 @@ int main(void)
     for (auto x : first) a.push_back(x - '0');
     for (auto x : second) b.push_back(x - '0');
 
-    int n = a.size();
+    int              n = a.size();
     std::vector<int> c(n + 1);
-    int next = 0;
+    int              next = 0;
     std::fill(c.begin(), c.end(), 0);
 
     for (int i = n; i >= 1; i--)

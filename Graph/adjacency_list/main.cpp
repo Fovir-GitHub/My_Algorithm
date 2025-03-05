@@ -7,8 +7,8 @@ int main(void)
 {
     std::freopen("./graph.in", "r", stdin);
 
-    const int VERTEX_MAX = 5;
-    int first_v = 0, second_v = 0;
+    const int     VERTEX_MAX = 5;
+    int           first_v = 0, second_v = 0;
     AdjacencyList adj;
 
     for (int i = 1; i <= VERTEX_MAX; i++) adj.AddVertex(i);

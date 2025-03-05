@@ -8,11 +8,11 @@ void countingSort(std::vector<int> & numbers);
 
 int main(void)
 {
-    const int VECTOR_SIZE = 10;
+    const int        VECTOR_SIZE = 10;
     std::vector<int> numbers(VECTOR_SIZE);
 
-    std::random_device rd;
-    std::mt19937 gen(rd());
+    std::random_device              rd;
+    std::mt19937                    gen(rd());
     std::uniform_int_distribution<> dis(0, 20);
 
     std::generate(numbers.begin(), numbers.end(), [&]() { return dis(gen); });
@@ -59,12 +59,12 @@ void countingSort(std::vector<int> & numbers)
 
     for (int i = 0; i < max_value; i++) counter[i + 1] += counter[i];
 
-    int n = numbers.size();
+    int              n = numbers.size();
     std::vector<int> result(n);
 
     for (int i = n - 1; i >= 0; i--)
     {
-        int num = numbers[i];
+        int num                  = numbers[i];
         result[counter[num] - 1] = num;
         counter[num]--;
     }

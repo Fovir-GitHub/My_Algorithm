@@ -23,7 +23,7 @@ public:
 
 int main(void)
 {
-    Solution sol;
+    Solution    sol;
     vector<int> number = {1, 1, 2};
 
     cout << sol.removeDuplicates(number) << '\n';

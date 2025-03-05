@@ -9,10 +9,10 @@ private:
     struct Node
     {
         Node *front, *next;
-        T value;
+        T     value;
     };
 
-    Node *head, *rear;
+    Node *       head, *rear;
     unsigned int node_count;
 
 public:
@@ -20,7 +20,7 @@ public:
     ~MyDeque();
 
     unsigned int size() const { return node_count; }
-    bool empty() const { return size() == 0; }
+    bool         empty() const { return size() == 0; }
 
     bool push(T push_value, bool mode);
     bool push_front(T push_value) { return push(push_value, FRONT); }
@@ -36,8 +36,8 @@ public:
 
 template <typename T> MyDeque<T>::MyDeque() : node_count(0)
 {
-    head = new Node;
-    rear = new Node;
+    head        = new Node;
+    rear        = new Node;
     head->front = head->next = nullptr;
     rear->front = rear->next = nullptr;
 }
@@ -66,15 +66,15 @@ template <typename T> bool MyDeque<T>::push(T push_value, bool mode)
         head = rear = push_node;
     else if (mode == FRONT)
     {
-        head->front = push_node;
+        head->front     = push_node;
         push_node->next = head;
-        head = push_node;
+        head            = push_node;
     }
     else
     {
-        rear->next = push_node;
+        rear->next       = push_node;
         push_node->front = rear;
-        rear = push_node;
+        rear             = push_node;
     }
 
     ++node_count;
@@ -98,14 +98,14 @@ template <typename T> bool MyDeque<T>::pop(bool mode)
     {
         backup = head->next;
         delete head;
-        head = backup;
+        head        = backup;
         head->front = nullptr;
     }
     else
     {
         backup = rear->front;
         delete rear;
-        rear = backup;
+        rear       = backup;
         rear->next = nullptr;
     }
 

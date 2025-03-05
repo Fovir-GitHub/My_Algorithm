@@ -11,7 +11,7 @@ int main(void)
 {
     std::srand(std::time(0));
 
-    const int VECTOR_SIZE = 10, LIMIT = 20;
+    const int        VECTOR_SIZE = 10, LIMIT = 20;
     std::vector<int> numbers(VECTOR_SIZE);
 
     std::generate(numbers.begin(), numbers.end(),
@@ -29,8 +29,8 @@ void siftDown(std::vector<int> & numbers, int n, int i)
 {
     while (true)
     {
-        int left = 2 * i + 1;
-        int right = 2 * i + 2;
+        int left         = 2 * i + 1;
+        int right        = 2 * i + 2;
         int max_position = i;
 
         if (left < n && numbers[left] > numbers[max_position])

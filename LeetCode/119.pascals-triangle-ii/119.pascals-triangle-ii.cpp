@@ -26,7 +26,7 @@ public:
 
 int main(void)
 {
-    int n;
+    int      n;
     Solution sol;
 
     while (cin >> n)

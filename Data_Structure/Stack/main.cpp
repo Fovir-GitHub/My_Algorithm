@@ -7,7 +7,7 @@ int main(void)
 {
     std::srand(std::time(0));
 
-    const int N = 10, LIMIT = 20;
+    const int    N = 10, LIMIT = 20;
     MyStack<int> st;
 
     for (int i = 0; i < N; i++)

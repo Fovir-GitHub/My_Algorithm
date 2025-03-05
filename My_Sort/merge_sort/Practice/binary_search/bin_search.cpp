@@ -11,7 +11,7 @@ int main(void)
 {
     const int VECTOR_SIZE = 1000;
 
-    int number_to_find;
+    int              number_to_find;
     std::vector<int> numbers(VECTOR_SIZE);
 
     for (int i = 0; i < VECTOR_SIZE; i++) numbers[i] = i * i;

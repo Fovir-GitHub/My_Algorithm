@@ -4,7 +4,7 @@
 #include <cmath>
 
 static void PreProcessString(std::string & first, std::string & second);
-static int Char2Digit(const char & ch);
+static int  Char2Digit(const char & ch);
 static char Digit2Char(const int & digit);
 
 BigInt::BigInt(std::string s)
@@ -45,9 +45,9 @@ BigInt::BigInt(int num)
         number = "0";
         return;
     }
-    number = "";
+    number          = "";
     bool IsNegative = num < 0;
-    num = std::abs(num);
+    num             = std::abs(num);
 
     while (num)
     {
@@ -133,7 +133,7 @@ BigInt operator*(const BigInt & num, const int & digit)
         return static_cast<BigInt>(0);
 
     std::string result(""), s = num;
-    int next = 0;
+    int         next = 0;
 
     for (auto iter = s.rbegin(); iter != s.rend(); iter++)
     {
@@ -141,7 +141,7 @@ BigInt operator*(const BigInt & num, const int & digit)
             break;
 
         int temp = (Char2Digit(*iter) * digit + next);
-        next = temp / 10;
+        next     = temp / 10;
         temp %= 10;
         result.insert(result.begin(), Digit2Char(temp));
     }
@@ -165,7 +165,7 @@ BigInt operator*(BigInt fn, BigInt sn)
     if (fn == BigInt(0) || sn == BigInt(0))
         return BigInt(0);
 
-    bool result_is_negative = (fn.IsNegative() ^ sn.IsNegative());
+    bool   result_is_negative = (fn.IsNegative() ^ sn.IsNegative());
     BigInt result("0");
     fn = fn.abs();
     sn = sn.abs();
@@ -208,7 +208,7 @@ std::pair<BigInt, BigInt> Divide(BigInt fn, BigInt sn)
     fn = fn.abs(), sn = sn.abs();
 
     std::string quotient(""), remainder("");
-    BigInt to_divide;
+    BigInt      to_divide;
 
     for (int i = 0; i < fn.Length(); i++)
     {
@@ -306,7 +306,7 @@ BigInt operator+(const BigInt & fn, const BigInt & sn)
     for (int i = 0; i < first.length(); i++)
     {
         int digit = (Char2Digit(first[i]) + Char2Digit(second[i]) + next);
-        next = digit / 10;
+        next      = digit / 10;
         digit %= 10;
         result += Digit2Char(digit);
     }
@@ -334,7 +334,7 @@ BigInt operator-(const BigInt & fn, const BigInt & sn)
 
     bool result_is_negative = (fn < sn);
 
-    std::string first = std::max(fn.abs(), sn.abs()),
+    std::string first  = std::max(fn.abs(), sn.abs()),
                 second = std::min(fn.abs(), sn.abs()), result("");
 
     PreProcessString(first, second);
@@ -342,7 +342,7 @@ BigInt operator-(const BigInt & fn, const BigInt & sn)
     int borrow = 0;
     for (int i = 0; i < first.length(); i++)
     {
-        int first_number = Char2Digit(first[i]) - borrow,
+        int first_number  = Char2Digit(first[i]) - borrow,
             second_number = Char2Digit(second[i]);
         if (first_number < second_number)
         {

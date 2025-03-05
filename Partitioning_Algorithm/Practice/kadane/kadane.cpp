@@ -5,8 +5,8 @@
 int main(void)
 {
     std::vector<int> temp_vector, v;
-    int temp;
-    int max_ending_here, max_so_far;
+    int              temp;
+    int              max_ending_here, max_so_far;
 
     while (std::cin >> temp) temp_vector.push_back(temp);
 
@@ -18,7 +18,7 @@ int main(void)
     for (int i = 1; i < v.size(); i++)
     {
         max_ending_here = std::max(v[i], max_ending_here + v[i]);
-        max_so_far = std::max(max_ending_here, max_so_far);
+        max_so_far      = std::max(max_ending_here, max_so_far);
     }
 
     std::cout << "Max sum: " << max_so_far << '\n';

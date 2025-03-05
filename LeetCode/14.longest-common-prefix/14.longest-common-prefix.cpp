@@ -16,8 +16,8 @@ public:
     string longestCommonPrefix(vector<string> & strs)
     {
         string common_prefix("");
-        int n = strs.size();
-        int min_length = 2000;
+        int    n          = strs.size();
+        int    min_length = 2000;
 
         for (auto & it : strs)
             min_length = std::min(min_length, (int) it.length());

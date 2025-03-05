@@ -23,7 +23,7 @@ public:
     const int Length() const { return number.length(); }
 
     const char operator[](int i) const { return number[i]; }
-    char operator[](int i) { return number[i]; }
+    char       operator[](int i) { return number[i]; }
 
     BigInt operator-() const;
     BigInt abs() const;
@@ -36,24 +36,24 @@ public:
     friend bool operator<(const BigInt & first, const BigInt & second);
 
     friend BigInt operator+(const BigInt & fn, const BigInt & sn);
-    BigInt & operator+=(const BigInt & other);
+    BigInt &      operator+=(const BigInt & other);
 
     friend BigInt operator-(const BigInt & fn, const BigInt & sn);
-    BigInt & operator-=(const BigInt & other);
+    BigInt &      operator-=(const BigInt & other);
 
     friend BigInt operator*(const BigInt & num, const int & digit);
     friend BigInt operator*(const int & digt, const BigInt & num);
     friend BigInt operator*(BigInt fn, BigInt sn);
-    BigInt & operator*=(const BigInt & other);
+    BigInt &      operator*=(const BigInt & other);
 
     friend BigInt operator/(BigInt fn, BigInt sn);
-    BigInt & operator/=(const BigInt & other);
+    BigInt &      operator/=(const BigInt & other);
 
-    friend BigInt operator%(BigInt fn, BigInt sn);
+    friend BigInt                    operator%(BigInt fn, BigInt sn);
     friend std::pair<BigInt, BigInt> Divide(BigInt fn, BigInt sn);
 
     BigInt & operator++();
-    BigInt operator++(int);
+    BigInt   operator++(int);
 
     friend bool operator>=(const BigInt & fn, const BigInt & sn);
     friend bool operator<=(const BigInt & fn, const BigInt & sn);

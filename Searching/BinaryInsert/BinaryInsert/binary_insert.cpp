@@ -13,7 +13,7 @@ int main(void)
     const int N = 10, LIMIT = 20;
 
     std::vector<int> numbers;
-    int insert_number = 0;
+    int              insert_number = 0;
 
     for (int i = 0; i < N; i++) numbers.push_back(std::rand() % LIMIT);
 

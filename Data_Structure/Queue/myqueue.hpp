@@ -7,29 +7,29 @@ private:
     struct Node
     {
         Node * next;
-        T value;
+        T      value;
     };
 
-    Node * root;
-    Node * tail;
+    Node *       root;
+    Node *       tail;
     unsigned int node_count;
 
 public:
     MyQueue();
     ~MyQueue();
 
-    bool push(T push_value);
-    bool pop();
-    bool empty() { return !node_count; }
-    T peek() { return !empty() ? root->next->value : (T) 0; }
+    bool         push(T push_value);
+    bool         pop();
+    bool         empty() { return !node_count; }
+    T            peek() { return !empty() ? root->next->value : (T) 0; }
     unsigned int size() { return node_count; }
 };
 
 template <typename T> MyQueue<T>::MyQueue() : node_count(0)
 {
-    root = new Node;
+    root       = new Node;
     root->next = nullptr;
-    tail = root;
+    tail       = root;
 }
 
 template <typename T> MyQueue<T>::~MyQueue()
@@ -49,7 +49,7 @@ template <typename T> bool MyQueue<T>::push(T push_value)
         return false;
 
     push_node->value = push_value;
-    push_node->next = nullptr;
+    push_node->next  = nullptr;
 
     if (!root->next)
         root->next = push_node;
@@ -68,7 +68,7 @@ template <typename T> bool MyQueue<T>::pop()
         return false;
 
     Node * backup_node = root->next;
-    root->next = backup_node->next;
+    root->next         = backup_node->next;
     delete backup_node;
     --node_count;
 

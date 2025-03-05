@@ -16,7 +16,7 @@ int main(void)
     std::srand(std::time(0));
 
     std::vector<int> v(VECTOR_SIZE);
-    int temp;
+    int              temp;
 
     std::generate(v.begin(), v.end(), generateData);
     std::cout << "Original data:\n";

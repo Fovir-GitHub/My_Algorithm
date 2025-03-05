@@ -23,7 +23,7 @@ public:
 int main(void)
 {
     Solution sol;
-    string hay, needle;
+    string   hay, needle;
 
     cin >> hay >> needle;
     cout << sol.strStr(hay, needle) << '\n';

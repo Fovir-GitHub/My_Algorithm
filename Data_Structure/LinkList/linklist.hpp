@@ -6,12 +6,12 @@ template <typename T> class LinkList
 private:
     struct Node
     {
-        T value;
+        T      value;
         Node * next;
     };
 
-    Node * root; /* The root of the link list */
-    Node * now;  /* The last Node position */
+    Node *       root; /* The root of the link list */
+    Node *       now;  /* The last Node position */
     unsigned int node_count;
 
 public:
@@ -24,14 +24,14 @@ public:
     bool find(T target);
 
     void access(void (*func)(T));
-    int size() { return node_count; }
+    int  size() { return node_count; }
 };
 
 template <typename T> LinkList<T>::LinkList()
 {
-    root = new Node;
+    root       = new Node;
     root->next = nullptr;
-    now = root;
+    now        = root;
     node_count = 0;
 }
 
@@ -54,7 +54,7 @@ template <typename T> bool LinkList<T>::push(T push_value)
     if (!push_node)
         return false;
 
-    push_node->next = nullptr;
+    push_node->next  = nullptr;
     push_node->value = push_value;
 
     if (root->next == nullptr) /* No element */
@@ -71,9 +71,9 @@ template <typename T> bool LinkList<T>::push(T push_value)
 template <typename T>
 bool LinkList<T>::insert(T insert_value, unsigned int target_position)
 {
-    target_position = std::min(target_position, node_count);
+    target_position             = std::min(target_position, node_count);
     unsigned int position_count = 0;
-    Node * current = root;
+    Node *       current        = root;
 
     while (position_count++ != target_position) current = current->next;
 
@@ -82,8 +82,8 @@ bool LinkList<T>::insert(T insert_value, unsigned int target_position)
         return false;
 
     insert_node->value = insert_value;
-    insert_node->next = current->next;
-    current->next = insert_node;
+    insert_node->next  = current->next;
+    current->next      = insert_node;
     ++node_count;
 
     return true;
@@ -93,7 +93,7 @@ template <typename T> bool LinkList<T>::remove(unsigned int remove_position)
 {
     remove_position = std::min(remove_position, node_count - 1);
 
-    Node * current = root;
+    Node *       current        = root;
     unsigned int position_count = 0;
 
     while (position_count++ != remove_position) current = current->next;
@@ -102,7 +102,7 @@ template <typename T> bool LinkList<T>::remove(unsigned int remove_position)
         return false;
 
     Node * backup_next = current->next;
-    current->next = backup_next->next;
+    current->next      = backup_next->next;
 
     delete backup_next;
     --node_count;

@@ -9,7 +9,7 @@ int main(void)
     std::freopen("./test.in", "r", stdin);
 
     std::vector<int> temp_vector, v, sums;
-    int temp;
+    int              temp;
 
     while (std::cin >> temp) temp_vector.push_back(temp);
 

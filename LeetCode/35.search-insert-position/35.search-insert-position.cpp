@@ -36,9 +36,9 @@ public:
 
 int main(void)
 {
-    Solution sol;
-    vector<int> vec = {1, 3, 5, 6};
-    int target = 0;
+    Solution    sol;
+    vector<int> vec    = {1, 3, 5, 6};
+    int         target = 0;
 
     while (cin >> target) cout << sol.searchInsert(vec, target) << '\n';
 

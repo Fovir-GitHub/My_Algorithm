@@ -30,7 +30,7 @@ public:
 
 int main(void)
 {
-    string s;
+    string   s;
     Solution sol;
 
     while (getline(cin, s)) cout << sol.lengthOfLastWord(s) << '\n';

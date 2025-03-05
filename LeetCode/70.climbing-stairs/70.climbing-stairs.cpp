@@ -30,7 +30,7 @@ public:
 int main(void)
 {
     Solution sol;
-    int n;
+    int      n;
 
     while (cin >> n) cout << sol.climbStairs(n) << '\n';
 

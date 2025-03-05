@@ -20,14 +20,14 @@ public:
         reverse(b.begin(), b.end());
         a.append(b.length() - a.length(), '0');
 
-        int n = a.length();
+        int    n = a.length();
         string result("");
-        int next_plus = 0;
+        int    next_plus = 0;
 
         for (int i = 0; i < n; i++)
         {
             int add_result = a[i] + b[i] - '0' - '0' + next_plus;
-            next_plus = add_result / 2;
+            next_plus      = add_result / 2;
             add_result %= 2;
 
             result += add_result + '0';
@@ -46,7 +46,7 @@ public:
 int main(void)
 {
     Solution sol;
-    string a, b;
+    string   a, b;
 
     while (cin >> a >> b) cout << sol.addBinary(a, b) << '\n';
 

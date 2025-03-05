@@ -8,12 +8,12 @@ int binarySearch(std::vector<int> & numbers, int target);
 
 int main(void)
 {
-    const int VECTOR_SIZE = 20;
+    const int        VECTOR_SIZE = 20;
     std::vector<int> numbers(VECTOR_SIZE);
-    int find_number = 0;
+    int              find_number = 0;
 
-    std::random_device rd;
-    std::mt19937 gen(rd());
+    std::random_device              rd;
+    std::mt19937                    gen(rd());
     std::uniform_int_distribution<> uid(0, 100);
     std::generate(numbers.begin(), numbers.end(), [&]() { return uid(gen); });
     std::sort(numbers.begin(), numbers.end());

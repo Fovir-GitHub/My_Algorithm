@@ -10,7 +10,7 @@ int main(void)
 {
     std::srand(std::time(0));
 
-    const int N = 10, LIMIT = 20;
+    const int     N = 10, LIMIT = 20;
     LinkList<int> link_list;
 
     for (int i = 0; i < N; i++) link_list.push((std::rand() % LIMIT));

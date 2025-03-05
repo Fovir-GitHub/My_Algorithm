@@ -9,7 +9,7 @@ int main(void)
 
     const int N = 10, LIMIT = 20;
 
-    int num = 0;
+    int         num = 0;
     MyHeap<int> mh;
 
     for (int i = 0; i < N; i++)

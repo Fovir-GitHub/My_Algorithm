@@ -39,7 +39,7 @@ public:
 
 int main(void)
 {
-    string s;
+    string   s;
     Solution sol;
 
     while (cin >> s) cout << sol.isValid(s) << '\n';

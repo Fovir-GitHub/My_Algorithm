@@ -11,9 +11,9 @@ int main(void)
 {
     std::srand(std::time(0));
 
-    const int N = 10, LIMIT = 20;
+    const int        N = 10, LIMIT = 20;
     std::vector<int> numbers;
-    int target = 0;
+    int              target = 0;
 
     for (int i = 0; i < N; i++) numbers.push_back(std::rand() % LIMIT);
 
@@ -34,7 +34,7 @@ int main(void)
 std::vector<int> findTwoSum(std::vector<int> & v, int target)
 {
     std::unordered_map<int, int> records;
-    size_t size = v.size();
+    size_t                       size = v.size();
 
     for (int i = 0; i < size; i++)
     {

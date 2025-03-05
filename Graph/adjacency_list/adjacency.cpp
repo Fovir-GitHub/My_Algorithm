@@ -33,7 +33,7 @@ bool LinkListNode::push(int push_value)
     }
 
     Node * push_node = new Node(push_value);
-    visit->next = push_node;
+    visit->next      = push_node;
 
     return true;
 }
@@ -43,7 +43,7 @@ bool LinkListNode::remove(int remove_value)
     if (empty())
         return false;
 
-    Node * current = head;
+    Node * current  = head;
     Node * previous = nullptr;
 
     while (current)
@@ -51,7 +51,7 @@ bool LinkListNode::remove(int remove_value)
         if (current->value == remove_value)
             break;
         previous = current;
-        current = current->next;
+        current  = current->next;
     }
 
     if (!current)
@@ -131,9 +131,9 @@ void AdjacencyList::Show()
 
 typename std::vector<int> AdjacencyList::BFSGraph(int start_vertex)
 {
-    std::vector<int> result;
+    std::vector<int>        result;
     std::unordered_set<int> visited_record = {start_vertex};
-    std::queue<int> que;
+    std::queue<int>         que;
 
     que.push(start_vertex);
 
@@ -158,7 +158,7 @@ typename std::vector<int> AdjacencyList::BFSGraph(int start_vertex)
 
 typename std::vector<int> AdjacencyList::DFSGraph(int start_vertex)
 {
-    std::vector<int> result;
+    std::vector<int>        result;
     std::unordered_set<int> visited_record;
 
     DFSHelper(visited_record, result, start_vertex);

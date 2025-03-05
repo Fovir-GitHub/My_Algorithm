@@ -37,7 +37,7 @@ public:
 int main(void)
 {
     Solution sol;
-    string input;
+    string   input;
 
     while (cin >> input) cout << sol.romanToInt(input) << '\n';
     return 0;

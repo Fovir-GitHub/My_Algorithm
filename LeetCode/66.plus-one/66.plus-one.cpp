@@ -39,9 +39,9 @@ public:
 
 int main(void)
 {
-    Solution sol;
+    Solution    sol;
     vector<int> numbers = {9, 9};
-    vector<int> result = sol.plusOne(numbers);
+    vector<int> result  = sol.plusOne(numbers);
 
     for (auto it : result) cout << it << ' ';
 
