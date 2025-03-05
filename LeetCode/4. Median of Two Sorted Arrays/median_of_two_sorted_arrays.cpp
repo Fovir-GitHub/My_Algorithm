@@ -1,7 +1,7 @@
-#include<iostream>
-#include<vector>
-#include<algorithm>
-#include<climits>
+#include <algorithm>
+#include <climits>
+#include <iostream>
+#include <vector>
 using namespace std;
 
 class Solution
@@ -18,7 +18,8 @@ public:
     //     else
     //     {
     //         vector_size /= 2;
-    //         return (double) (nums1[vector_size] + nums1[vector_size - 1]) / 2;
+    //         return (double) (nums1[vector_size] + nums1[vector_size - 1]) /
+    //         2;
     //     }
     // }
 
@@ -31,7 +32,7 @@ public:
             return findMedianSortedArrays(nums2, nums1);
 
         int total_size = nums1_size + nums2_size;
-        int left_size = (total_size + 1) / 2;
+        int left_size  = (total_size + 1) / 2;
 
         int low = 0, high = nums1_size;
 
@@ -54,7 +55,9 @@ public:
             if (nums1_left <= nums2_right && nums2_left <= nums1_right)
             {
                 if (total_size % 2 == 0)
-                    return (double) (max(nums1_left, nums2_left) + min(nums1_right, nums2_right)) / (double) 2;
+                    return (double) (max(nums1_left, nums2_left) +
+                                     min(nums1_right, nums2_right)) /
+                           (double) 2;
                 else
                     return (double) max(nums1_left, nums2_left);
             }
@@ -72,8 +75,8 @@ int main(void)
 {
     Solution solution;
 
-    vector<int> first = { 1,3 };
-    vector<int> second = { 2,4 };
+    vector<int> first  = {1, 3};
+    vector<int> second = {2, 4};
 
     cout << (double) solution.findMedianSortedArrays(first, second);
 

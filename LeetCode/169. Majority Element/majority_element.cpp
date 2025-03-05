@@ -1,5 +1,5 @@
-#include<vector>
-#include<algorithm>
+#include <algorithm>
+#include <vector>
 using namespace std;
 
 class Solution
@@ -7,7 +7,7 @@ class Solution
 public:
     int majorityElement(vector<int> & nums)
     {
-        int count = 0;
+        int count     = 0;
         int candidate = 0;
 
         for (auto x : nums)

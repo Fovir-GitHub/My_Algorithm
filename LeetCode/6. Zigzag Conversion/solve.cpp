@@ -1,6 +1,6 @@
-#include<string>
-#include<vector>
-#include<iostream>
+#include <iostream>
+#include <string>
+#include <vector>
 using namespace std;
 
 class Solution
@@ -45,9 +45,9 @@ public:
 
         vector<string> v(numRows, "");
 
-        int current_row = 0;
-        int length = s.length();
-        bool go_down = true;
+        int  current_row = 0;
+        int  length      = s.length();
+        bool go_down     = true;
 
         for (int i = 0; i < length; i++)
         {
@@ -63,8 +63,7 @@ public:
         }
 
         string result = "";
-        for (auto & x : v)
-            result += x;
+        for (auto & x : v) result += x;
 
         return result;
     }
@@ -72,8 +71,8 @@ public:
 
 int main(void)
 {
-    string input = "AB";
-    int n = 1;
+    string   input = "AB";
+    int      n     = 1;
     Solution sol;
 
     cout << sol.convert(input, n) << endl;

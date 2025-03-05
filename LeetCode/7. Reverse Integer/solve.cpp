@@ -1,5 +1,5 @@
-#include<iostream>
-#include<climits>
+#include <climits>
+#include <iostream>
 
 class Solution
 {
@@ -23,11 +23,10 @@ public:
 
 int main(void)
 {
-    int input = 0;
+    int      input = 0;
     Solution sol;
 
-    while (std::cin >> input)
-        std::cout << sol.reverse(input) << '\n';
+    while (std::cin >> input) std::cout << sol.reverse(input) << '\n';
 
     return 0;
 }

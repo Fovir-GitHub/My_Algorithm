@@ -1,6 +1,6 @@
-#include<iostream>
-#include<string>
-#include<cmath>
+#include <cmath>
+#include <iostream>
+#include <string>
 using namespace std;
 
 class Solution
@@ -63,11 +63,10 @@ public:
 
 int main(void)
 {
-    int n = 0;
+    int      n = 0;
     Solution sol;
 
-    while (cin >> n)
-        cout << sol.isPalindrome(n) << '\n';
+    while (cin >> n) cout << sol.isPalindrome(n) << '\n';
 
     return 0;
 }

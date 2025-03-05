@@ -1,7 +1,7 @@
-#include<string>
-#include<unordered_map>
-#include<vector>
-#include<iostream>
+#include <iostream>
+#include <string>
+#include <unordered_map>
+#include <vector>
 using std::string;
 
 class Solution
@@ -10,9 +10,9 @@ public:
     int lengthOfLongestSubstring(string s)
     {
         std::unordered_map<char, int> hash; /* character - index */
-        int left = 0;
-        int max_sub_stirng_length = 0;
-        int length = s.length();
+        int                           left                  = 0;
+        int                           max_sub_stirng_length = 0;
+        int                           length                = s.length();
 
         for (int right = 0; right < length; right++)
         {
@@ -21,7 +21,8 @@ public:
                 left = hash[s[right]] + 1;
 
             hash[s[right]] = right;
-            max_sub_stirng_length = std::max(right - left + 1, max_sub_stirng_length);
+            max_sub_stirng_length =
+                std::max(right - left + 1, max_sub_stirng_length);
         }
 
         return max_sub_stirng_length;
@@ -30,7 +31,7 @@ public:
 
 int main(void)
 {
-    string s = "abcabcbb";
+    string   s = "abcabcbb";
     Solution solution;
 
     std::cout << solution.lengthOfLongestSubstring(s);

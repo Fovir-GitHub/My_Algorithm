@@ -1,5 +1,5 @@
-#include<vector>
-#include<iostream>
+#include <iostream>
+#include <vector>
 using namespace std;
 
 class Solution
@@ -8,8 +8,8 @@ public:
     void merge(vector<int> & nums1, int m, vector<int> & nums2, int n)
     {
         vector<int> temp(m + n);
-        int num1_index = 0, num2_index = 0;
-        int i = 0;
+        int         num1_index = 0, num2_index = 0;
+        int         i = 0;
 
         while (num1_index < m && num2_index < n)
         {
