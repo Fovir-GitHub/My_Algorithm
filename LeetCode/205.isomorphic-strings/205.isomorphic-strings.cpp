@@ -27,7 +27,7 @@ public:
 
         // return true;
 
-        vector<int> s_index(128, 0), t_index(128, 0);
+        vector<int> s_index(127, 0), t_index(127, 0);
         for (size_t i = 0; i < s.length(); i++)
         {
             if (s_index[t[i]] != t_index[s[i]])
