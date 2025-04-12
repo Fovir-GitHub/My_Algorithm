@@ -1,7 +1,8 @@
 #ifndef _LINKLIST_H_
 #define _LINKLIST_H_
 
-template <typename T> class LinkList
+template <typename T>
+class LinkList
 {
 private:
     struct Node
@@ -27,7 +28,8 @@ public:
     int  size() { return node_count; }
 };
 
-template <typename T> LinkList<T>::LinkList()
+template <typename T>
+LinkList<T>::LinkList()
 {
     root       = new Node;
     root->next = nullptr;
@@ -35,7 +37,8 @@ template <typename T> LinkList<T>::LinkList()
     node_count = 0;
 }
 
-template <typename T> LinkList<T>::~LinkList()
+template <typename T>
+LinkList<T>::~LinkList()
 {
     Node * backup;
 
@@ -48,7 +51,8 @@ template <typename T> LinkList<T>::~LinkList()
     node_count = 0;
 }
 
-template <typename T> bool LinkList<T>::push(T push_value)
+template <typename T>
+bool LinkList<T>::push(T push_value)
 {
     Node * push_node = new Node;
     if (!push_node)
@@ -89,7 +93,8 @@ bool LinkList<T>::insert(T insert_value, unsigned int target_position)
     return true;
 }
 
-template <typename T> bool LinkList<T>::remove(unsigned int remove_position)
+template <typename T>
+bool LinkList<T>::remove(unsigned int remove_position)
 {
     remove_position = std::min(remove_position, node_count - 1);
 
@@ -110,7 +115,8 @@ template <typename T> bool LinkList<T>::remove(unsigned int remove_position)
     return true;
 }
 
-template <typename T> bool LinkList<T>::find(T target)
+template <typename T>
+bool LinkList<T>::find(T target)
 {
     Node * temp = root;
 
@@ -121,7 +127,8 @@ template <typename T> bool LinkList<T>::find(T target)
     return false;
 }
 
-template <typename T> void LinkList<T>::access(void (*func)(T))
+template <typename T>
+void LinkList<T>::access(void (*func)(T))
 {
     Node * temp = root;
 
