@@ -1,78 +1,105 @@
 #ifndef _MYQUEUE_HPP_
 #define _MYQUEUE_HPP_
 
-template <typename T> class MyQueue
-{
-private:
-    struct Node
+#include <exception>
+#include <functional>
+#include <iostream>
+#include <memory>
+#include <stdexcept>
+
+#define QUEUE_NAMESPACE_START \
+    namespace myqueue         \
     {
-        Node * next;
-        T      value;
-    };
+#define QUEUE_NAMESPACE_END }
 
-    Node *       root;
-    Node *       tail;
-    unsigned int node_count;
+QUEUE_NAMESPACE_START
 
-public:
-    MyQueue();
-    ~MyQueue();
+template <typename T>
+struct Node
+{
+    std::shared_ptr<Node<T>> next;
+    T                        value;
 
-    bool         push(T push_value);
-    bool         pop();
-    bool         empty() { return !node_count; }
-    T            peek() { return !empty() ? root->next->value : (T) 0; }
-    unsigned int size() { return node_count; }
+    Node() : next(nullptr) {}
+    Node(const T & val) : value(val), next(nullptr) {}
 };
 
-template <typename T> MyQueue<T>::MyQueue() : node_count(0)
+template <typename T>
+class Queue
 {
-    root       = new Node;
-    root->next = nullptr;
-    tail       = root;
-}
+private:
+    std::shared_ptr<Node<T>> head, tail;
+    int                      size;
 
-template <typename T> MyQueue<T>::~MyQueue()
-{
-    while (root)
+public:
+    Queue() : head(nullptr), tail(nullptr), size(0) {}
+    ~Queue() {}
+
+    bool Empty() const { return size == 0; }
+    int  Size() const { return size; }
+
+    void      Push(const T & push_value);
+    const T & Peek() const
     {
-        tail = root->next;
-        delete root;
-        root = tail;
+        try
+        {
+            return head->value;
+        }
+        catch (const std::exception & e)
+        {
+        }
     }
-}
 
-template <typename T> bool MyQueue<T>::push(T push_value)
-{
-    Node * push_node = new Node;
-    if (!push_node)
-        return false;
+    void Pop();
 
-    push_node->value = push_value;
-    push_node->next  = nullptr;
+    void Traverse(std::function<void(const T &)> func);
 
-    if (!root->next)
-        root->next = push_node;
-    else
-        tail->next = push_node;
+    void Show()
+    {
+        Traverse([](const T & val) { std::cout << val << ' '; });
+    }
+};
 
-    tail = push_node;
-    ++node_count;
 
-    return true;
-}
-
-template <typename T> bool MyQueue<T>::pop()
-{
-    if (empty())
-        return false;
-
-    Node * backup_node = root->next;
-    root->next         = backup_node->next;
-    delete backup_node;
-    --node_count;
-
-    return true;
-}
+QUEUE_NAMESPACE_END
 
 #endif // !_MYQUEUE_HPP_
+
+template <typename T>
+void myqueue::Queue<T>::Push(const T & push_value)
+{
+    if (Empty())
+    {
+        head = tail = std::make_shared<Node<T>>(push_value);
+        size++;
+        return;
+    }
+
+    tail->next = std::make_shared<Node<T>>(push_value);
+    tail       = tail->next;
+    size++;
+
+    return;
+}
+
+template <typename T>
+void myqueue::Queue<T>::Pop()
+{
+    if (Empty())
+        return;
+
+    head = head->next;
+    size--;
+
+    return;
+}
+
+template <typename T>
+void myqueue::Queue<T>::Traverse(std::function<void(const T &)> func)
+{
+    for (std::shared_ptr<Node<T>> current = head; current;
+         current                          = current->next)
+        func(current->value);
+
+    return;
+}

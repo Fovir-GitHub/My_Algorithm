@@ -1,42 +1,26 @@
 #include "myqueue.hpp"
-#include <cstdlib>
-#include <ctime>
 #include <iostream>
+#include <queue>
 
 int main(void)
 {
-    std::srand(std::time(0));
+    myqueue::Queue<int> q;
 
-    const int N = 10, LIMIT = 20;
+    q.Push(1);
+    q.Push(2);
+    q.Push(3);
 
-    MyQueue<int> mq;
+    q.Show();
 
-    std::cout << "Size: " << mq.size() << '\n';
+    std::cout << q.Peek() << '\n';
 
-    for (int i = 0; i < N; i++)
+    while (!q.Empty())
     {
-        int num = std::rand() % LIMIT;
-        std::cout << num << ' ';
-        mq.push(num);
+        std::cout << q.Peek() << '\n';
+        q.Pop();
     }
-    std::cout << '\n';
 
-    std::cout << "Size: " << mq.size() << '\n'
-              << "peek(): " << mq.peek() << '\n';
-
-    std::cout << "After pop():\n";
-    mq.pop();
-    std::cout << "Size: " << mq.size() << '\n'
-              << "peek(): " << mq.peek() << '\n';
-
-    while (!mq.empty())
-    {
-        std::cout << mq.peek() << ' ';
-        mq.pop();
-    }
-    std::cout << '\n';
-
-    std::cout << (mq.pop() ? "success" : "fail") << '\n';
-
+    q.Pop();
+    q.Pop();
     return 0;
 }
