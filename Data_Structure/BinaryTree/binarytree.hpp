@@ -3,7 +3,8 @@
 
 #include <iostream>
 
-template <typename T> class MyBinaryTree
+template <typename T>
+class MyBinaryTree
 {
 private:
     struct TreeNode
@@ -28,13 +29,15 @@ public:
     bool find(T find_value);
 };
 
-template <typename T> MyBinaryTree<T>::MyBinaryTree() : tree_node_counter(0)
+template <typename T>
+MyBinaryTree<T>::MyBinaryTree() : tree_node_counter(0)
 {
     root       = new TreeNode;
     root->left = root->right = nullptr;
 }
 
-template <typename T> void MyBinaryTree<T>::insert(T insert_value)
+template <typename T>
+void MyBinaryTree<T>::insert(T insert_value)
 {
     if (empty())
     {
@@ -95,7 +98,8 @@ void MyBinaryTree<T>::traverse(void (*func)(T), TreeNode * start_node)
     return;
 }
 
-template <typename T> void MyBinaryTree<T>::remove(T remove_value)
+template <typename T>
+void MyBinaryTree<T>::remove(T remove_value)
 {
     if (empty())
         return;
@@ -147,7 +151,8 @@ template <typename T> void MyBinaryTree<T>::remove(T remove_value)
     return;
 }
 
-template <typename T> bool MyBinaryTree<T>::find(T find_value)
+template <typename T>
+bool MyBinaryTree<T>::find(T find_value)
 {
     TreeNode * visit = root;
     while (visit)
