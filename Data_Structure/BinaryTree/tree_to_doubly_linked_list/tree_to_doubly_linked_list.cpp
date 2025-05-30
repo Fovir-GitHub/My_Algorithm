@@ -19,11 +19,30 @@ class Solution
 {
 private:
     std::pair<TreeNode *, TreeNode *> PostOrder(TreeNode * node);
+    TreeNode *                        head, *tail;
 
 public:
     TreeNode * bstToDoublyLinkedList(TreeNode * root)
     {
-        return PostOrder(root).first;
+        auto [h, t] = PostOrder(root);
+        head        = h;
+        tail        = t;
+
+        return h;
+    }
+
+    void Show()
+    {
+        for (TreeNode * current = head; current; current = current->right)
+            std::cout << current->value << ' ';
+        std::cout << '\n';
+    }
+
+    void ShowReverse()
+    {
+        for (TreeNode * current = tail; current; current = current->left)
+            std::cout << current->value << ' ';
+        std::cout << '\n';
     }
 };
 
@@ -74,8 +93,8 @@ int main(void)
 
     tree = sol.bstToDoublyLinkedList(tree);
 
-    for (; tree; tree = tree->right) std::cout << tree->value << ' ';
-    std::cout << '\n';
+    sol.Show();
+    sol.ShowReverse();
 
     return 0;
 }
