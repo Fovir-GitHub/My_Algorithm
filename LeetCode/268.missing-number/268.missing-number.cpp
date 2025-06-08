@@ -8,21 +8,18 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    int missingNumber(vector<int> & nums)
-    {
+    int missingNumber(vector<int> & nums) {
         return (nums.size() * (nums.size() + 1)) / 2 -
                accumulate(nums.begin(), nums.end(), 0);
     }
 };
 // @lc code=end
 
-int main(void)
-{
+int main(void) {
     vector<int> vec = {9, 6, 4, 2, 3, 5, 7, 0, 1};
-    Solution    sol;
+    Solution sol;
 
     cout << sol.missingNumber(vec) << endl;
 

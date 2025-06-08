@@ -6,20 +6,20 @@
 int dfs(std::vector<int> & numbers, int target, int left, int right);
 int binarySearch(std::vector<int> & numbers, int target);
 
-int main(void)
-{
-    const int        VECTOR_SIZE = 20;
+int main(void) {
+    const int VECTOR_SIZE = 20;
     std::vector<int> numbers(VECTOR_SIZE);
-    int              find_number = 0;
+    int find_number = 0;
 
-    std::random_device              rd;
-    std::mt19937                    gen(rd());
+    std::random_device rd;
+    std::mt19937 gen(rd());
     std::uniform_int_distribution<> uid(0, 100);
     std::generate(numbers.begin(), numbers.end(), [&]() { return uid(gen); });
     std::sort(numbers.begin(), numbers.end());
 
     std::cout << "Original data:\n";
-    for (auto x : numbers) std::cout << x << ' ';
+    for (auto x : numbers)
+        std::cout << x << ' ';
     std::cout << '\n';
 
     std::cout << "Enter the number you want to find: ";
@@ -30,8 +30,7 @@ int main(void)
     return 0;
 }
 
-int dfs(std::vector<int> & numbers, int target, int left, int right)
-{
+int dfs(std::vector<int> & numbers, int target, int left, int right) {
     if (left > right)
         return -1;
 
@@ -46,7 +45,6 @@ int dfs(std::vector<int> & numbers, int target, int left, int right)
         return dfs(numbers, target, left, middle - 1);
 }
 
-int binarySearch(std::vector<int> & numbers, int target)
-{
+int binarySearch(std::vector<int> & numbers, int target) {
     return dfs(numbers, target, 0, numbers.size() - 1);
 }

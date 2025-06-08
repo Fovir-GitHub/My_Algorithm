@@ -8,12 +8,10 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    vector<int> intersection(vector<int> & nums1, vector<int> & nums2)
-    {
-        vector<int>        result;
+    vector<int> intersection(vector<int> & nums1, vector<int> & nums2) {
+        vector<int> result;
         unordered_set<int> n1(nums1.begin(), nums1.end());
         unordered_set<int> n2(nums2.begin(), nums2.end());
 

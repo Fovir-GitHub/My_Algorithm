@@ -10,11 +10,9 @@
 #include <unordered_map>
 using namespace std;
 
-class Solution
-{
+class Solution {
 public:
-    int romanToInt(string s)
-    {
+    int romanToInt(string s) {
         static unordered_map<char, int> roman_number = {
             {'M', 1000}, {'D', 500}, {'C', 100}, {'L', 50},
             {'X', 10},   {'V', 5},   {'I', 1},
@@ -34,11 +32,11 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
+int main(void) {
     Solution sol;
-    string   input;
+    string input;
 
-    while (cin >> input) cout << sol.romanToInt(input) << '\n';
+    while (cin >> input)
+        cout << sol.romanToInt(input) << '\n';
     return 0;
 }

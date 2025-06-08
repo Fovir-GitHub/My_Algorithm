@@ -23,11 +23,9 @@ using namespace std;
 //     }
 // };
 
-class Solution
-{
+class Solution {
 public:
-    TreeNode * invertTree(TreeNode * root)
-    {
+    TreeNode * invertTree(TreeNode * root) {
         if (!root)
             return root;
 

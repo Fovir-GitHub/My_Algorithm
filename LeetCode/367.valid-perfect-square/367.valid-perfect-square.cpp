@@ -8,15 +8,12 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    bool isPerfectSquare(int num)
-    {
+    bool isPerfectSquare(int num) {
         int left = 1, right = num;
 
-        while (left <= right)
-        {
+        while (left <= right) {
             long long middle = left + (right - left) / 2;
 
             if (middle * middle == num)
@@ -33,12 +30,12 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    int      n;
+int main(void) {
+    int n;
     Solution sol;
 
-    while (cin >> n) cout << sol.isPerfectSquare(n) << '\n';
+    while (cin >> n)
+        cout << sol.isPerfectSquare(n) << '\n';
 
     return 0;
 }

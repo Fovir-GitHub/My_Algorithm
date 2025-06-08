@@ -7,14 +7,14 @@ typedef std::vector<int>::iterator Iter;
 bool haveNumber(const std::vector<int> & v, Iter left, Iter right,
                 const int & target);
 
-int main(void)
-{
+int main(void) {
     const int VECTOR_SIZE = 1000;
 
-    int              number_to_find;
+    int number_to_find;
     std::vector<int> numbers(VECTOR_SIZE);
 
-    for (int i = 0; i < VECTOR_SIZE; i++) numbers[i] = i * i;
+    for (int i = 0; i < VECTOR_SIZE; i++)
+        numbers[i] = i * i;
 
     std::cout << "Enter the number you want to find: ";
 
@@ -32,8 +32,7 @@ int main(void)
 }
 
 bool haveNumber(const std::vector<int> & v, Iter left, Iter right,
-                const int & target)
-{
+                const int & target) {
     int distance;
     if ((distance = std::distance(left, right)) <= 1)
         return false;

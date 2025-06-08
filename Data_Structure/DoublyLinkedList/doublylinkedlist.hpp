@@ -4,32 +4,26 @@
 #include <functional>
 #include <memory>
 
-#define DOUBLYLINKEDLIST_NAMESPACE_BEGIN \
-    namespace doublylinkedlist           \
-    {
+#define DOUBLYLINKEDLIST_NAMESPACE_BEGIN namespace doublylinkedlist {
 #define DOUBLYLINKEDLIST_NAMESPACE_END }
 
 DOUBLYLINKEDLIST_NAMESPACE_BEGIN
 
-template <typename T>
-struct DoublyLinkedListNode
-{
+template <typename T> struct DoublyLinkedListNode {
     std::shared_ptr<DoublyLinkedListNode<T>> previous;
-    std::weak_ptr<DoublyLinkedListNode<T>>   next;
-    T                                        value;
+    std::weak_ptr<DoublyLinkedListNode<T>> next;
+    T value;
 
     DoublyLinkedListNode() : previous(nullptr) {}
     DoublyLinkedListNode(const T & val) : previous(nullptr), value(val) {}
 };
 
-template <typename T>
-class DoublyLinkedList
-{
+template <typename T> class DoublyLinkedList {
 private:
     using Node = DoublyLinkedListNode<T>;
 
     std::shared_ptr<Node> head, tail;
-    size_t                size;
+    size_t size;
 
     void Traverse(std::function<void(const T &)> func, bool front);
 
@@ -38,7 +32,7 @@ public:
     ~DoublyLinkedList() {}
 
     size_t Size() const { return size; }
-    bool   Empty() const { return Size() == 0; }
+    bool Empty() const { return Size() == 0; }
 
     void PushFront(const T & push_value);
     void PushBack(const T & push_value);
@@ -49,13 +43,11 @@ public:
     void PopFront();
     void PopBack();
 
-    void TraverseFront(std::function<void(const T &)> func)
-    {
+    void TraverseFront(std::function<void(const T &)> func) {
         Traverse(func, true);
     }
 
-    void TraverseBack(std::function<void(const T &)> func)
-    {
+    void TraverseBack(std::function<void(const T &)> func) {
         Traverse(func, false);
     }
 };
@@ -66,8 +58,7 @@ DOUBLYLINKEDLIST_NAMESPACE_END
 
 template <typename T>
 void doublylinkedlist::DoublyLinkedList<T>::Traverse(
-    std::function<void(const T &)> func, bool front)
-{
+    std::function<void(const T &)> func, bool front) {
     for (std::shared_ptr<Node> current = front ? head : tail; current;
          current = front ? current->next.lock() : current->previous)
         func(current->value);
@@ -76,10 +67,9 @@ void doublylinkedlist::DoublyLinkedList<T>::Traverse(
 }
 
 template <typename T>
-void doublylinkedlist::DoublyLinkedList<T>::PushFront(const T & push_value)
-{
+void doublylinkedlist::DoublyLinkedList<T>::PushFront(const T & push_value) {
     std::shared_ptr<Node> new_node = std::make_shared<Node>(push_value);
-    new_node->next                 = head;
+    new_node->next = head;
 
     if (head)
         head->previous = new_node;
@@ -95,10 +85,9 @@ void doublylinkedlist::DoublyLinkedList<T>::PushFront(const T & push_value)
 }
 
 template <typename T>
-void doublylinkedlist::DoublyLinkedList<T>::PushBack(const T & push_value)
-{
+void doublylinkedlist::DoublyLinkedList<T>::PushBack(const T & push_value) {
     std::shared_ptr<Node> new_node = std::make_shared<Node>(push_value);
-    new_node->previous             = tail;
+    new_node->previous = tail;
 
     if (tail)
         tail->next = new_node;
@@ -113,9 +102,7 @@ void doublylinkedlist::DoublyLinkedList<T>::PushBack(const T & push_value)
     return;
 }
 
-template <typename T>
-void doublylinkedlist::DoublyLinkedList<T>::PopFront()
-{
+template <typename T> void doublylinkedlist::DoublyLinkedList<T>::PopFront() {
     if (Empty())
         return;
 
@@ -130,9 +117,7 @@ void doublylinkedlist::DoublyLinkedList<T>::PopFront()
     return;
 }
 
-template <typename T>
-void doublylinkedlist::DoublyLinkedList<T>::PopBack()
-{
+template <typename T> void doublylinkedlist::DoublyLinkedList<T>::PopBack() {
     if (Empty())
         return;
 

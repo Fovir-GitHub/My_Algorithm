@@ -7,11 +7,9 @@
 #include <bits/stdc++.h>
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    int addDigits(int num)
-    {
+    int addDigits(int num) {
         // int result = num;
         // while ((result = addNumber(result)) >= 10);
 
@@ -34,12 +32,12 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    int      n;
+int main(void) {
+    int n;
     Solution sol;
 
-    while (std::cin >> n) std::cout << sol.addDigits(n) << '\n';
+    while (std::cin >> n)
+        std::cout << sol.addDigits(n) << '\n';
 
     return 0;
 }

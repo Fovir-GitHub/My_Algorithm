@@ -8,28 +8,24 @@
 using namespace std;
 
 // @lc code=start
-class MyStack
-{
+class MyStack {
 private:
     queue<int> que;
 
 public:
     MyStack() {}
 
-    void push(int x)
-    {
+    void push(int x) {
         que.push(x);
         int queue_size = que.size();
 
-        for (int i = 0; i < queue_size - 1; i++)
-        {
+        for (int i = 0; i < queue_size - 1; i++) {
             que.push(que.front());
             que.pop();
         }
     }
 
-    int pop()
-    {
+    int pop() {
         int result = que.front();
         que.pop();
 

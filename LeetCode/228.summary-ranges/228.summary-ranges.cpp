@@ -8,30 +8,27 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    vector<string> summaryRanges(vector<int> & nums)
-    {
+    vector<string> summaryRanges(vector<int> & nums) {
         if (nums.size() == 0)
             return vector<string>();
 
         vector<string> result;
-        string         temp         = to_string(nums[0]);
-        int            start        = nums[0];
-        int            backup_start = start;
+        string temp = to_string(nums[0]);
+        int start = nums[0];
+        int backup_start = start;
 
         for (int i = 1; i < nums.size(); i++)
-            if (nums[i] != ++start)
-            {
+            if (nums[i] != ++start) {
                 if (start - backup_start > 1)
                     result.push_back(temp + "->" + to_string(start - 1));
                 else
                     result.push_back(temp);
 
-                start        = nums[i];
+                start = nums[i];
                 backup_start = start;
-                temp         = to_string(start);
+                temp = to_string(start);
             }
 
         if (backup_start != nums.back())
@@ -44,13 +41,13 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
+int main(void) {
     vector<int> number = {0, 2, 3, 4, 6, 8, 9};
-    Solution    sol;
+    Solution sol;
 
     auto result = sol.summaryRanges(number);
-    for (auto & s : result) std::cout << s << '\n';
+    for (auto & s : result)
+        std::cout << s << '\n';
 
     return 0;
 }

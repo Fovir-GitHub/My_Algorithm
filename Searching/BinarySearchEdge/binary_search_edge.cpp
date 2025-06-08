@@ -12,16 +12,16 @@ int binaryInsert(std::vector<int> & v, int target);
 int binarySearchLeftEdgeElement(std::vector<int> & v, int target);
 int binarySearchRightEdgeElement(std::vector<int> & v, int target);
 
-int main(void)
-{
+int main(void) {
     std::srand(std::time(0));
 
     const int N = 10, LIMIT = 20;
 
     std::vector<int> numbers;
-    int              find_edge_number = 0;
+    int find_edge_number = 0;
 
-    for (int i = 0; i < N; i++) numbers.push_back(std::rand() % LIMIT);
+    for (int i = 0; i < N; i++)
+        numbers.push_back(std::rand() % LIMIT);
 
     std::sort(numbers.begin(), numbers.end());
     std::for_each(numbers.begin(), numbers.end(),
@@ -43,8 +43,7 @@ int main(void)
     return 0;
 }
 
-int binarySearchLeftEdge(std::vector<int> & v, int target)
-{
+int binarySearchLeftEdge(std::vector<int> & v, int target) {
     int result = binaryInsert(v, target);
     if (result == v.size() || v[result] != target)
         return -1;
@@ -52,19 +51,16 @@ int binarySearchLeftEdge(std::vector<int> & v, int target)
     return result;
 }
 
-int binarySearchRightEdge(std::vector<int> & v, int target)
-{
+int binarySearchRightEdge(std::vector<int> & v, int target) {
     int result = binaryInsert(v, target + 1) - 1;
     return (v[result] == target ? result : -1);
 }
 
-int binarySearchLeftEdgeElement(std::vector<int> & v, int target)
-{
-    double new_target = (double) target - 0.5;
-    int    left = 0, right = v.size() - 1, middle = 0;
+int binarySearchLeftEdgeElement(std::vector<int> & v, int target) {
+    double new_target = (double)target - 0.5;
+    int left = 0, right = v.size() - 1, middle = 0;
 
-    while (left <= right)
-    {
+    while (left <= right) {
         middle = left + (right - left) / 2;
         if (v[middle] < target)
             left = middle + 1;
@@ -78,13 +74,11 @@ int binarySearchLeftEdgeElement(std::vector<int> & v, int target)
     return left;
 }
 
-int binarySearchRightEdgeElement(std::vector<int> & v, int target)
-{
-    double new_target = (double) target + 0.5;
-    int    left = 0, right = v.size() - 1, middle = 0;
+int binarySearchRightEdgeElement(std::vector<int> & v, int target) {
+    double new_target = (double)target + 0.5;
+    int left = 0, right = v.size() - 1, middle = 0;
 
-    while (left <= right)
-    {
+    while (left <= right) {
         middle = left + (right - left) / 2;
         if (v[middle] <= target)
             left = middle + 1;
@@ -98,12 +92,10 @@ int binarySearchRightEdgeElement(std::vector<int> & v, int target)
     return right;
 }
 
-int binaryInsert(std::vector<int> & v, int target)
-{
+int binaryInsert(std::vector<int> & v, int target) {
     int left = 0, right = v.size() - 1, middle = 0;
 
-    while (left <= right)
-    {
+    while (left <= right) {
         middle = left + (right - left) / 2;
 
         if (v[middle] < target)

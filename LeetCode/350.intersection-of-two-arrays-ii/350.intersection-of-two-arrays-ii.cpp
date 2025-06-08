@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    vector<int> intersect(vector<int> & nums1, vector<int> & nums2)
-    {
+    vector<int> intersect(vector<int> & nums1, vector<int> & nums2) {
         // unordered_map<int, int> count_nums1, count_nums2;
         // vector<int>             result;
 
@@ -38,12 +36,12 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    Solution    sol;
+int main(void) {
+    Solution sol;
     vector<int> first = {1, 2, 2, 1}, second = {2, 2};
 
-    for (const auto & it : sol.intersect(first, second)) cout << it << ' ';
+    for (const auto & it : sol.intersect(first, second))
+        cout << it << ' ';
 
     return 0;
 }

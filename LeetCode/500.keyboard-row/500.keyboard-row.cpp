@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    vector<string> findWords(vector<string> & words)
-    {
+    vector<string> findWords(vector<string> & words) {
         const static unordered_map<char, int> keyboard_map = {
             {'q', 0}, {'w', 0}, {'e', 0}, {'r', 0}, {'t', 0}, {'y', 0},
             {'u', 0}, {'i', 0}, {'o', 0}, {'p', 0}, {'a', 1}, {'s', 1},
@@ -22,13 +20,11 @@ public:
         };
 
         vector<string> result;
-        for (const string & str : words)
-        {
+        for (const string & str : words) {
             bool flag = true;
             for (int i = 1; i < str.size(); i++)
                 if (keyboard_map.at(tolower(str[i])) !=
-                    keyboard_map.at(tolower(str[i - 1])))
-                {
+                    keyboard_map.at(tolower(str[i - 1]))) {
                     flag = false;
                     break;
                 }
@@ -42,14 +38,13 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
+int main(void) {
     string str[] = {"qwertyuiop", "asdfghjkl", "zxcvbnm"};
 
-    for (int i = 0; i < 3; i++)
-    {
+    for (int i = 0; i < 3; i++) {
         string temp = str[i];
-        for (int j = 0; j < temp.size(); j++) printf("{'%c',%d},", temp[j], i);
+        for (int j = 0; j < temp.size(); j++)
+            printf("{'%c',%d},", temp[j], i);
     }
 
     return 0;

@@ -16,15 +16,12 @@
 
 int guess(int num);
 
-class Solution
-{
+class Solution {
 public:
-    int guessNumber(int n)
-    {
+    int guessNumber(int n) {
         int left = 1, right = n;
 
-        while (left <= right)
-        {
+        while (left <= right) {
             int middle = left + (right - left) / 2;
             int result = guess(middle);
 

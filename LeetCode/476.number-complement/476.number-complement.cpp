@@ -9,11 +9,9 @@
 #include <iostream>
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    int findComplement(int num)
-    {
+    int findComplement(int num) {
         return (num == 0
                     ? 0
                     : ((~num) &
@@ -23,12 +21,12 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    int      n;
+int main(void) {
+    int n;
     Solution sol;
 
-    while (std::cin >> n) std::cout << sol.findComplement(n) << '\n';
+    while (std::cin >> n)
+        std::cout << sol.findComplement(n) << '\n';
 
     return 0;
 }

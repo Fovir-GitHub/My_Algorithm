@@ -24,21 +24,18 @@ using namespace std;
 //     }
 // };
 
-class Solution
-{
+class Solution {
 private:
     int result = 0;
 
 public:
-    int diameterOfBinaryTree(TreeNode * root)
-    {
+    int diameterOfBinaryTree(TreeNode * root) {
         dfs(root);
 
         return result;
     }
 
-    int dfs(TreeNode * node)
-    {
+    int dfs(TreeNode * node) {
         if (!node)
             return 0;
 

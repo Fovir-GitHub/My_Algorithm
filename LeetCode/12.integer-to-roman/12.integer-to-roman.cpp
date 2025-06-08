@@ -9,11 +9,9 @@
 #include <string>
 using namespace std;
 
-class Solution
-{
+class Solution {
 public:
-    string intToRoman(int num)
-    {
+    string intToRoman(int num) {
         static string ROMAN_NUMBERS[4][10] = {
             "",     "I",    "II", "III", "IV",  "V",   "VI", "VII", "VIII",
             "IX",   "",     "X",  "XX",  "XXX", "XL",  "L",  "LX",  "LXX",
@@ -21,10 +19,9 @@ public:
             "DCC",  "DCCC", "CM", "",    "M",   "MM",  "MMM"};
 
         string result("");
-        int    counter = 0;
+        int counter = 0;
 
-        while (num)
-        {
+        while (num) {
             result = ROMAN_NUMBERS[counter][num % 10] + result;
             counter++;
             num /= 10;
@@ -35,12 +32,12 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    int      input = 0;
+int main(void) {
+    int input = 0;
     Solution sol;
 
-    while (cin >> input) cout << sol.intToRoman(input) << endl;
+    while (cin >> input)
+        cout << sol.intToRoman(input) << endl;
 
     return 0;
 }

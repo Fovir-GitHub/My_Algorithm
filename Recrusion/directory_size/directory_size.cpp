@@ -5,8 +5,7 @@ namespace fs = std::filesystem;
 
 int getDirectorySize(const fs::path & path);
 
-int main(void)
-{
+int main(void) {
     fs::path path;
 
     while (std::cin >> path)
@@ -15,8 +14,7 @@ int main(void)
     return 0;
 }
 
-int getDirectorySize(const fs::path & path)
-{
+int getDirectorySize(const fs::path & path) {
     using Entry = fs::directory_entry;
 
     int result = 0;

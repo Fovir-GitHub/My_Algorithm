@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class MyQueue
-{
+class MyQueue {
 private:
     queue<int> que;
 
@@ -11,8 +10,7 @@ public:
 
     void push(int x) { que.push(x); }
 
-    int pop()
-    {
+    int pop() {
         int result = que.front();
         que.pop();
 

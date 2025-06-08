@@ -5,14 +5,12 @@
  */
 
 // @lc code=start
-class Solution
-{
+class Solution {
 private:
     int record[31] = {0, 1, 0};
 
 public:
-    int fib(int n)
-    {
+    int fib(int n) {
         if (n == 0)
             return 0;
 

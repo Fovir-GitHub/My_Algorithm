@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    string toHex(int num)
-    {
+    string toHex(int num) {
         // if (num == 0)
         //     return "0";
 
@@ -32,12 +30,11 @@ public:
 
         // return result;
 
-        unsigned int        n = num;
-        string              result;
+        unsigned int n = num;
+        string result;
         const static string hex_digits = "0123456789abcdef";
 
-        do
-        {
+        do {
             result += hex_digits[n % 16];
             n /= 16;
         } while (n);
@@ -47,12 +44,12 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    int      n;
+int main(void) {
+    int n;
     Solution sol;
 
-    while (cin >> n) cout << sol.toHex(n) << '\n';
+    while (cin >> n)
+        cout << sol.toHex(n) << '\n';
 
     return 0;
 }

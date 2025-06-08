@@ -8,28 +8,24 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct ListNode
-{
-    int        val;
+struct ListNode {
+    int val;
     ListNode * next;
     ListNode() : val(0), next(nullptr) {}
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode * next) : val(x), next(next) {}
 };
 
-class Solution
-{
+class Solution {
 public:
-    ListNode * reverseList(ListNode * head)
-    {
+    ListNode * reverseList(ListNode * head) {
         ListNode * previous = nullptr;
 
-        while (head)
-        {
+        while (head) {
             ListNode * backup_next = head->next;
-            head->next             = previous;
-            previous               = head;
-            head                   = backup_next;
+            head->next = previous;
+            previous = head;
+            head = backup_next;
         }
 
         return previous;

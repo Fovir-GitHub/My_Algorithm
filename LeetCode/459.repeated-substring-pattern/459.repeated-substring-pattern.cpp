@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    bool repeatedSubstringPattern(string s)
-    {
+    bool repeatedSubstringPattern(string s) {
         string temp = s + s;
 
         return temp.substr(1, temp.size() - 2).find(s) != string::npos;

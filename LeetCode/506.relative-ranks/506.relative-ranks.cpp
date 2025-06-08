@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    vector<string> findRelativeRanks(vector<int> & score)
-    {
+    vector<string> findRelativeRanks(vector<int> & score) {
         priority_queue<pair<int, int>, vector<pair<int, int>>,
                        decltype([](const pair<int, int> & first,
                                    const pair<int, int> & last) {
@@ -24,15 +22,12 @@ public:
             pq.push(pair<int, int>(score[i], i));
 
         vector<string> result(score.size());
-        int            index = 1;
+        int index = 1;
 
-        while (!pq.empty())
-        {
+        while (!pq.empty()) {
             pair<int, int> top = pq.top();
-            if (index <= 3)
-            {
-                switch (index)
-                {
+            if (index <= 3) {
+                switch (index) {
                 case 1:
                     result[top.second] = "Gold Medal";
                     break;
@@ -43,8 +38,7 @@ public:
                     result[top.second] = "Bronze Medal";
                     break;
                 }
-            }
-            else
+            } else
                 result[top.second] = to_string(index);
 
             index++;
@@ -56,10 +50,9 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
+int main(void) {
     vector<int> scores = {10, 3, 8, 9, 4};
-    Solution    sol;
+    Solution sol;
 
     for (const auto & iter : sol.findRelativeRanks(scores))
         cout << iter << '\n';

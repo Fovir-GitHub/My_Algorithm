@@ -1,19 +1,15 @@
 #include <iostream>
 #include <vector>
 
-class Graph
-{
+class Graph {
 private:
-    int                            vertices;
+    int vertices;
     std::vector<std::vector<bool>> graph;
 
 public:
     Graph(int v)
-        : vertices(v)
-        , graph(std::vector<std::vector<bool>>(
-              vertices, std::vector<bool>(vertices, false)))
-    {
-    }
+        : vertices(v), graph(std::vector<std::vector<bool>>(
+                           vertices, std::vector<bool>(vertices, false))) {}
 
     ~Graph() {}
 
@@ -21,10 +17,8 @@ public:
     void Show();
 };
 
-void Graph::GetEdges(int edges)
-{
-    for (int i = 0; i < edges; i++)
-    {
+void Graph::GetEdges(int edges) {
+    for (int i = 0; i < edges; i++) {
         int v_1, v_2;
 
         std::cout << "Enter edge " << i + 1 << ": ";
@@ -35,19 +29,17 @@ void Graph::GetEdges(int edges)
     return;
 }
 
-void Graph::Show()
-{
-    for (const auto & row : graph)
-    {
-        for (const auto & column : row) std::cout << column << ' ';
+void Graph::Show() {
+    for (const auto & row : graph) {
+        for (const auto & column : row)
+            std::cout << column << ' ';
         std::cout << '\n';
     }
 
     return;
 }
 
-int main(void)
-{
+int main(void) {
     int vertices = 0, edges = 0;
 
     std::cout << "Enter number of vertices: ";

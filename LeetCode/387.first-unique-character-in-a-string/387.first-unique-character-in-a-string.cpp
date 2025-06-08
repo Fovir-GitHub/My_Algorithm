@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    int firstUniqChar(string s)
-    {
+    int firstUniqChar(string s) {
         // unordered_map<char, int> record;
         // int                      result = INT_MAX;
 
@@ -30,7 +28,8 @@ public:
 
         vector<int> frequence(26, 0);
 
-        for (const char & ch : s) frequence[ch - 'a']++;
+        for (const char & ch : s)
+            frequence[ch - 'a']++;
 
         for (int i = 0; i < s.size(); i++)
             if (frequence[s[i] - 'a'] == 1)
@@ -41,12 +40,12 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    string   s;
+int main(void) {
+    string s;
     Solution sol;
 
-    while (cin >> s) cout << sol.firstUniqChar(s) << '\n';
+    while (cin >> s)
+        cout << sol.firstUniqChar(s) << '\n';
 
     return 0;
 }

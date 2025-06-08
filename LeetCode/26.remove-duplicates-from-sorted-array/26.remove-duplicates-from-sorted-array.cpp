@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    int removeDuplicates(vector<int> & nums)
-    {
+    int removeDuplicates(vector<int> & nums) {
         auto last = unique(nums.begin(), nums.end());
         nums.erase(last, nums.end());
 
@@ -21,13 +19,13 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    Solution    sol;
+int main(void) {
+    Solution sol;
     vector<int> number = {1, 1, 2};
 
     cout << sol.removeDuplicates(number) << '\n';
-    for (auto it : number) cout << it << ' ';
+    for (auto it : number)
+        cout << it << ' ';
 
     return 0;
 }

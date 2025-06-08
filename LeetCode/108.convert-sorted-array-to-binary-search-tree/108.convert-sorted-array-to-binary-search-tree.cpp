@@ -46,23 +46,20 @@ using namespace std;
 //     }
 // };
 
-class Solution
-{
+class Solution {
 public:
-    TreeNode * sortedArrayToBST(vector<int> & nums)
-    {
+    TreeNode * sortedArrayToBST(vector<int> & nums) {
         return helper(nums, 0, nums.size() - 1);
     }
 
-    TreeNode * helper(vector<int> & nums, int left, int right)
-    {
+    TreeNode * helper(vector<int> & nums, int left, int right) {
         if (left > right)
             return nullptr;
 
-        int        middle = (left + right) / 2;
-        TreeNode * root   = new TreeNode(nums[middle]);
-        root->left        = helper(nums, left, middle - 1);
-        root->right       = helper(nums, middle + 1, right);
+        int middle = (left + right) / 2;
+        TreeNode * root = new TreeNode(nums[middle]);
+        root->left = helper(nums, left, middle - 1);
+        root->right = helper(nums, middle + 1, right);
 
         return root;
     }

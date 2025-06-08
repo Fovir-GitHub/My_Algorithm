@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    bool containsDuplicate(vector<int> & nums)
-    {
+    bool containsDuplicate(vector<int> & nums) {
         sort(nums.begin(), nums.end());
 
         for (int i = 0; i < nums.size() - 1; i++)
@@ -24,10 +22,9 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
+int main(void) {
     vector<int> nums = {1, 2, 3, 4};
-    Solution    sol;
+    Solution sol;
 
     cout << sol.containsDuplicate(nums) << '\n';
 

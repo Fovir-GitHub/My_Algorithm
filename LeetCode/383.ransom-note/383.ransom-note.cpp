@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    bool canConstruct(string ransomNote, string magazine)
-    {
+    bool canConstruct(string ransomNote, string magazine) {
         // unordered_map<char, int> rans, maga;
 
         // for (const char & it : ransomNote) rans[it]++;
@@ -25,7 +23,8 @@ public:
         // return true;
 
         int freq[26] = {0};
-        for (const char & ch : magazine) freq[ch - 'a']++;
+        for (const char & ch : magazine)
+            freq[ch - 'a']++;
         for (const char & ch : ransomNote)
             if (--freq[ch - 'a'] < 0)
                 return false;

@@ -8,16 +8,13 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    int searchInsert(vector<int> & nums, int target)
-    {
+    int searchInsert(vector<int> & nums, int target) {
         return binarySearch(nums, 0, nums.size() - 1, target);
     }
 
-    int binarySearch(vector<int> & nums, int left, int right, int & target)
-    {
+    int binarySearch(vector<int> & nums, int left, int right, int & target) {
         if (left > right)
             return left;
 
@@ -34,13 +31,13 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    Solution    sol;
-    vector<int> vec    = {1, 3, 5, 6};
-    int         target = 0;
+int main(void) {
+    Solution sol;
+    vector<int> vec = {1, 3, 5, 6};
+    int target = 0;
 
-    while (cin >> target) cout << sol.searchInsert(vec, target) << '\n';
+    while (cin >> target)
+        cout << sol.searchInsert(vec, target) << '\n';
 
     return 0;
 }

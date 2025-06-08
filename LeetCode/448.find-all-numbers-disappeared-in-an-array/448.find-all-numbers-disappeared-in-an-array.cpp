@@ -8,15 +8,14 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    vector<int> findDisappearedNumbers(vector<int> & nums)
-    {
+    vector<int> findDisappearedNumbers(vector<int> & nums) {
         vector<int> result;
 
         for (int & it : nums)
-            while (nums[it - 1] != it) swap(it, nums[it - 1]);
+            while (nums[it - 1] != it)
+                swap(it, nums[it - 1]);
 
         for (int i = 1; i <= nums.size(); i++)
             if (i != nums[i - 1])
@@ -27,12 +26,12 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
+int main(void) {
     vector<int> input = {4, 3, 2, 7, 8, 2, 3, 1};
-    Solution    sol;
+    Solution sol;
 
-    for (const int & it : sol.findDisappearedNumbers(input)) cout << it << ' ';
+    for (const int & it : sol.findDisappearedNumbers(input))
+        cout << it << ' ';
 
     return 0;
 }

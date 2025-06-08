@@ -15,31 +15,26 @@
 //     ListNode(int x, ListNode * next) : val(x), next(next) {}
 // };
 
-class Solution
-{
+class Solution {
 public:
-    ListNode * reverse(ListNode * node)
-    {
-        ListNode * current  = node;
+    ListNode * reverse(ListNode * node) {
+        ListNode * current = node;
         ListNode * previous = nullptr;
 
-        while (current)
-        {
+        while (current) {
             ListNode * backup_next = current->next;
-            current->next          = previous;
-            previous               = current;
-            current                = backup_next;
+            current->next = previous;
+            previous = current;
+            current = backup_next;
         }
 
         return previous;
     }
 
-    bool isPalindrome(ListNode * head)
-    {
+    bool isPalindrome(ListNode * head) {
         ListNode *slow = head, *fast = head;
 
-        while (fast && fast->next)
-        {
+        while (fast && fast->next) {
             slow = slow->next;
             fast = fast->next->next;
         }

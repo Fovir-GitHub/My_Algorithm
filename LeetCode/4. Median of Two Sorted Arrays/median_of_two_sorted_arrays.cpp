@@ -4,8 +4,7 @@
 #include <vector>
 using namespace std;
 
-class Solution
-{
+class Solution {
 public:
     // double findMedianSortedArrays(vector<int> & nums1, vector<int> & nums2)
     // {
@@ -23,8 +22,7 @@ public:
     //     }
     // }
 
-    double findMedianSortedArrays(vector<int> & nums1, vector<int> & nums2)
-    {
+    double findMedianSortedArrays(vector<int> & nums1, vector<int> & nums2) {
         int nums1_size = nums1.size();
         int nums2_size = nums2.size();
 
@@ -32,12 +30,11 @@ public:
             return findMedianSortedArrays(nums2, nums1);
 
         int total_size = nums1_size + nums2_size;
-        int left_size  = (total_size + 1) / 2;
+        int left_size = (total_size + 1) / 2;
 
         int low = 0, high = nums1_size;
 
-        while (low <= high)
-        {
+        while (low <= high) {
             int nums1_middle = (low + high) >> 1;
             int nums2_middle = left_size - nums1_middle;
             int nums1_left = INT_MIN, nums1_right = INT_MAX;
@@ -52,16 +49,14 @@ public:
             if (nums2_middle - 1 >= 0)
                 nums2_left = nums2[nums2_middle - 1];
 
-            if (nums1_left <= nums2_right && nums2_left <= nums1_right)
-            {
+            if (nums1_left <= nums2_right && nums2_left <= nums1_right) {
                 if (total_size % 2 == 0)
-                    return (double) (max(nums1_left, nums2_left) +
-                                     min(nums1_right, nums2_right)) /
-                           (double) 2;
+                    return (double)(max(nums1_left, nums2_left) +
+                                    min(nums1_right, nums2_right)) /
+                           (double)2;
                 else
-                    return (double) max(nums1_left, nums2_left);
-            }
-            else if (nums1_left > nums2_right)
+                    return (double)max(nums1_left, nums2_left);
+            } else if (nums1_left > nums2_right)
                 high = nums1_middle - 1;
             else
                 low = nums1_middle + 1;
@@ -71,14 +66,13 @@ public:
     }
 };
 
-int main(void)
-{
+int main(void) {
     Solution solution;
 
-    vector<int> first  = {1, 3};
+    vector<int> first = {1, 3};
     vector<int> second = {2, 4};
 
-    cout << (double) solution.findMedianSortedArrays(first, second);
+    cout << (double)solution.findMedianSortedArrays(first, second);
 
     return 0;
 }

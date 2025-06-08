@@ -7,10 +7,9 @@
 
 std::string String2Lower(std::string s);
 
-int main(void)
-{
-    std::string                          input;
-    std::string                          token;
+int main(void) {
+    std::string input;
+    std::string token;
     std::unordered_map<std::string, int> trend;
 
     std::cout << "Please input a string:\n";
@@ -24,7 +23,8 @@ int main(void)
     std::unordered_map<std::string, int>::iterator result =
         std::max_element(trend.begin(), trend.end());
 
-    for (const auto & [key, value] : trend) std::cout << key << '\n';
+    for (const auto & [key, value] : trend)
+        std::cout << key << '\n';
 
     std::cout << "Most Trending Hashtag: " << result->first << " ("
               << result->second << " times)\n";
@@ -32,9 +32,9 @@ int main(void)
     return 0;
 }
 
-std::string String2Lower(std::string s)
-{
-    for (char & ch : s) ch = std::tolower(ch);
+std::string String2Lower(std::string s) {
+    for (char & ch : s)
+        ch = std::tolower(ch);
 
     return s;
 }

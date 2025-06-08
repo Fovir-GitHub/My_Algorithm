@@ -11,18 +11,14 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    bool isValid(string s)
-    {
+    bool isValid(string s) {
         stack<char> st;
-        for (auto iter : s)
-        {
+        for (auto iter : s) {
             if (iter == '(' || iter == '[' || iter == '{')
                 st.push(iter);
-            else
-            {
+            else {
                 if (st.empty() || (iter == ')' && st.top() != '(') ||
                     (iter == ']' && st.top() != '[') ||
                     (iter == '}' && st.top() != '{'))
@@ -37,12 +33,12 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    string   s;
+int main(void) {
+    string s;
     Solution sol;
 
-    while (cin >> s) cout << sol.isValid(s) << '\n';
+    while (cin >> s)
+        cout << sol.isValid(s) << '\n';
 
     return 0;
 }

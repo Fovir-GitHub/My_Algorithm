@@ -3,25 +3,24 @@
 
 void choose_sort(std::vector<int> & v);
 
-int main(void)
-{
+int main(void) {
     std::vector<int> a;
-    int              temp;
+    int temp;
 
-    while (std::cin >> temp) a.push_back(temp);
+    while (std::cin >> temp)
+        a.push_back(temp);
 
     choose_sort(a);
-    for (auto x : a) std::cout << x << ' ';
+    for (auto x : a)
+        std::cout << x << ' ';
 
     return 0;
 }
 
-void choose_sort(std::vector<int> & v)
-{
+void choose_sort(std::vector<int> & v) {
     int n = v.size();
 
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         int min_pos = i;
         for (int j = i + 1; j < n; j++)
             if (v[min_pos] > v[j])

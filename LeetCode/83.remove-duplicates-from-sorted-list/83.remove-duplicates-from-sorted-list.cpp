@@ -37,16 +37,13 @@
 //     }
 // };
 
-class Solution
-{
+class Solution {
 public:
-    ListNode * deleteDuplicates(ListNode * head)
-    {
+    ListNode * deleteDuplicates(ListNode * head) {
         ListNode * current = head;
         ListNode * iter;
 
-        for (; current; current = current->next)
-        {
+        for (; current; current = current->next) {
             int number = current->val;
             for (iter = current->next; iter; iter = iter->next)
                 if (iter->val != number)

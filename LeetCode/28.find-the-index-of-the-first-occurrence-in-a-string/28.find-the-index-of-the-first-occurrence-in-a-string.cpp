@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    int strStr(string haystack, string needle)
-    {
+    int strStr(string haystack, string needle) {
         auto result = haystack.find(needle);
 
         return result == string::npos ? -1 : result;
@@ -20,10 +18,9 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
+int main(void) {
     Solution sol;
-    string   hay, needle;
+    string hay, needle;
 
     cin >> hay >> needle;
     cout << sol.strStr(hay, needle) << '\n';

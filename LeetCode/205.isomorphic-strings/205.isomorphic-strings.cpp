@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    bool isIsomorphic(string s, string t)
-    {
+    bool isIsomorphic(string s, string t) {
         // unordered_map<char, char> s_to_t, t_to_s;
 
         // for (size_t i = 0; i < s.length(); i++)
@@ -28,8 +26,7 @@ public:
         // return true;
 
         vector<int> s_index(127, 0), t_index(127, 0);
-        for (size_t i = 0; i < s.length(); i++)
-        {
+        for (size_t i = 0; i < s.length(); i++) {
             if (s_index[t[i]] != t_index[s[i]])
                 return false;
             s_index[t[i]] = i + 1;
@@ -41,12 +38,12 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    string   s, t;
+int main(void) {
+    string s, t;
     Solution sol;
 
-    while (cin >> s >> t) std::cout << sol.isIsomorphic(s, t) << '\n';
+    while (cin >> s >> t)
+        std::cout << sol.isIsomorphic(s, t) << '\n';
 
     return 0;
 }

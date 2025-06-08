@@ -4,12 +4,10 @@
 #include <vector>
 using namespace std;
 
-class Solution
-{
+class Solution {
 public:
-    bool isMatch(string s, string p)
-    {
-        int                  m = s.size(), n = p.size();
+    bool isMatch(string s, string p) {
+        int m = s.size(), n = p.size();
         vector<vector<bool>> dp(m + 1, vector<bool>(n + 1, false));
         dp[0][0] = true;
 
@@ -30,12 +28,12 @@ public:
     }
 };
 
-int main(void)
-{
-    string   s, p;
+int main(void) {
+    string s, p;
     Solution sol;
 
-    while (cin >> s >> p) cout << sol.isMatch(s, p) << '\n';
+    while (cin >> s >> p)
+        cout << sol.isMatch(s, p) << '\n';
 
     return 0;
 }

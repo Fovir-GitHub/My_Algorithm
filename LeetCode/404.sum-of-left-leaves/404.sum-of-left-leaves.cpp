@@ -21,8 +21,7 @@
 //     }
 // };
 
-class Solution
-{
+class Solution {
 public:
     // int sumOfLeftLeaves(TreeNode * root)
     // {
@@ -49,8 +48,7 @@ public:
     //     return;
     // }
 
-    int sumOfLeftLeaves(TreeNode * root, bool is_left = false)
-    {
+    int sumOfLeftLeaves(TreeNode * root, bool is_left = false) {
         if (!root)
             return 0;
 

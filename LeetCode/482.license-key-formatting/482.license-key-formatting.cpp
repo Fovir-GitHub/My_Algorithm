@@ -8,22 +8,18 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    string licenseKeyFormatting(string s, int k)
-    {
+    string licenseKeyFormatting(string s, int k) {
         string result;
-        int    count = 0;
+        int count = 0;
 
         for (string::reverse_iterator iter = s.rbegin(); iter != s.rend();
-             iter++)
-        {
+             iter++) {
             if (*iter == '-')
                 continue;
 
-            if (count == k)
-            {
+            if (count == k) {
                 result += '-';
                 count = 0;
             }
@@ -39,13 +35,13 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    string   s;
-    int      k;
+int main(void) {
+    string s;
+    int k;
     Solution sol;
 
-    while (cin >> s >> k) cout << sol.licenseKeyFormatting(s, k) << '\n';
+    while (cin >> s >> k)
+        cout << sol.licenseKeyFormatting(s, k) << '\n';
 
     return 0;
 }

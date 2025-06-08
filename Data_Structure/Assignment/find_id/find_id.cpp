@@ -1,17 +1,16 @@
 #include <iostream>
 #include <vector>
 
-class FindId
-{
+class FindId {
 private:
     enum { LIMIT = 10 };
 
     std::vector<int> numbers;
-    int              search_id;
+    int search_id;
 
     bool IsAscending();
-    int  SequentialSearch();
-    int  BinarySearch(int left, int right);
+    int SequentialSearch();
+    int BinarySearch(int left, int right);
 
 public:
     FindId() : numbers(LIMIT, 0), search_id(0) {}
@@ -22,8 +21,7 @@ public:
     void Solve();
 };
 
-bool FindId::IsAscending()
-{
+bool FindId::IsAscending() {
     for (int i = 0; i < numbers.size() - 1; i++)
         if (numbers[i] > numbers[i + 1])
             return false;
@@ -31,8 +29,7 @@ bool FindId::IsAscending()
     return true;
 }
 
-int FindId::SequentialSearch()
-{
+int FindId::SequentialSearch() {
     for (int i = 0; i < numbers.size(); i++)
         if (numbers[i] == search_id)
             return i;
@@ -40,8 +37,7 @@ int FindId::SequentialSearch()
     return -1;
 }
 
-int FindId::BinarySearch(int left, int right)
-{
+int FindId::BinarySearch(int left, int right) {
     if (left >= right)
         return -1;
 
@@ -56,8 +52,7 @@ int FindId::BinarySearch(int left, int right)
     return BinarySearch(left, middle - 1);
 }
 
-void FindId::GetSearchId()
-{
+void FindId::GetSearchId() {
     std::cout << "Product IDs: [";
     for (int i = 0; i < numbers.size(); i++)
         std::cout << numbers[i] << (i == numbers.size() - 1 ? "]\n" : ", ");
@@ -66,8 +61,7 @@ void FindId::GetSearchId()
     std::cin >> search_id;
 }
 
-void FindId::Solve()
-{
+void FindId::Solve() {
     bool use_sequential_search = !IsAscending();
 
     std::cout << "-> "
@@ -87,12 +81,10 @@ void FindId::Solve()
     return;
 }
 
-int main(void)
-{
+int main(void) {
     FindId fi({10, 12, 22, 29, 33, 43, 48, 67, 89, 90});
 
-    while (true)
-    {
+    while (true) {
         fi.GetSearchId();
         fi.Solve();
     }

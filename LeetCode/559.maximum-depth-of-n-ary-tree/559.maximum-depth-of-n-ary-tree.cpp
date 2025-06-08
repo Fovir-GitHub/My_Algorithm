@@ -26,9 +26,7 @@ using namespace std;
 //     }
 // };
 
-
-class Solution
-{
+class Solution {
 public:
     // int maxDepth(Node * root)
     // {
@@ -42,26 +40,24 @@ public:
     //     return max_depth + 1;
     // }
 
-    int maxDepth(Node * root)
-    {
+    int maxDepth(Node * root) {
         if (!root)
             return 0;
 
         queue<Node *> que;
-        int           depth = 0;
+        int depth = 0;
         que.push(root);
 
-        while (!que.empty())
-        {
+        while (!que.empty()) {
             depth++;
 
             int queue_size = que.size();
-            for (int i = 0; i < queue_size; i++)
-            {
+            for (int i = 0; i < queue_size; i++) {
                 Node * node = que.front();
                 que.pop();
 
-                for (Node * child : node->children) que.push(child);
+                for (Node * child : node->children)
+                    que.push(child);
             }
         }
 

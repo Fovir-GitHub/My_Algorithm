@@ -5,8 +5,7 @@
 #include <vector>
 using std::vector;
 
-template <typename T> class MyHeap
-{
+template <typename T> class MyHeap {
 private:
     vector<T> heap;
 
@@ -16,7 +15,7 @@ public:
 
     void push(T push_value);
     bool empty() { return heap.empty(); }
-    T    peek() { return heap[0]; }
+    T peek() { return heap[0]; }
     void pop();
 
     int left(int i) { return 2 * i + 1; }
@@ -27,22 +26,20 @@ public:
     void SiftDown(int i);
 };
 
-template <typename T> MyHeap<T>::MyHeap(vector<T> input_heap)
-{
+template <typename T> MyHeap<T>::MyHeap(vector<T> input_heap) {
     heap = input_heap;
-    for (int i = parent(heap.size() - 1); i >= 0; i--) SiftDown(i);
+    for (int i = parent(heap.size() - 1); i >= 0; i--)
+        SiftDown(i);
 }
 
-template <typename T> void MyHeap<T>::push(T push_value)
-{
+template <typename T> void MyHeap<T>::push(T push_value) {
     heap.push_back(push_value);
     SiftUp(heap.size() - 1);
 
     return;
 }
 
-template <typename T> void MyHeap<T>::pop()
-{
+template <typename T> void MyHeap<T>::pop() {
     if (empty())
         return;
 
@@ -54,10 +51,8 @@ template <typename T> void MyHeap<T>::pop()
     return;
 }
 
-template <typename T> void MyHeap<T>::SiftUp(int i)
-{
-    while (true)
-    {
+template <typename T> void MyHeap<T>::SiftUp(int i) {
+    while (true) {
         int p = parent(i);
 
         if (p < 0 || heap[i] <= heap[p])
@@ -69,10 +64,8 @@ template <typename T> void MyHeap<T>::SiftUp(int i)
     return;
 }
 
-template <typename T> void MyHeap<T>::SiftDown(int i)
-{
-    while (true)
-    {
+template <typename T> void MyHeap<T>::SiftDown(int i) {
+    while (true) {
         int l = left(i), r = right(i), ma = i;
         if (l < heap.size() && heap[l] > heap[ma])
             ma = l;

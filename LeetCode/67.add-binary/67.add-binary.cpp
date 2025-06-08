@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    string addBinary(string a, string b)
-    {
+    string addBinary(string a, string b) {
         if (a.length() > b.length())
             swap(a, b);
 
@@ -20,14 +18,13 @@ public:
         reverse(b.begin(), b.end());
         a.append(b.length() - a.length(), '0');
 
-        int    n = a.length();
+        int n = a.length();
         string result("");
-        int    next_plus = 0;
+        int next_plus = 0;
 
-        for (int i = 0; i < n; i++)
-        {
+        for (int i = 0; i < n; i++) {
             int add_result = a[i] + b[i] - '0' - '0' + next_plus;
-            next_plus      = add_result / 2;
+            next_plus = add_result / 2;
             add_result %= 2;
 
             result += add_result + '0';
@@ -43,12 +40,12 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
+int main(void) {
     Solution sol;
-    string   a, b;
+    string a, b;
 
-    while (cin >> a >> b) cout << sol.addBinary(a, b) << '\n';
+    while (cin >> a >> b)
+        cout << sol.addBinary(a, b) << '\n';
 
     return 0;
 }

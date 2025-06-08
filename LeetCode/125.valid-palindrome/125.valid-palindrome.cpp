@@ -11,17 +11,16 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    bool isPalindrome(string s)
-    {
+    bool isPalindrome(string s) {
         int left = 0, right = s.size() - 1;
 
-        while (left < right)
-        {
-            while (left < right && !isalnum(s[left])) left++;
-            while (left < right && !isalnum(s[right])) right--;
+        while (left < right) {
+            while (left < right && !isalnum(s[left]))
+                left++;
+            while (left < right && !isalnum(s[right]))
+                right--;
 
             if (tolower(s[left]) != tolower(s[right]))
                 return false;
@@ -34,12 +33,12 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    string   s;
+int main(void) {
+    string s;
     Solution sol;
 
-    while (getline(cin, s)) std::cout << sol.isPalindrome(s) << '\n';
+    while (getline(cin, s))
+        std::cout << sol.isPalindrome(s) << '\n';
 
     return 0;
 }

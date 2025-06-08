@@ -10,23 +10,23 @@ void mergeSort(std::vector<int> & v, Iter left_pos, Iter right_pos);
 void merge(std::vector<int> & v, Iter left_pos, Iter middle_pos,
            Iter right_pos);
 
-int main(void)
-{
+int main(void) {
     // std::freopen("./test.in", "r", stdin);
     std::vector<int> a;
-    int              temp;
+    int temp;
 
-    while (std::cin >> temp) a.push_back(temp);
+    while (std::cin >> temp)
+        a.push_back(temp);
 
     mergeSort(a, a.begin(), a.end());
-    for (auto x : a) std::cout << x << " ";
+    for (auto x : a)
+        std::cout << x << " ";
 
     return 0;
 }
 
-void mergeSort(std::vector<int> & v, Iter left_pos, Iter right_pos)
-{
-    int  distance;
+void mergeSort(std::vector<int> & v, Iter left_pos, Iter right_pos) {
+    int distance;
     Iter middle_pos = left_pos;
 
     if ((distance = std::distance(left_pos, right_pos)) <=
@@ -41,35 +41,29 @@ void mergeSort(std::vector<int> & v, Iter left_pos, Iter right_pos)
     return;
 }
 
-void merge(std::vector<int> & v, Iter left_pos, Iter middle_pos, Iter right_pos)
-{
+void merge(std::vector<int> & v, Iter left_pos, Iter middle_pos,
+           Iter right_pos) {
     std::vector<int> temp(std::distance(left_pos, right_pos));
-    Iter             left_head = left_pos, right_head = middle_pos;
-    Iter             temp_iter = temp.begin();
+    Iter left_head = left_pos, right_head = middle_pos;
+    Iter temp_iter = temp.begin();
 
-    while (left_head != middle_pos && right_head != right_pos)
-    {
-        if (*left_head < *right_head)
-        {
+    while (left_head != middle_pos && right_head != right_pos) {
+        if (*left_head < *right_head) {
             *temp_iter = *left_head;
             left_head++;
-        }
-        else
-        {
+        } else {
             *temp_iter = *right_head;
             right_head++;
         }
         temp_iter++;
     }
 
-    while (left_head != middle_pos)
-    {
+    while (left_head != middle_pos) {
         *temp_iter = *left_head;
         left_head++;
         temp_iter++;
     }
-    while (right_head != right_pos)
-    {
+    while (right_head != right_pos) {
         *temp_iter = *right_head;
         right_head++;
         temp_iter++;

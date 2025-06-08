@@ -24,24 +24,21 @@ using namespace std;
 //     }
 // };
 
-class Solution
-{
+class Solution {
 private:
     int tilt_sum = 0;
 
 public:
-    int findTilt(TreeNode * root)
-    {
+    int findTilt(TreeNode * root) {
         findTiltHelper(root);
         return tilt_sum;
     }
 
-    int findTiltHelper(TreeNode * root)
-    {
+    int findTiltHelper(TreeNode * root) {
         if (!root)
             return 0;
 
-        int left_sum  = findTiltHelper(root->left),
+        int left_sum = findTiltHelper(root->left),
             right_sum = findTiltHelper(root->right);
         tilt_sum += std::abs(left_sum - right_sum);
 

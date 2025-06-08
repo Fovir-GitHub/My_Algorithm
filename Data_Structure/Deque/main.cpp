@@ -3,23 +3,20 @@
 #include <ctime>
 #include <iostream>
 
-int main(void)
-{
+int main(void) {
     std::srand(std::time(0));
 
-    const int    N = 5, LIMIT = 20;
-    int          num;
+    const int N = 5, LIMIT = 20;
+    int num;
     MyDeque<int> mdeq;
 
     std::cout << "push_front():\n";
-    for (int i = 0; i < N; i++)
-    {
+    for (int i = 0; i < N; i++) {
         std::cout << (num = std::rand() % LIMIT) << ' ';
         mdeq.push_front(num);
     }
     std::cout << '\n' << "push_back():\n";
-    for (int i = 0; i < N; i++)
-    {
+    for (int i = 0; i < N; i++) {
         std::cout << (num = std::rand() % LIMIT) << ' ';
         mdeq.push_back(num);
     }

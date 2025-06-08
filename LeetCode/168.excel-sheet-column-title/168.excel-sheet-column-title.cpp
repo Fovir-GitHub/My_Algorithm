@@ -8,15 +8,12 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    string convertToTitle(int columnNumber)
-    {
+    string convertToTitle(int columnNumber) {
         string result;
 
-        while (columnNumber)
-        {
+        while (columnNumber) {
             columnNumber--;
             result.insert(result.begin(), 'A' + columnNumber % 26);
             columnNumber /= 26;
@@ -27,12 +24,12 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    int      n;
+int main(void) {
+    int n;
     Solution sol;
 
-    while (cin >> n) std::cout << sol.convertToTitle(n) << '\n';
+    while (cin >> n)
+        std::cout << sol.convertToTitle(n) << '\n';
 
     return 0;
 }

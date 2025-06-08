@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    string reverseVowels(string s)
-    {
+    string reverseVowels(string s) {
         // string vowels = "aeiou";
         // int    left = 0, right = s.size() - 1;
 
@@ -32,12 +30,11 @@ public:
 
         // return s;
 
-        int    left = 0, right = s.size() - 1;
+        int left = 0, right = s.size() - 1;
         string vowels = "aeiouAEIOU";
 
-        while (left < right)
-        {
-            left  = s.find_first_of(vowels, left);
+        while (left < right) {
+            left = s.find_first_of(vowels, left);
             right = s.find_last_of(vowels, right);
 
             if (left < right)
@@ -49,12 +46,12 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    string   input(" ");
+int main(void) {
+    string input(" ");
     Solution sol;
 
-    while (cin >> input) cout << sol.reverseVowels(input) << '\n';
+    while (cin >> input)
+        cout << sol.reverseVowels(input) << '\n';
 
     return 0;
 }

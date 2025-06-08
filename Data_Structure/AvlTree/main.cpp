@@ -5,20 +5,18 @@
 
 void show(int number);
 
-int main(void)
-{
+int main(void) {
     std::srand(std::time(0));
 
     const int N = 10, LIMIT = 20;
 
-    int          num           = 0;
-    int          remove_number = 0;
-    int          find_number   = 0;
+    int num = 0;
+    int remove_number = 0;
+    int find_number = 0;
     AvlTree<int> avl;
 
     std::cout << "Input:\n";
-    for (int i = 0; i < N; i++)
-    {
+    for (int i = 0; i < N; i++) {
         std::cout << (num = std::rand() % LIMIT) << ' ';
         avl.insert(num);
     }
@@ -40,7 +38,4 @@ int main(void)
     return 0;
 }
 
-void show(int number)
-{
-    std::cout << number << ' ';
-}
+void show(int number) { std::cout << number << ' '; }

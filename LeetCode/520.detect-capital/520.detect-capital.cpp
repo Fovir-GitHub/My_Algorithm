@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    bool detectCapitalUse(string word)
-    {
+    bool detectCapitalUse(string word) {
         if (word.length() <= 1)
             return true;
 
@@ -27,12 +25,12 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    string   s;
+int main(void) {
+    string s;
     Solution sol;
 
-    while (cin >> s) cout << sol.detectCapitalUse(s) << '\n';
+    while (cin >> s)
+        cout << sol.detectCapitalUse(s) << '\n';
 
     return 0;
 }

@@ -6,8 +6,7 @@
 
 template <typename T> void insertSort(std::vector<T> & v);
 
-int main(void)
-{
+int main(void) {
     const int VEC_SIZE = 10;
 
     std::srand(std::time(0));
@@ -16,21 +15,19 @@ int main(void)
     std::generate(v.begin(), v.end(), []() { return std::rand() % 20; });
     insertSort(v);
 
-    for (auto x : v) std::cout << x << " ";
+    for (auto x : v)
+        std::cout << x << " ";
 
     return 0;
 }
 
-template <typename T> void insertSort(std::vector<T> & v)
-{
+template <typename T> void insertSort(std::vector<T> & v) {
     int n = v.size();
 
-    for (int i = 1; i < n; i++)
-    {
-        T   current = v[i];
-        int j       = i - 1;
-        while (j >= 0 && v[j] > current)
-        {
+    for (int i = 1; i < n; i++) {
+        T current = v[i];
+        int j = i - 1;
+        while (j >= 0 && v[j] > current) {
             v[j + 1] = v[j];
             j--;
         }

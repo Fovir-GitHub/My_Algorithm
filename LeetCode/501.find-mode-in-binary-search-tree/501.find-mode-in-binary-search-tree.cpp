@@ -22,23 +22,20 @@ using namespace std;
 //     }
 // };
 
-class Solution
-{
+class Solution {
 private:
     vector<int> result;
-    int         max_mode      = 0;
-    int         current_value = -1;
-    int         frequence     = 0;
+    int max_mode = 0;
+    int current_value = -1;
+    int frequence = 0;
 
 public:
-    vector<int> findMode(TreeNode * root)
-    {
+    vector<int> findMode(TreeNode * root) {
         Traverse(root);
         return result;
     }
 
-    void Traverse(TreeNode * node)
-    {
+    void Traverse(TreeNode * node) {
         if (!node)
             return;
 
@@ -46,18 +43,15 @@ public:
 
         if (current_value == node->val)
             frequence++;
-        else
-        {
+        else {
             current_value = node->val;
-            frequence     = 1;
+            frequence = 1;
         }
 
-        if (frequence > max_mode)
-        {
+        if (frequence > max_mode) {
             max_mode = frequence;
-            result   = {node->val};
-        }
-        else if (frequence == max_mode)
+            result = {node->val};
+        } else if (frequence == max_mode)
             result.push_back(node->val);
 
         Traverse(node->right);

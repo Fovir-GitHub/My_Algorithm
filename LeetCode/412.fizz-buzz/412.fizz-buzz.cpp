@@ -8,15 +8,12 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    vector<string> fizzBuzz(int n)
-    {
+    vector<string> fizzBuzz(int n) {
         vector<string> answer(n);
 
-        for (int i = 0; i < n; i++)
-        {
+        for (int i = 0; i < n; i++) {
             int j = i + 1;
             if (j % 3 == 0 && j % 5 == 0)
                 answer[i] = "FizzBuzz";
@@ -33,13 +30,13 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    int      n;
+int main(void) {
+    int n;
     Solution sol;
 
     while (cin >> n)
-        for (auto it : sol.fizzBuzz(n)) cout << it << '\n';
+        for (auto it : sol.fizzBuzz(n))
+            cout << it << '\n';
 
     return 0;
 }

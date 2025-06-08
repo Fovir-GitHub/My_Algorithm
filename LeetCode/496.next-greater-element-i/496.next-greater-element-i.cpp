@@ -8,19 +8,15 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    vector<int> nextGreaterElement(vector<int> & nums1, vector<int> & nums2)
-    {
+    vector<int> nextGreaterElement(vector<int> & nums1, vector<int> & nums2) {
         unordered_map<int, int> next_greater_element;
-        vector<int>             result(nums1.size(), -1);
-        stack<int>              st;
+        vector<int> result(nums1.size(), -1);
+        stack<int> st;
 
-        for (const int & number : nums2)
-        {
-            while (!st.empty() && st.top() < number)
-            {
+        for (const int & number : nums2) {
+            while (!st.empty() && st.top() < number) {
                 next_greater_element[st.top()] = number;
                 st.pop();
             }

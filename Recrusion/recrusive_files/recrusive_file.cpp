@@ -5,8 +5,7 @@
 
 namespace fs = std::filesystem;
 
-class TraverseDirectory
-{
+class TraverseDirectory {
 private:
     fs::path root_path;
 
@@ -21,8 +20,7 @@ public:
 };
 
 void TraverseDirectory::ExploreHelper(const fs::path & current_path,
-                                      int & total_size, int & total_files)
-{
+                                      int & total_size, int & total_files) {
     std::vector<fs::directory_entry> entires;
 
     for (const fs::directory_entry & entry :
@@ -35,21 +33,18 @@ void TraverseDirectory::ExploreHelper(const fs::path & current_path,
               });
 
     for (const fs::directory_entry & entry : entires)
-        if (fs::is_regular_file(entry))
-        {
+        if (fs::is_regular_file(entry)) {
             std::cout << (current_path / entry).string() << " ("
                       << fs::file_size(entry) << " KB)\n";
             total_files++;
             total_size += fs::file_size(entry);
-        }
-        else
+        } else
             ExploreHelper(entry, total_size, total_files);
 
     return;
 }
 
-void TraverseDirectory::Explore()
-{
+void TraverseDirectory::Explore() {
     int total_size = 0, total_files = 0;
     ExploreHelper(root_path, total_size, total_files);
 
@@ -59,12 +54,10 @@ void TraverseDirectory::Explore()
     return;
 }
 
-int main(void)
-{
+int main(void) {
     fs::path path;
 
-    while (std::cin >> path)
-    {
+    while (std::cin >> path) {
         TraverseDirectory td(path);
         td.Explore();
     }

@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    int longestPalindrome(string s)
-    {
+    int longestPalindrome(string s) {
         // unordered_set<char> record;
         // int                 length = 0;
 
@@ -31,7 +29,8 @@ public:
 
         bitset<'z' - 'A' + 1> freq = 0;
 
-        for (const char & ch : s) freq.flip(ch - 'A');
+        for (const char & ch : s)
+            freq.flip(ch - 'A');
         int odd = freq.count();
 
         return s.size() - odd + (odd > 0);
@@ -39,12 +38,12 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    string   s;
+int main(void) {
+    string s;
     Solution sol;
 
-    while (cin >> s) cout << sol.longestPalindrome(s) << '\n';
+    while (cin >> s)
+        cout << sol.longestPalindrome(s) << '\n';
 
     return 0;
 }

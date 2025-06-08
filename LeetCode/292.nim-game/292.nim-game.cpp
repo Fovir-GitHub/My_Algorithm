@@ -5,8 +5,7 @@
  */
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
     bool canWinNim(int n) { return n % 4; }
 };

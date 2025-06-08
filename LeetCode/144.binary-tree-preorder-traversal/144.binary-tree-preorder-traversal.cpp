@@ -36,19 +36,16 @@ using namespace std;
 //     }
 // };
 
-class Solution
-{
+class Solution {
 public:
-    vector<int> preorderTraversal(TreeNode * root)
-    {
+    vector<int> preorderTraversal(TreeNode * root) {
         vector<int> result;
         preorderTraversalHelper(root, result);
 
         return result;
     }
 
-    void preorderTraversalHelper(TreeNode * node, vector<int> & result)
-    {
+    void preorderTraversalHelper(TreeNode * node, vector<int> & result) {
         if (!node)
             return;
 

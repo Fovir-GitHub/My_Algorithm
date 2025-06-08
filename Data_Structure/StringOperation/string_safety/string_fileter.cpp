@@ -8,8 +8,7 @@
 
 bool isCleanString(std::string s);
 
-int main(void)
-{
+int main(void) {
     std::freopen("./input.in", "r", stdin);
 
     std::string input;
@@ -20,15 +19,14 @@ int main(void)
     return 0;
 }
 
-bool isCleanString(std::string s)
-{
+bool isCleanString(std::string s) {
     const static std::unordered_map<char, char> character_map = {
         {'@', 'a'},
         {'3', 'e'},
     };
 
     const static std::vector<std::string> bad_words = {"bad", "hate", "ugly"};
-    std::string                           word;
+    std::string word;
 
     for (char & ch : s)
         if (character_map.count(ch))

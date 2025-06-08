@@ -23,19 +23,16 @@ using namespace std;
 //     }
 // };
 
-class Solution
-{
+class Solution {
 public:
-    vector<int> postorderTraversal(TreeNode * root)
-    {
+    vector<int> postorderTraversal(TreeNode * root) {
         vector<int> result;
         postorderTraversalHelper(root, result);
 
         return result;
     }
 
-    void postorderTraversalHelper(TreeNode * node, vector<int> & result)
-    {
+    void postorderTraversalHelper(TreeNode * node, vector<int> & result) {
         if (!node)
             return;
 

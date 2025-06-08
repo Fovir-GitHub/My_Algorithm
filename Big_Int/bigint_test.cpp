@@ -2,11 +2,11 @@
 #include "bigint_math.hpp"
 #include <iostream>
 
-int main(void)
-{
+int main(void) {
     BigInt n;
 
-    while (std::cin >> n) big_int_math::primeFactorize(n);
+    while (std::cin >> n)
+        big_int_math::primeFactorize(n);
 
     return 0;
 }

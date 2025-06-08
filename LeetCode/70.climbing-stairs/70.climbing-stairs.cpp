@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    int climbStairs(int n)
-    {
+    int climbStairs(int n) {
         if (n < 3)
             return n;
 
@@ -27,12 +25,12 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
+int main(void) {
     Solution sol;
-    int      n;
+    int n;
 
-    while (cin >> n) cout << sol.climbStairs(n) << '\n';
+    while (cin >> n)
+        cout << sol.climbStairs(n) << '\n';
 
     return 0;
 }

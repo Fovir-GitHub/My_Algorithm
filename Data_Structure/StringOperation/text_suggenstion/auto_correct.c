@@ -12,8 +12,7 @@ int getLevenshteinDistance(char * first, char * second);
 void showPossibleText(char dictionary[][STRING_MAX_LENGTH], char * text,
                       int dictionary_size);
 
-int main(void)
-{
+int main(void) {
     char dictionary[DICTORY_SIZE][STRING_MAX_LENGTH] = {
         "different", "game", "gram", "frame", "grape", "name", "same"};
 
@@ -25,20 +24,16 @@ int main(void)
     return 0;
 }
 
-int minInt(int a, int b)
-{
-    return a < b ? a : b;
-}
+int minInt(int a, int b) { return a < b ? a : b; }
 
-int getLevenshteinDistance(char * first, char * second)
-{
-    int    first_length = strlen(first), second_length = strlen(second);
-    int ** dp = (int **) malloc((first_length + 1) * sizeof(int *));
+int getLevenshteinDistance(char * first, char * second) {
+    int first_length = strlen(first), second_length = strlen(second);
+    int ** dp = (int **)malloc((first_length + 1) * sizeof(int *));
 
-    for (int i = 0; i <= first_length; i++)
-    {
-        *(dp + i) = (int *) malloc((second_length + 1) * sizeof(int));
-        for (int j = 0; j <= second_length; j++) dp[i][j] = INT_MAX;
+    for (int i = 0; i <= first_length; i++) {
+        *(dp + i) = (int *)malloc((second_length + 1) * sizeof(int));
+        for (int j = 0; j <= second_length; j++)
+            dp[i][j] = INT_MAX;
     }
 
     dp[0][0] = 0;
@@ -51,15 +46,15 @@ int getLevenshteinDistance(char * first, char * second)
 
     int result = dp[first_length][second_length];
 
-    for (int i = 0; i <= first_length; i++) free(*(dp + i));
+    for (int i = 0; i <= first_length; i++)
+        free(*(dp + i));
     free(dp);
 
     return result;
 }
 
 void showPossibleText(char dictionary[][STRING_MAX_LENGTH], char * text,
-                      int dictionary_size)
-{
+                      int dictionary_size) {
     puts("Did you mean:");
 
     for (int i = 0; i < dictionary_size; i++)

@@ -3,8 +3,7 @@
 #include <vector>
 using namespace std;
 
-class Solution
-{
+class Solution {
 public:
     // string convert(string s, int numRows)
     // {
@@ -38,19 +37,17 @@ public:
     //     return result;
     // }
 
-    string convert(string s, int numRows)
-    {
+    string convert(string s, int numRows) {
         if (numRows <= 1)
             return s;
 
         vector<string> v(numRows, "");
 
-        int  current_row = 0;
-        int  length      = s.length();
-        bool go_down     = true;
+        int current_row = 0;
+        int length = s.length();
+        bool go_down = true;
 
-        for (int i = 0; i < length; i++)
-        {
+        for (int i = 0; i < length; i++) {
             v[current_row] += s[i];
 
             if (go_down)
@@ -63,16 +60,16 @@ public:
         }
 
         string result = "";
-        for (auto & x : v) result += x;
+        for (auto & x : v)
+            result += x;
 
         return result;
     }
 };
 
-int main(void)
-{
-    string   input = "AB";
-    int      n     = 1;
+int main(void) {
+    string input = "AB";
+    int n = 1;
     Solution sol;
 
     cout << sol.convert(input, n) << endl;

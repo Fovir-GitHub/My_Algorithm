@@ -33,16 +33,13 @@
 //     }
 // };
 
-class Solution
-{
+class Solution {
 public:
-    bool hasPathSum(TreeNode * root, int targetSum)
-    {
+    bool hasPathSum(TreeNode * root, int targetSum) {
         return dfs(root, 0, targetSum);
     }
 
-    bool dfs(TreeNode * node, int current_sum, int & target)
-    {
+    bool dfs(TreeNode * node, int current_sum, int & target) {
         if (!node)
             return false;
 

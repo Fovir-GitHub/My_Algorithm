@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    uint32_t reverseBits(uint32_t n)
-    {
+    uint32_t reverseBits(uint32_t n) {
         // string s = bitset<32>(n).to_string();
         // reverse(s.begin(), s.end());
 
@@ -20,8 +18,7 @@ public:
 
         uint32_t result = 0;
 
-        for (int i = 0; i < 32; i++)
-        {
+        for (int i = 0; i < 32; i++) {
             result = (result << 1) | (n & 1);
             n >>= 1;
         }
@@ -31,12 +28,12 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
+int main(void) {
     uint32_t n;
     Solution sol;
 
-    while (cin >> n) cout << sol.reverseBits(n) << '\n';
+    while (cin >> n)
+        cout << sol.reverseBits(n) << '\n';
 
     return 0;
 }

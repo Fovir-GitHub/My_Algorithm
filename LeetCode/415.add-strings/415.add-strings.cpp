@@ -8,13 +8,11 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    string addStrings(string num1, string num2)
-    {
+    string addStrings(string num1, string num2) {
         string result;
-        int    last = 0;
+        int last = 0;
 
         reverse(num1.begin(), num1.end());
         reverse(num2.begin(), num2.end());
@@ -24,8 +22,7 @@ public:
         else
             num2.append(string(num1.length() - num2.length(), '0'));
 
-        for (int i = 0; i < num1.size(); i++)
-        {
+        for (int i = 0; i < num1.size(); i++) {
             int temp = num1[i] + num2[i] - '0' - '0' + last;
             result.append(to_string(temp % 10));
             last = temp / 10;
@@ -39,12 +36,12 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
+int main(void) {
     Solution sol;
-    string   a, b;
+    string a, b;
 
-    while (cin >> a >> b) cout << sol.addStrings(a, b) << '\n';
+    while (cin >> a >> b)
+        cout << sol.addStrings(a, b) << '\n';
 
     return 0;
 }

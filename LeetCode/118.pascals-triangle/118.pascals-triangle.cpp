@@ -8,16 +8,13 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    vector<vector<int>> generate(int numRows)
-    {
+    vector<vector<int>> generate(int numRows) {
         vector<vector<int>> result;
 
         result.push_back({1});
-        for (int i = 1; i < numRows; i++)
-        {
+        for (int i = 1; i < numRows; i++) {
             vector<int> temp;
             temp.push_back(1);
             for (int j = 1; j < i; j++)
@@ -31,16 +28,15 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    int      n = 5;
+int main(void) {
+    int n = 5;
     Solution sol;
 
     vector<vector<int>> vec = sol.generate(n);
 
-    for (auto & v : vec)
-    {
-        for (auto it : v) cout << it << ' ';
+    for (auto & v : vec) {
+        for (auto it : v)
+            cout << it << ' ';
         cout << '\n';
     }
 

@@ -11,20 +11,17 @@
 using namespace std;
 
 // @lc code=start
-class NumArray
-{
+class NumArray {
 private:
     vector<int> numbers;
 
 public:
-    NumArray(vector<int> & nums)
-    {
+    NumArray(vector<int> & nums) {
         numbers.resize(nums.size());
         partial_sum(nums.begin(), nums.end(), numbers.begin());
     }
 
-    int sumRange(int left, int right)
-    {
+    int sumRange(int left, int right) {
         return numbers[right] - (left < 1 ? 0 : numbers[left - 1]);
     }
 };
@@ -36,13 +33,13 @@ public:
  */
 // @lc code=end
 
-int main(void)
-{
+int main(void) {
     vector<int> input = {-2, 0, 3, -5, 2, -1};
-    NumArray    na(input);
-    int         left, right;
+    NumArray na(input);
+    int left, right;
 
-    while (cin >> left >> right) cout << na.sumRange(left, right) << '\n';
+    while (cin >> left >> right)
+        cout << na.sumRange(left, right) << '\n';
 
     return 0;
 }

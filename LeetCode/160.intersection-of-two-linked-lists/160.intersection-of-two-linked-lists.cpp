@@ -15,16 +15,13 @@ using namespace std;
 //     ListNode(int x) : val(x), next(NULL) {}
 // };
 
-class Solution
-{
+class Solution {
 public:
-    ListNode * getIntersectionNode(ListNode * headA, ListNode * headB)
-    {
+    ListNode * getIntersectionNode(ListNode * headA, ListNode * headB) {
         ListNode * p1 = headA;
         ListNode * p2 = headB;
 
-        while (p1 != p2)
-        {
+        while (p1 != p2) {
             if (!p1)
                 p1 = headB;
             else

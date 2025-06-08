@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    string reverseStr(string s, int k)
-    {
+    string reverseStr(string s, int k) {
         for (int i = 0; i < s.size(); i += 2 * k)
             if (i + k <= s.size())
                 reverse(s.begin() + i, s.begin() + i + k);
@@ -24,10 +22,9 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    string   s("abcd");
-    int      k = 2;
+int main(void) {
+    string s("abcd");
+    int k = 2;
     Solution sol;
 
     cout << sol.reverseStr(s, k) << '\n';

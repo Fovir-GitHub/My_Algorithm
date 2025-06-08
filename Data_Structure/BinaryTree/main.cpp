@@ -5,19 +5,17 @@
 
 void print(int n);
 
-int main(void)
-{
+int main(void) {
     std::srand(std::time(0));
 
-    const int         N = 10, LIMIT = 20;
+    const int N = 10, LIMIT = 20;
     MyBinaryTree<int> mbt;
-    int               num;
-    int               remove_number;
-    int               find_number;
+    int num;
+    int remove_number;
+    int find_number;
 
     std::cout << "Input:\n";
-    for (int i = 0; i < N; i++)
-    {
+    for (int i = 0; i < N; i++) {
         std::cout << (num = std::rand() % LIMIT) << ' ';
         mbt.insert(num);
     }
@@ -45,7 +43,4 @@ int main(void)
     return 0;
 }
 
-void print(int n)
-{
-    std::cout << n << ' ';
-}
+void print(int n) { std::cout << n << ' '; }

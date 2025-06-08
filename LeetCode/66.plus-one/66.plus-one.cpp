@@ -8,19 +8,16 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    vector<int> plusOne(vector<int> & digits)
-    {
+    vector<int> plusOne(vector<int> & digits) {
         int next_plus = 0;
 
         *(digits.rbegin()) += 1;
         next_plus = *(digits.rbegin()) / 10;
         *(digits.rbegin()) %= 10;
 
-        for (int i = digits.size() - 2; i >= 0; i--)
-        {
+        for (int i = digits.size() - 2; i >= 0; i--) {
             if (next_plus == 0)
                 break;
 
@@ -37,13 +34,13 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    Solution    sol;
+int main(void) {
+    Solution sol;
     vector<int> numbers = {9, 9};
-    vector<int> result  = sol.plusOne(numbers);
+    vector<int> result = sol.plusOne(numbers);
 
-    for (auto it : result) cout << it << ' ';
+    for (auto it : result)
+        cout << it << ' ';
 
     return 0;
 }

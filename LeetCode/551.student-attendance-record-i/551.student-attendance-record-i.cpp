@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    bool checkRecord(string s)
-    {
+    bool checkRecord(string s) {
         return (s.find("LLL") == string::npos) &&
                (std::count(s.begin(), s.end(), 'A') < 2);
     }

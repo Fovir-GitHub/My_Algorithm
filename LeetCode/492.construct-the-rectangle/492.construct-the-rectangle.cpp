@@ -8,22 +8,17 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    vector<int> constructRectangle(int area)
-    {
+    vector<int> constructRectangle(int area) {
         int length = INT_MAX, width = INT_MAX, minimal_difference = INT_MAX;
 
-        for (int i = 1; i <= sqrt(area); i++)
-        {
-            if (area % i == 0)
-            {
+        for (int i = 1; i <= sqrt(area); i++) {
+            if (area % i == 0) {
                 int j = area / i;
-                if (j - i < minimal_difference)
-                {
-                    width              = i;
-                    length             = j;
+                if (j - i < minimal_difference) {
+                    width = i;
+                    length = j;
                     minimal_difference = j - i;
                 }
             }
@@ -34,14 +29,13 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    int      n;
+int main(void) {
+    int n;
     Solution sol;
 
-    while (cin >> n)
-    {
-        for (auto it : sol.constructRectangle(n)) cout << it << ' ';
+    while (cin >> n) {
+        for (auto it : sol.constructRectangle(n))
+            cout << it << ' ';
         cout << '\n';
     }
 

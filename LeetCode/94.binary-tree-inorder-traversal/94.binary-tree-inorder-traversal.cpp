@@ -46,19 +46,16 @@ using namespace std;
 //     }
 // };
 
-class Solution
-{
+class Solution {
 public:
-    vector<int> inorderTraversal(TreeNode * root)
-    {
+    vector<int> inorderTraversal(TreeNode * root) {
         vector<int> result;
         traverseTree(root, result);
 
         return result;
     }
 
-    void traverseTree(TreeNode * node, vector<int> & result)
-    {
+    void traverseTree(TreeNode * node, vector<int> & result) {
         if (!node)
             return;
 

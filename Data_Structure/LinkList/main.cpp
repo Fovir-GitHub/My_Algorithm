@@ -6,14 +6,14 @@
 void show(int num);
 void show(LinkList<int> & ll);
 
-int main(void)
-{
+int main(void) {
     std::srand(std::time(0));
 
-    const int     N = 10, LIMIT = 20;
+    const int N = 10, LIMIT = 20;
     LinkList<int> link_list;
 
-    for (int i = 0; i < N; i++) link_list.push((std::rand() % LIMIT));
+    for (int i = 0; i < N; i++)
+        link_list.push((std::rand() % LIMIT));
 
     std::cout << "Original:\n";
     show(link_list);
@@ -40,14 +40,12 @@ int main(void)
     return 0;
 }
 
-void show(int num)
-{
+void show(int num) {
     std::cout << num << ' ';
     return;
 }
 
-void show(LinkList<int> & ll)
-{
+void show(LinkList<int> & ll) {
     std::cout << "size: " << ll.size() << '\n';
     ll.access(show);
     std::cout << '\n';

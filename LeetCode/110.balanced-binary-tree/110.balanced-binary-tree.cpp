@@ -46,13 +46,11 @@ using namespace std;
 //     }
 // };
 
-class Solution
-{
+class Solution {
 public:
     bool isBalanced(TreeNode * root) { return height(root) != -1; }
 
-    int height(TreeNode * node)
-    {
+    int height(TreeNode * node) {
         if (!node)
             return 0;
 

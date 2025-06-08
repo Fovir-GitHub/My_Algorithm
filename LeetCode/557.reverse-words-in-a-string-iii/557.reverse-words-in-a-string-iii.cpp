@@ -8,15 +8,12 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    string reverseWords(string s)
-    {
-        string::iterator iter     = s.begin();
+    string reverseWords(string s) {
+        string::iterator iter = s.begin();
         string::iterator word_end = s.begin();
-        while (iter != s.end() && word_end != s.end())
-        {
+        while (iter != s.end() && word_end != s.end()) {
             word_end = std::find_if(iter, s.end(),
                                     [](char & ch) { return ch == ' '; });
             reverse(iter, word_end);
@@ -28,9 +25,8 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    string   s = "Let's take LeetCode contest";
+int main(void) {
+    string s = "Let's take LeetCode contest";
     Solution sol;
 
     cout << sol.reverseWords(s) << '\n';

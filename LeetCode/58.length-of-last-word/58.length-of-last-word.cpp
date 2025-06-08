@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    int lengthOfLastWord(string s)
-    {
+    int lengthOfLastWord(string s) {
         int i, j;
         for (i = s.size() - 1; i >= 0; i--)
             if (isalpha(s[i]))
@@ -28,12 +26,12 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    string   s;
+int main(void) {
+    string s;
     Solution sol;
 
-    while (getline(cin, s)) cout << sol.lengthOfLastWord(s) << '\n';
+    while (getline(cin, s))
+        cout << sol.lengthOfLastWord(s) << '\n';
 
     return 0;
 }

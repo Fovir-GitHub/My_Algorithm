@@ -2,61 +2,55 @@
 #include <utility>
 #include <vector>
 
-struct TreeNode
-{
-    int       value;
+struct TreeNode {
+    int value;
     TreeNode *left, *right;
 
     TreeNode() : left(nullptr), right(nullptr), value(0) {}
     TreeNode(int val) : left(nullptr), right(nullptr), value(val) {}
 };
 
-void       MakeTree(TreeNode *& root, std::vector<int> & numbers);
+void MakeTree(TreeNode *& root, std::vector<int> & numbers);
 TreeNode * InsertHelper(TreeNode * node, int value);
-void       ShowTree(TreeNode * node);
+void ShowTree(TreeNode * node);
 
-class Solution
-{
+class Solution {
 private:
     std::pair<TreeNode *, TreeNode *> PostOrder(TreeNode * node);
-    TreeNode *                        head, *tail;
+    TreeNode *head, *tail;
 
 public:
-    TreeNode * bstToDoublyLinkedList(TreeNode * root)
-    {
+    TreeNode * bstToDoublyLinkedList(TreeNode * root) {
         auto [h, t] = PostOrder(root);
-        head        = h;
-        tail        = t;
+        head = h;
+        tail = t;
 
         return h;
     }
 
-    void Show()
-    {
+    void Show() {
         for (TreeNode * current = head; current; current = current->right)
             std::cout << current->value << ' ';
         std::cout << '\n';
     }
 
-    void ShowReverse()
-    {
+    void ShowReverse() {
         for (TreeNode * current = tail; current; current = current->left)
             std::cout << current->value << ' ';
         std::cout << '\n';
     }
 };
 
-void MakeTree(TreeNode *& root, std::vector<int> & numbers)
-{
+void MakeTree(TreeNode *& root, std::vector<int> & numbers) {
     root = new TreeNode(numbers[0]);
 
-    for (int i = 1; i < numbers.size(); i++) InsertHelper(root, numbers[i]);
+    for (int i = 1; i < numbers.size(); i++)
+        InsertHelper(root, numbers[i]);
 
     return;
 }
 
-TreeNode * InsertHelper(TreeNode * node, int value)
-{
+TreeNode * InsertHelper(TreeNode * node, int value) {
     if (!node)
         return new TreeNode(value);
 
@@ -71,8 +65,7 @@ TreeNode * InsertHelper(TreeNode * node, int value)
     return node;
 }
 
-void ShowTree(TreeNode * node)
-{
+void ShowTree(TreeNode * node) {
     if (!node)
         return;
 
@@ -83,11 +76,10 @@ void ShowTree(TreeNode * node)
     return;
 }
 
-int main(void)
-{
+int main(void) {
     std::vector<int> data = {10, 6, 14, 4, 8, 12, 16};
-    TreeNode *       tree = nullptr;
-    Solution         sol;
+    TreeNode * tree = nullptr;
+    Solution sol;
 
     MakeTree(tree, data);
 
@@ -99,25 +91,22 @@ int main(void)
     return 0;
 }
 
-std::pair<TreeNode *, TreeNode *> Solution::PostOrder(TreeNode * node)
-{
+std::pair<TreeNode *, TreeNode *> Solution::PostOrder(TreeNode * node) {
     if (!node)
         return {nullptr, nullptr};
 
-    auto [left_head, left_tail]   = PostOrder(node->left);
+    auto [left_head, left_tail] = PostOrder(node->left);
     auto [right_head, right_tail] = PostOrder(node->right);
 
     node->left = node->right = nullptr;
-    if (left_tail)
-    {
+    if (left_tail) {
         left_tail->right = node;
-        node->left       = left_tail;
+        node->left = left_tail;
     }
 
-    if (right_head)
-    {
+    if (right_head) {
         right_head->left = node;
-        node->right      = right_head;
+        node->right = right_head;
     }
 
     return {left_head ? left_head : node, right_tail ? right_tail : node};

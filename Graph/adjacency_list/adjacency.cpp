@@ -5,53 +5,46 @@
 
 static void showLinkListNode(int value);
 
-LinkListNode::~LinkListNode()
-{
+LinkListNode::~LinkListNode() {
     Node * backup = nullptr;
-    while (head)
-    {
+    while (head) {
         backup = head->next;
         delete head;
         head = backup;
     }
 }
 
-bool LinkListNode::push(int push_value)
-{
-    if (empty())
-    {
+bool LinkListNode::push(int push_value) {
+    if (empty()) {
         head = new Node(push_value);
         return true;
     }
 
     Node * visit = head;
-    while (visit->next)
-    {
+    while (visit->next) {
         if (visit->value == push_value)
             return false;
         visit = visit->next;
     }
 
     Node * push_node = new Node(push_value);
-    visit->next      = push_node;
+    visit->next = push_node;
 
     return true;
 }
 
-bool LinkListNode::remove(int remove_value)
-{
+bool LinkListNode::remove(int remove_value) {
     if (empty())
         return false;
 
-    Node * current  = head;
+    Node * current = head;
     Node * previous = nullptr;
 
-    while (current)
-    {
+    while (current) {
         if (current->value == remove_value)
             break;
         previous = current;
-        current  = current->next;
+        current = current->next;
     }
 
     if (!current)
@@ -63,15 +56,14 @@ bool LinkListNode::remove(int remove_value)
     return true;
 }
 
-void LinkListNode::Traverse(void (*func)(int))
-{
-    for (Node * visit = head; visit; visit = visit->next) func(visit->value);
+void LinkListNode::Traverse(void (*func)(int)) {
+    for (Node * visit = head; visit; visit = visit->next)
+        func(visit->value);
 
     return;
 }
 
-void AdjacencyList::AddVertex(int vertex_number)
-{
+void AdjacencyList::AddVertex(int vertex_number) {
     if (!NotExist(vertex_number))
         return;
 
@@ -81,19 +73,18 @@ void AdjacencyList::AddVertex(int vertex_number)
     return;
 }
 
-void AdjacencyList::RemoveVertex(int vertex_number)
-{
+void AdjacencyList::RemoveVertex(int vertex_number) {
     if (NotExist(vertex_number))
         return;
 
     graph.erase(vertex_number);
-    for (auto & x : graph) x.second.remove(vertex_number);
+    for (auto & x : graph)
+        x.second.remove(vertex_number);
 
     return;
 }
 
-void AdjacencyList::AddEdge(int first_vertex, int second_vertex)
-{
+void AdjacencyList::AddEdge(int first_vertex, int second_vertex) {
     if (NotExist(first_vertex) || NotExist(second_vertex) ||
         first_vertex == second_vertex)
         return;
@@ -105,8 +96,7 @@ void AdjacencyList::AddEdge(int first_vertex, int second_vertex)
     return;
 }
 
-void AdjacencyList::RemoveEdge(int first_vertex, int second_vertex)
-{
+void AdjacencyList::RemoveEdge(int first_vertex, int second_vertex) {
     if (NotExist(first_vertex) || NotExist(second_vertex))
         return;
 
@@ -117,10 +107,8 @@ void AdjacencyList::RemoveEdge(int first_vertex, int second_vertex)
     return;
 }
 
-void AdjacencyList::Show()
-{
-    for (auto & x : graph)
-    {
+void AdjacencyList::Show() {
+    for (auto & x : graph) {
         std::cout << x.first << " linked with: ";
         x.second.Traverse(showLinkListNode);
         std::cout << '\n';
@@ -129,23 +117,20 @@ void AdjacencyList::Show()
     return;
 }
 
-typename std::vector<int> AdjacencyList::BFSGraph(int start_vertex)
-{
-    std::vector<int>        result;
+typename std::vector<int> AdjacencyList::BFSGraph(int start_vertex) {
+    std::vector<int> result;
     std::unordered_set<int> visited_record = {start_vertex};
-    std::queue<int>         que;
+    std::queue<int> que;
 
     que.push(start_vertex);
 
-    while (!que.empty())
-    {
+    while (!que.empty()) {
         int vertex = que.front();
         que.pop();
 
         result.push_back(vertex);
 
-        for (auto root = graph[vertex].GetHead(); root; root = root->next)
-        {
+        for (auto root = graph[vertex].GetHead(); root; root = root->next) {
             if (visited_record.count(root->value))
                 continue;
             que.push(root->value);
@@ -156,9 +141,8 @@ typename std::vector<int> AdjacencyList::BFSGraph(int start_vertex)
     return result;
 }
 
-typename std::vector<int> AdjacencyList::DFSGraph(int start_vertex)
-{
-    std::vector<int>        result;
+typename std::vector<int> AdjacencyList::DFSGraph(int start_vertex) {
+    std::vector<int> result;
     std::unordered_set<int> visited_record;
 
     DFSHelper(visited_record, result, start_vertex);
@@ -167,13 +151,11 @@ typename std::vector<int> AdjacencyList::DFSGraph(int start_vertex)
 }
 
 void AdjacencyList::DFSHelper(std::unordered_set<int> & visited,
-                              std::vector<int> & res, int vertex)
-{
+                              std::vector<int> & res, int vertex) {
     res.push_back(vertex);
     visited.emplace(vertex);
 
-    for (auto root = graph[vertex].GetHead(); root; root = root->next)
-    {
+    for (auto root = graph[vertex].GetHead(); root; root = root->next) {
         if (visited.count(root->value))
             continue;
         DFSHelper(visited, res, root->value);
@@ -182,8 +164,7 @@ void AdjacencyList::DFSHelper(std::unordered_set<int> & visited,
     return;
 }
 
-void showLinkListNode(int value)
-{
+void showLinkListNode(int value) {
     std::cout << value << ' ';
     return;
 }

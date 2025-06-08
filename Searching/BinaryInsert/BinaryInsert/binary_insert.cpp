@@ -6,16 +6,16 @@
 
 int binaryInsert(std::vector<int> & v, int target);
 
-int main(void)
-{
+int main(void) {
     std::srand(std::time(0));
 
     const int N = 10, LIMIT = 20;
 
     std::vector<int> numbers;
-    int              insert_number = 0;
+    int insert_number = 0;
 
-    for (int i = 0; i < N; i++) numbers.push_back(std::rand() % LIMIT);
+    for (int i = 0; i < N; i++)
+        numbers.push_back(std::rand() % LIMIT);
 
     std::sort(numbers.begin(), numbers.end());
     std::for_each(numbers.begin(), numbers.end(),
@@ -31,12 +31,10 @@ int main(void)
     return 0;
 }
 
-int binaryInsert(std::vector<int> & v, int target)
-{
+int binaryInsert(std::vector<int> & v, int target) {
     int left = 0, right = v.size() - 1, middle = 0;
 
-    while (left <= right)
-    {
+    while (left <= right) {
         middle = left + (right - left) / 2;
 
         if (v[middle] < target)

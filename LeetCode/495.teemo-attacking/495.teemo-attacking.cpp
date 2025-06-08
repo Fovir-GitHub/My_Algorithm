@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    int findPoisonedDuration(vector<int> & timeSeries, int duration)
-    {
+    int findPoisonedDuration(vector<int> & timeSeries, int duration) {
         return inner_product(timeSeries.begin() + 1, timeSeries.end(),
                              timeSeries.begin(), duration, plus<>(),
                              [duration](int current, int previous) {

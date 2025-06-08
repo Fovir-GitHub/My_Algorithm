@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    char findTheDifference(string s, string t)
-    {
+    char findTheDifference(string s, string t) {
         // vector<int> s_record(26, 0), t_record(26, 0);
 
         // for (const char & ch : s) s_record[ch - 'a']++;
@@ -26,7 +24,8 @@ public:
 
         int result = 0;
 
-        for (int i = 0; i < s.size(); i++) result = result - s[i] + t[i];
+        for (int i = 0; i < s.size(); i++)
+            result = result - s[i] + t[i];
         result += t[s.size()];
 
         return result;

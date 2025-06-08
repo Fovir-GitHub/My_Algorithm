@@ -24,21 +24,18 @@ using namespace std;
 //     }
 // };
 
-class Solution
-{
+class Solution {
 private:
-    int        min_diff = INT_MAX;
+    int min_diff = INT_MAX;
     TreeNode * previous = nullptr;
 
 public:
-    int getMinimumDifference(TreeNode * root)
-    {
+    int getMinimumDifference(TreeNode * root) {
         dfs(root);
         return min_diff;
     }
 
-    void dfs(TreeNode * node)
-    {
+    void dfs(TreeNode * node) {
         if (!node)
             return;
 

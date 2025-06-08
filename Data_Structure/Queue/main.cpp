@@ -2,8 +2,7 @@
 #include <iostream>
 #include <queue>
 
-int main(void)
-{
+int main(void) {
     myqueue::Queue<int> q;
 
     q.Push(1);
@@ -14,8 +13,7 @@ int main(void)
 
     std::cout << q.Peek() << '\n';
 
-    while (!q.Empty())
-    {
+    while (!q.Empty()) {
         std::cout << q.Peek() << '\n';
         q.Pop();
     }

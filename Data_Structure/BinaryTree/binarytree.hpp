@@ -3,25 +3,22 @@
 
 #include <iostream>
 
-template <typename T>
-class MyBinaryTree
-{
+template <typename T> class MyBinaryTree {
 private:
-    struct TreeNode
-    {
+    struct TreeNode {
         TreeNode *left, *right;
-        T         value;
+        T value;
     };
 
-    TreeNode *   root;
+    TreeNode * root;
     unsigned int tree_node_counter;
 
 public:
     MyBinaryTree();
 
     unsigned int size() const { return tree_node_counter; }
-    bool         empty() const { return size() == 0; }
-    TreeNode *   GetRootNode() const { return root; }
+    bool empty() const { return size() == 0; }
+    TreeNode * GetRootNode() const { return root; }
 
     void insert(T insert_value);
     void traverse(void (*func)(T), TreeNode * start_node);
@@ -29,18 +26,13 @@ public:
     bool find(T find_value);
 };
 
-template <typename T>
-MyBinaryTree<T>::MyBinaryTree() : tree_node_counter(0)
-{
-    root       = new TreeNode;
+template <typename T> MyBinaryTree<T>::MyBinaryTree() : tree_node_counter(0) {
+    root = new TreeNode;
     root->left = root->right = nullptr;
 }
 
-template <typename T>
-void MyBinaryTree<T>::insert(T insert_value)
-{
-    if (empty())
-    {
+template <typename T> void MyBinaryTree<T>::insert(T insert_value) {
+    if (empty()) {
         root->value = insert_value;
         ++tree_node_counter;
         return;
@@ -50,32 +42,22 @@ void MyBinaryTree<T>::insert(T insert_value)
         return;
 
     insert_node->left = insert_node->right = nullptr;
-    insert_node->value                     = insert_value;
-    TreeNode * visit                       = root;
-    while (true)
-    {
-        if (insert_value < visit->value)
-        {
-            if (visit->left == nullptr)
-            {
+    insert_node->value = insert_value;
+    TreeNode * visit = root;
+    while (true) {
+        if (insert_value < visit->value) {
+            if (visit->left == nullptr) {
                 visit->left = insert_node;
                 break;
-            }
-            else
+            } else
                 visit = visit->left;
-        }
-        else if (insert_value > visit->value)
-        {
-            if (visit->right == nullptr)
-            {
+        } else if (insert_value > visit->value) {
+            if (visit->right == nullptr) {
                 visit->right = insert_node;
                 break;
-            }
-            else
+            } else
                 visit = visit->right;
-        }
-        else
-        {
+        } else {
             delete insert_node;
             return;
         }
@@ -86,8 +68,7 @@ void MyBinaryTree<T>::insert(T insert_value)
 }
 
 template <typename T>
-void MyBinaryTree<T>::traverse(void (*func)(T), TreeNode * start_node)
-{
+void MyBinaryTree<T>::traverse(void (*func)(T), TreeNode * start_node) {
     if (start_node == nullptr)
         return;
 
@@ -98,16 +79,13 @@ void MyBinaryTree<T>::traverse(void (*func)(T), TreeNode * start_node)
     return;
 }
 
-template <typename T>
-void MyBinaryTree<T>::remove(T remove_value)
-{
+template <typename T> void MyBinaryTree<T>::remove(T remove_value) {
     if (empty())
         return;
 
     TreeNode *current = root, *previous = nullptr;
 
-    while (current != nullptr)
-    {
+    while (current != nullptr) {
         if (current->value == remove_value)
             break;
         previous = current;
@@ -120,28 +98,24 @@ void MyBinaryTree<T>::remove(T remove_value)
     if (current == nullptr)
         return;
 
-    if (current->left == nullptr || current->right == nullptr)
-    {
+    if (current->left == nullptr || current->right == nullptr) {
         TreeNode * child =
             (current->left != nullptr ? current->left : current->right);
 
-        if (current != root)
-        {
+        if (current != root) {
             if (previous->left == current)
                 previous->left = child;
             else
                 previous->right = child;
-        }
-        else
+        } else
             root = child;
 
         --tree_node_counter;
         delete current;
-    }
-    else
-    {
+    } else {
         TreeNode * tmp = current->right;
-        while (tmp->left != nullptr) tmp = tmp->left;
+        while (tmp->left != nullptr)
+            tmp = tmp->left;
 
         T tmpVal = tmp->value;
         remove(tmp->value);
@@ -151,12 +125,9 @@ void MyBinaryTree<T>::remove(T remove_value)
     return;
 }
 
-template <typename T>
-bool MyBinaryTree<T>::find(T find_value)
-{
+template <typename T> bool MyBinaryTree<T>::find(T find_value) {
     TreeNode * visit = root;
-    while (visit)
-    {
+    while (visit) {
         if (visit->value == find_value)
             return true;
 

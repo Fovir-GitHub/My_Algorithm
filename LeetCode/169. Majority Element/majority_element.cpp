@@ -2,16 +2,13 @@
 #include <vector>
 using namespace std;
 
-class Solution
-{
+class Solution {
 public:
-    int majorityElement(vector<int> & nums)
-    {
-        int count     = 0;
+    int majorityElement(vector<int> & nums) {
+        int count = 0;
         int candidate = 0;
 
-        for (auto x : nums)
-        {
+        for (auto x : nums) {
             if (count == 0)
                 candidate = x;
 

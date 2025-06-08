@@ -18,31 +18,23 @@
  * };
  */
 
-struct TreeNode
-{
-    int        val;
+struct TreeNode {
+    int val;
     TreeNode * left;
     TreeNode * right;
     TreeNode() : val(0), left(nullptr), right(nullptr) {}
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
     TreeNode(int x, TreeNode * left, TreeNode * right)
-        : val(x)
-        , left(left)
-        , right(right)
-    {
-    }
+        : val(x), left(left), right(right) {}
 };
 
-class Solution
-{
+class Solution {
 public:
-    bool isSymmetric(TreeNode * root)
-    {
+    bool isSymmetric(TreeNode * root) {
         return isSymmetricHelper(root->left, root->right);
     }
 
-    bool isSymmetricHelper(TreeNode * left_node, TreeNode * right_node)
-    {
+    bool isSymmetricHelper(TreeNode * left_node, TreeNode * right_node) {
         if (!left_node || !right_node)
             return !left_node && !right_node;
 

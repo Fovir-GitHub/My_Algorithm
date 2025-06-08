@@ -8,19 +8,18 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
     int hammingWeight(int n) { return bitset<32>(n).count(); }
 };
 // @lc code=end
 
-int main(void)
-{
-    int      n;
+int main(void) {
+    int n;
     Solution sol;
 
-    while (cin >> n) cout << sol.hammingWeight(n) << '\n';
+    while (cin >> n)
+        cout << sol.hammingWeight(n) << '\n';
 
     return 0;
 }

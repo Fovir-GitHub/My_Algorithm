@@ -24,15 +24,12 @@ using namespace std;
 //     ListNode(int x) : val(x), next(NULL) {}
 // };
 
-class Solution
-{
+class Solution {
 public:
-    bool hasCycle(ListNode * head)
-    {
+    bool hasCycle(ListNode * head) {
         ListNode *fast = head, *slow = head;
 
-        while (fast && fast->next)
-        {
+        while (fast && fast->next) {
             slow = slow->next;
             fast = fast->next->next;
             if (slow == fast)

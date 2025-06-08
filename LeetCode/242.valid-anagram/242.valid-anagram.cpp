@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    bool isAnagram(string s, string t)
-    {
+    bool isAnagram(string s, string t) {
         // if (s.length() != t.length())
         //     return false;
 
@@ -36,8 +34,7 @@ public:
             return false;
 
         vector<int> record(26, 0);
-        for (int i = 0; i < s.length(); i++)
-        {
+        for (int i = 0; i < s.length(); i++) {
             record[s[i] - 'a']++;
             record[t[i] - 'a']--;
         }
@@ -51,12 +48,12 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    string   s, t;
+int main(void) {
+    string s, t;
     Solution sol;
 
-    while (cin >> s >> t) std::cout << sol.isAnagram(s, t) << '\n';
+    while (cin >> s >> t)
+        std::cout << sol.isAnagram(s, t) << '\n';
 
     return 0;
 }

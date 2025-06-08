@@ -3,8 +3,7 @@
 #include <string>
 using namespace std;
 
-class Solution
-{
+class Solution {
 public:
     // bool isPalindrome(int x)
     // {
@@ -44,15 +43,13 @@ public:
     //     return reverse_number == x;
     // }
 
-    bool isPalindrome(int x)
-    {
+    bool isPalindrome(int x) {
         if (x < 0 || (x != 0 && x % 10 == 0))
             return false;
 
         int reverse_number = 0;
 
-        while (x > reverse_number)
-        {
+        while (x > reverse_number) {
             reverse_number = reverse_number * 10 + x % 10;
             x /= 10;
         }
@@ -61,12 +58,12 @@ public:
     }
 };
 
-int main(void)
-{
-    int      n = 0;
+int main(void) {
+    int n = 0;
     Solution sol;
 
-    while (cin >> n) cout << sol.isPalindrome(n) << '\n';
+    while (cin >> n)
+        cout << sol.isPalindrome(n) << '\n';
 
     return 0;
 }

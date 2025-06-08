@@ -22,11 +22,9 @@ using namespace std;
 //     }
 // };
 
-class Solution
-{
+class Solution {
 public:
-    vector<string> binaryTreePaths(TreeNode * root)
-    {
+    vector<string> binaryTreePaths(TreeNode * root) {
         vector<string> result;
 
         if (root)
@@ -35,8 +33,7 @@ public:
         return result;
     }
 
-    void dfs(TreeNode * node, vector<string> & result, string temp)
-    {
+    void dfs(TreeNode * node, vector<string> & result, string temp) {
         temp += to_string(node->val);
         if (node->left)
             dfs(node->left, result, temp + "->");

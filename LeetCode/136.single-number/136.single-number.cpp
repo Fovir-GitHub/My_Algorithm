@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    int singleNumber(vector<int> & nums)
-    {
+    int singleNumber(vector<int> & nums) {
         // sort(nums.begin(), nums.end());
         // for (size_t i = 0; i < nums.size() - 1; i += 2)
         //     if (nums[i] != nums[i + 1])
@@ -30,9 +28,8 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    Solution    sol;
+int main(void) {
+    Solution sol;
     vector<int> vec = {2, 2, 1};
     std::cout << sol.singleNumber(vec) << '\n';
 

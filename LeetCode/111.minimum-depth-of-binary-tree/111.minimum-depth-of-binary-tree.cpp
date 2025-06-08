@@ -46,8 +46,7 @@ using namespace std;
 //     }
 // };
 
-class Solution
-{
+class Solution {
 public:
     // int min_depth = INT_MAX;
 
@@ -84,16 +83,14 @@ public:
     //     helper(node->right);
     // }
 
-    int minDepth(TreeNode * root)
-    {
+    int minDepth(TreeNode * root) {
         if (!root)
             return 0;
 
         queue<pair<TreeNode *, int>> q;
         q.push({root, 1});
 
-        while (!q.empty())
-        {
+        while (!q.empty()) {
             auto [node, depth] = q.front();
             q.pop();
 

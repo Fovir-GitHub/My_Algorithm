@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    vector<string> readBinaryWatch(int turnedOn)
-    {
+    vector<string> readBinaryWatch(int turnedOn) {
         vector<string> result;
 
         for (int h = 0; h < 12; h++)
@@ -26,14 +24,13 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
+int main(void) {
     Solution sol;
-    int      n;
+    int n;
 
-    while (cin >> n)
-    {
-        for (auto it : sol.readBinaryWatch(n)) cout << it << '\n';
+    while (cin >> n) {
+        for (auto it : sol.readBinaryWatch(n))
+            cout << it << '\n';
         cout << "Finished\n";
     }
 

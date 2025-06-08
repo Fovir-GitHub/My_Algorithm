@@ -6,20 +6,19 @@
 
 int binaryInsertSimple(std::vector<int> & v, int target);
 
-int main(void)
-{
+int main(void) {
     std::srand(std::time(0));
 
     const int N = 10, LIMIT = 20;
 
-    bool             record[LIMIT] = {false};
+    bool record[LIMIT] = {false};
     std::vector<int> numbers;
-    int              temp          = 0;
-    int              insert_number = 0;
+    int temp = 0;
+    int insert_number = 0;
 
-    for (int i = 0; i < N; i++)
-    {
-        while (record[(temp = std::rand() % LIMIT)]);
+    for (int i = 0; i < N; i++) {
+        while (record[(temp = std::rand() % LIMIT)])
+            ;
         record[temp] = true;
         numbers.push_back(temp);
     }
@@ -38,12 +37,10 @@ int main(void)
     return 0;
 }
 
-int binaryInsertSimple(std::vector<int> & v, int target)
-{
+int binaryInsertSimple(std::vector<int> & v, int target) {
     int left = 0, right = v.size() - 1, middle = 0;
 
-    while (left <= right)
-    {
+    while (left <= right) {
         middle = left + (right - left) / 2;
         if (v[middle] == target)
             return middle;

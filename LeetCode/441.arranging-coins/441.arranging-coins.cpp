@@ -9,11 +9,9 @@
 #include <iostream>
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    int arrangeCoins(int n)
-    {
+    int arrangeCoins(int n) {
         // int count = 0;
 
         // for (int i = 1; i <= n; i++)
@@ -27,17 +25,14 @@ public:
         int left = 1, right = n;
         int result = 0;
 
-        while (left <= right)
-        {
+        while (left <= right) {
             long long middle = left + (right - left) / 2;
-            long long temp   = middle * (middle + 1) / 2;
+            long long temp = middle * (middle + 1) / 2;
 
-            if (temp <= n)
-            {
+            if (temp <= n) {
                 result = middle;
-                left   = middle + 1;
-            }
-            else
+                left = middle + 1;
+            } else
                 right = middle - 1;
         }
 
@@ -46,14 +41,14 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
+int main(void) {
     Solution sol;
-    int      n;
+    int n;
 
     std::cout << int(std::pow(2, 31) - 1) << '\n';
 
-    while (std::cin >> n) std::cout << sol.arrangeCoins(n) << '\n';
+    while (std::cin >> n)
+        std::cout << sol.arrangeCoins(n) << '\n';
 
     return 0;
 }

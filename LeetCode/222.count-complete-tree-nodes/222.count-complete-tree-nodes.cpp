@@ -23,25 +23,21 @@ using namespace std;
 //     }
 // };
 
-class Solution
-{
+class Solution {
 public:
-    int countNodes(TreeNode * root)
-    {
+    int countNodes(TreeNode * root) {
         if (!root)
             return 0;
 
-        int       left = 0, right = 0;
+        int left = 0, right = 0;
         TreeNode *left_node = root, *right_node = root;
 
-        while (left_node)
-        {
+        while (left_node) {
             left++;
             left_node = left_node->left;
         }
 
-        while (right_node)
-        {
+        while (right_node) {
             right++;
             right_node = right_node->right;
         }

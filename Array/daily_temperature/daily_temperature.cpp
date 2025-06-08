@@ -17,8 +17,7 @@ void showMaxAndMinTemperature(const temperature_array & ta);
 
 void displayWeeklyAverageTemperature(const temperature_array & ta);
 
-int main(void)
-{
+int main(void) {
     const int DAYS = 7, ZONE = 5;
     std::freopen("./input.in", "r", stdin);
 
@@ -54,13 +53,10 @@ int main(void)
     return 0;
 }
 
-void inputDailyTemperature(temperature_array & ta)
-{
-    for (int i = 0; i < ta.size(); i++)
-    {
+void inputDailyTemperature(temperature_array & ta) {
+    for (int i = 0; i < ta.size(); i++) {
         std::cout << "Please input for day " << (i + 1) << ":\n";
-        for (int j = 0; j < ta[i].size(); j++)
-        {
+        for (int j = 0; j < ta[i].size(); j++) {
             std::cout << "Please input for Zone " << char(j + 'A') << ": ";
             std::cin >> ta[i][j];
         }
@@ -69,15 +65,13 @@ void inputDailyTemperature(temperature_array & ta)
     return;
 }
 
-void displayDailyTemperature(const temperature_array & ta)
-{
+void displayDailyTemperature(const temperature_array & ta) {
     std::cout << '\t';
     for (int i = 0; i < ta[0].size(); i++)
         std::cout << "Zone " << char(i + 'A') << '\t';
     std::cout << '\n';
 
-    for (int i = 0; i < ta.size(); i++)
-    {
+    for (int i = 0; i < ta.size(); i++) {
         std::cout << "Day " << (i + 1) << '\t';
         for (int j = 0; j < ta[i].size(); j++)
             std::cout << std::fixed << std::setprecision(2) << ta[i][j] << '\t';
@@ -87,8 +81,7 @@ void displayDailyTemperature(const temperature_array & ta)
     return;
 }
 
-void displayAverageTemperature(const temperature_array & ta)
-{
+void displayAverageTemperature(const temperature_array & ta) {
     for (int i = 0; i < ta.size(); i++)
         std::cout << "Average Temperature of Day " << (i + 1) << ": "
                   << std::fixed << std::setprecision(2)
@@ -99,8 +92,7 @@ void displayAverageTemperature(const temperature_array & ta)
     return;
 }
 
-void showMaxAndMinTemperature(const temperature_array & ta)
-{
+void showMaxAndMinTemperature(const temperature_array & ta) {
     std::cout << "\tHottest\tColdest\n";
     for (int i = 0; i < ta.size(); i++)
         std::cout << "Day " << (i + 1) << '\t'
@@ -110,12 +102,11 @@ void showMaxAndMinTemperature(const temperature_array & ta)
     return;
 }
 
-void displayWeeklyAverageTemperature(const temperature_array & ta)
-{
-    for (int i = 0; i < ta[0].size(); i++)
-    {
+void displayWeeklyAverageTemperature(const temperature_array & ta) {
+    for (int i = 0; i < ta[0].size(); i++) {
         double sum = static_cast<double>(0);
-        for (int j = 0; j < ta.size(); j++) sum += ta[j][i];
+        for (int j = 0; j < ta.size(); j++)
+            sum += ta[j][i];
         std::cout << "Weekly Average Temperature for Zone "
                   << static_cast<char>(i + 'A') << ": " << (sum / ta.size())
                   << '\n';

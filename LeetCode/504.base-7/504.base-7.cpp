@@ -8,20 +8,17 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    string convertToBase7(int num)
-    {
+    string convertToBase7(int num) {
         if (num == 0)
             return "0";
 
         string result;
-        bool   negative = (num < 0);
-        num             = abs(num);
+        bool negative = (num < 0);
+        num = abs(num);
 
-        while (num)
-        {
+        while (num) {
             result.append(to_string(num % 7));
             num /= 7;
         }
@@ -36,12 +33,12 @@ public:
 };
 // @lc code=end
 
-int main(void)
-{
-    int      n;
+int main(void) {
+    int n;
     Solution sol;
 
-    while (cin >> n) cout << sol.convertToBase7(n) << '\n';
+    while (cin >> n)
+        cout << sol.convertToBase7(n) << '\n';
 
     return 0;
 }

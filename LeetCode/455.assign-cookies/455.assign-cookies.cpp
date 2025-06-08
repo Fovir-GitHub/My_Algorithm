@@ -8,11 +8,9 @@
 using namespace std;
 
 // @lc code=start
-class Solution
-{
+class Solution {
 public:
-    int findContentChildren(vector<int> & g, vector<int> & s)
-    {
+    int findContentChildren(vector<int> & g, vector<int> & s) {
         sort(g.begin(), g.end());
         sort(s.begin(), s.end());
 

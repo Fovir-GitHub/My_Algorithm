@@ -4,39 +4,30 @@
 
 enum CRITICAL_LEVEL { LOW, MEDIUM, HIGH };
 
-struct Patient
-{
+struct Patient {
     std::string name;
-    int         age;
-    int         critical_level;
+    int age;
+    int critical_level;
 
     Patient() {}
     Patient(const std::string & pname, int page, int pcl)
-        : name(pname)
-        , age(page)
-        , critical_level(pcl)
-    {
-    }
+        : name(pname), age(page), critical_level(pcl) {}
 
     bool operator==(const Patient & p) { return name == p.name; }
 };
 
 Patient getPatient();
 
-int main(void)
-{
-    int                 choice = 0;
+int main(void) {
+    int choice = 0;
     LinkedList<Patient> patient_list;
 
-    while (true)
-    {
+    while (true) {
         std::cout << "Please enter choice: ";
         std::cin >> choice;
 
-        switch (choice)
-        {
-        case 1:
-        {
+        switch (choice) {
+        case 1: {
             Patient push_patient = getPatient();
             if (push_patient.critical_level == CRITICAL_LEVEL::HIGH)
                 patient_list.Insert(
@@ -64,10 +55,9 @@ int main(void)
     return 0;
 }
 
-Patient getPatient()
-{
+Patient getPatient() {
     std::string name;
-    int         age, critical_level;
+    int age, critical_level;
 
     std::cout << "Please input the name: ";
     std::cin >> name;
