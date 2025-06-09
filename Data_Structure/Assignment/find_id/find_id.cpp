@@ -22,40 +22,48 @@ public:
 };
 
 bool FindId::IsAscending() {
-    for (int i = 0; i < numbers.size() - 1; i++)
-        if (numbers[i] > numbers[i + 1])
+    for (int i = 0; i < numbers.size() - 1; i++) {
+        if (numbers[i] > numbers[i + 1]) {
             return false;
+        }
+    }
 
     return true;
 }
 
 int FindId::SequentialSearch() {
-    for (int i = 0; i < numbers.size(); i++)
-        if (numbers[i] == search_id)
+    for (int i = 0; i < numbers.size(); i++) {
+        if (numbers[i] == search_id) {
             return i;
+        }
+    }
 
     return -1;
 }
 
 int FindId::BinarySearch(int left, int right) {
-    if (left >= right)
+    if (left >= right) {
         return -1;
+    }
 
     int middle = (left + right) / 2;
 
-    if (numbers[middle] == search_id)
+    if (numbers[middle] == search_id) {
         return middle;
+    }
 
-    if (numbers[middle] < search_id)
+    if (numbers[middle] < search_id) {
         return BinarySearch(middle + 1, right);
+    }
 
     return BinarySearch(left, middle - 1);
 }
 
 void FindId::GetSearchId() {
     std::cout << "Product IDs: [";
-    for (int i = 0; i < numbers.size(); i++)
+    for (int i = 0; i < numbers.size(); i++) {
         std::cout << numbers[i] << (i == numbers.size() - 1 ? "]\n" : ", ");
+    }
 
     std::cout << "Search for: ";
     std::cin >> search_id;
@@ -73,10 +81,11 @@ void FindId::Solve() {
         (use_sequential_search ? SequentialSearch()
                                : BinarySearch(0, numbers.size()));
 
-    if (product_index == -1)
+    if (product_index == -1) {
         std::cout << "Not found\n";
-    else
+    } else {
         std::cout << "Product ID found at index " << product_index << '\n';
+    }
 
     return;
 }
