@@ -1,5 +1,4 @@
 #include "graph_adjacency_matrix.h"
-#include <iostream>
 #include <vector>
 
 int main(void) {
@@ -13,3 +12,4 @@ int main(void) {
 
     return 0;
 }
+
