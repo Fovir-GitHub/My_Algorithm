@@ -1,0 +1,15 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-g",
+      "-o",
+      "n_queens",
+      "n_queens.cpp"
+    ],
+    "directory": "/home/fovir/Desktop/VsCode/My_Algorithm/Backtracking/n_queens",
+    "file": "/home/fovir/Desktop/VsCode/My_Algorithm/Backtracking/n_queens/n_queens.cpp",
+    "output": "/home/fovir/Desktop/VsCode/My_Algorithm/Backtracking/n_queens/n_queens"
+  }
+]
