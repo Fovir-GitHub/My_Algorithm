@@ -91,4 +91,8 @@ void linkedListHashing() {
             break;
         }
     }
+
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        freeLinkedList(&hash_table[i]);
+    }
 }
