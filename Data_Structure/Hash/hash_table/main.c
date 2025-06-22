@@ -11,16 +11,16 @@ int main() {
     scanf("%d", &collision_type);
 
     switch (collision_type) {
-    case LINEAR_PROBING:
-        linearProbing();
-        break;
-    case DOUBLE_HASHING:
-        doubleHashing();
-        break;
-    case CHAINING:
-        linkedListHashing();
-        break;
-    default:
-        break;
+        case LINEAR_PROBING:
+            linearProbing();
+            break;
+        case DOUBLE_HASHING:
+            doubleHashing();
+            break;
+        case CHAINING:
+            linkedListHashing();
+            break;
+        default:
+            break;
     }
 }

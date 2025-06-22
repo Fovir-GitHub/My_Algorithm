@@ -8,21 +8,21 @@ void linearProbing() {
 
     while ((operation = getChoice()) != QUIT) {
         switch (operation) {
-        case INSERT:
-            linearProbingInsert(hash_table);
-            break;
-        case SEARCH: {
-            int target = 0;
-            scanf("%d", &target);
-            puts(linearProbingSearch(hash_table, target) ? "Found"
-                                                         : "Not Found");
-            break;
-        }
-        case DISPLAY:
-            linearProbingDisplay(hash_table);
-            break;
-        default:
-            break;
+            case INSERT:
+                linearProbingInsert(hash_table);
+                break;
+            case SEARCH: {
+                int target = 0;
+                scanf("%d", &target);
+                puts(linearProbingSearch(hash_table, target) ? "Found"
+                                                             : "Not Found");
+                break;
+            }
+            case DISPLAY:
+                linearProbingDisplay(hash_table);
+                break;
+            default:
+                break;
         }
     }
 }
