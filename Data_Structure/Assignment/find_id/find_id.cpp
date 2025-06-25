@@ -86,11 +86,9 @@ void FindId::Solve() {
     } else {
         std::cout << "Product ID found at index " << product_index << '\n';
     }
-
-    return;
 }
 
-int main(void) {
+int main() {
     FindId fi({10, 12, 22, 29, 33, 43, 48, 67, 89, 90});
 
     while (true) {
