@@ -5,32 +5,47 @@ using Array = std::vector<int>;
 
 class MergeThreeArrays {
 private:
-    Array MergeTwoArrays(const Array & a, const Array & b) {
-        Array::const_iterator a_iter = a.begin(), b_iter = b.begin();
+public:
+    Array Solve(const Array & a, const Array & b, const Array & c) {
         Array result;
+        auto first_begin = a.begin(), second_begin = b.begin(),
+             third_begin = c.begin();
+        auto first_end = a.end(), second_end = b.end(), third_end = c.end();
 
-        while (a_iter != a.end() && b_iter != b.end()) {
-            if (*a_iter > *b_iter) {
-                result.push_back(*a_iter++);
+        while (first_begin != first_end && second_begin != second_end &&
+               third_begin != third_end) {
+            if (*first_begin > *second_begin && *first_begin > *third_begin) {
+                result.push_back(*first_begin++);
+            } else if (*second_begin > *first_begin &&
+                       *second_begin > *third_begin) {
+                result.push_back(*second_begin++);
             } else {
-                result.push_back(*b_iter++);
+                result.push_back(*third_begin++);
             }
         }
 
-        while (a_iter != a.end()) {
-            result.push_back(*a_iter++);
+        if (first_begin == first_end) {
+            first_begin = third_begin;
+            first_end = third_end;
+        } else if (second_begin == second_end) {
+            second_begin = third_begin;
+            second_end = third_end;
         }
 
-        while (b_iter != b.end()) {
-            result.push_back(*b_iter++);
+        while (first_begin != first_end && second_begin != second_end) {
+            result.push_back((*first_begin > *second_begin ? *first_begin++
+                                                           : *second_begin++));
+        }
+
+        while (first_begin != first_end) {
+            result.push_back(*first_begin++);
+        }
+
+        while (second_begin != second_end) {
+            result.push_back(*second_begin++);
         }
 
         return result;
-    }
-
-public:
-    Array Solve(const Array & a, const Array & b, const Array & c) {
-        return MergeTwoArrays(MergeTwoArrays(a, b), c);
     }
 };
 
@@ -46,4 +61,3 @@ int main() {
 
     return 0;
 }
-
