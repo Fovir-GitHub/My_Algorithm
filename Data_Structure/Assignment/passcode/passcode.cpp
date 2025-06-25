@@ -1,84 +1,61 @@
+#include <cstdlib>
+#include <ctime>
 #include <iostream>
-#include <string>
 #include <vector>
+
+static const int LIMIT = 3;
 
 class UnlockPasscode {
 private:
-    enum { LIMIT = 3 };
+    std::vector<int> state;
 
-    std::vector<std::string> targets;
-    std::vector<int> trying;
-    int number_of_targets = 0;
+    void MakeState(int pos) {
+        if (pos == LIMIT) {
+            return;
+        }
 
-    std::string Vector2String(const std::vector<int> & source);
+        state[pos] = std::rand() % LIMIT;
+        MakeState(pos + 1);
+    }
+
+    void Try(const std::vector<int> & target) {
+        do {
+            MakeState(0);
+            std::cout << "Trying: ";
+            for (const int & num : state) {
+                std::cout << num << " ";
+            }
+            std::cout << '\n';
+        } while (state != target);
+    }
 
 public:
-    UnlockPasscode() : trying(std::vector<int>(LIMIT, 0)) {}
+    UnlockPasscode() : state(LIMIT, 0) { std::srand(std::time(nullptr)); }
 
-    ~UnlockPasscode() {}
-
-    void GetTarget();
-
-    void Solve(int pos);
+    void Solution(const std::vector<std::vector<int>> & targets) {
+        for (int i = 0; i < targets.size(); i++) {
+            Try(targets[i]);
+            std::cout << "Passcode " << i + 1 << " Unlocked\n";
+        }
+    }
 };
 
-std::string UnlockPasscode::Vector2String(const std::vector<int> & source) {
-    std::string result("");
-
-    for (const int & it : source)
-        result.append(std::to_string(it));
-
-    return result;
-}
-
-void UnlockPasscode::GetTarget() {
-    std::vector<int> temp(LIMIT, 0);
+int main() {
+    int n = 0;
 
     std::cout << "Number of passcodes: ";
-    std::cin >> number_of_targets;
+    std::cin >> n;
 
-    for (int i = 1; i <= number_of_targets; i++) {
-        std::cout << "Passcode " << i << ": ";
-        for (int & num : temp)
-            std::cin >> num;
-        targets.push_back(Vector2String(temp));
+    std::vector<std::vector<int>> targets(n, std::vector<int>(LIMIT, 0));
+    for (int i = 0; i < n; i++) {
+        std::cout << "Passcode " << i + 1 << ": ";
+        for (int j = 0; j < LIMIT; j++) {
+            std::cin >> targets[i][j];
+        }
     }
 
-    return;
-}
-
-void UnlockPasscode::Solve(int pos) {
-    if (number_of_targets <= 0)
-        return;
-
-    if (pos == LIMIT) {
-        std::cout << "Trying: ";
-        for (const int & it : trying)
-            std::cout << it << ' ';
-        std::cout << '\n';
-
-        std::string temp = Vector2String(trying);
-        for (int i = 0; i < targets.size(); i++)
-            if (temp == targets[i]) {
-                std::cout << "Passcode " << i + 1 << " Unlocked\n";
-                number_of_targets--;
-                break;
-            }
-
-        return;
-    }
-
-    for (int i = 0; i < LIMIT; i++) {
-        trying[pos] = i;
-        Solve(pos + 1);
-    }
-
-    return;
-}
-
-int main(void) {
     UnlockPasscode up;
+    up.Solution(targets);
 
-    up.GetTarget();
-    up.Solve(0);
+    return 0;
 }
